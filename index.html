@@ -29,9 +29,20 @@ body{font-family:'DM Sans',sans-serif;color:var(--text-body);background:var(--of
 *:focus-visible{outline:3px solid var(--lime-accent);outline-offset:3px;border-radius:4px}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}.hero-particles{display:none}}
 
-.seasonal-banner{background:linear-gradient(90deg,var(--fresh-green),var(--spring));text-align:center;padding:.6rem 2rem;position:absolute;top:0;left:0;width:100%;z-index:1}
-.seasonal-banner p{color:#fff;font-weight:600;font-size:.85rem;margin:0}
-.seasonal-banner a{color:#fff;text-decoration:underline;font-weight:700}
+.hero-form-card{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:24px;padding:2.25rem;backdrop-filter:blur(20px);position:relative;overflow:hidden}
+.hero-form-card::before{content:'';position:absolute;top:-50%;right:-50%;width:100%;height:100%;background:radial-gradient(circle,rgba(168,224,99,.08),transparent 60%)}
+.hero-form-card>*{position:relative;z-index:1}
+.hero-form-title{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:700;color:#fff;margin-bottom:.25rem}
+.hero-form-sub{font-size:.85rem;color:rgba(255,255,255,.5);margin-bottom:1.25rem}
+.hero-form .contact-form{gap:.75rem}
+.hero-form .form-row{gap:.75rem}
+.hero-form .contact-form input,.hero-form .contact-form select,.hero-form .contact-form textarea{padding:.7rem .85rem;font-size:.9rem;border-radius:10px}
+.hero-form .contact-form label{font-size:.7rem;margin-bottom:.3rem}
+.hero-form .form-submit{padding:.85rem 1.75rem;font-size:.95rem}
+.hero-form .form-success{padding:1.5rem}
+.hero-form-trust{display:flex;align-items:center;gap:.75rem;margin-top:1rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,.08)}
+.hero-form-trust .trust-stars{font-size:.9rem}
+.hero-form-trust .trust-text{font-size:.78rem}
 
 .nav{position:fixed;top:0;left:0;width:100%;z-index:1000;padding:1.25rem 3rem;display:flex;justify-content:space-between;align-items:center;transition:all .5s cubic-bezier(.22,1,.36,1)}
 .nav.scrolled{background:rgba(10,18,8,.95);backdrop-filter:blur(20px);padding:.75rem 3rem;box-shadow:0 4px 30px rgba(0,0,0,.15)}
@@ -71,17 +82,7 @@ body{font-family:'DM Sans',sans-serif;color:var(--text-body);background:var(--of
 .btn-secondary{display:inline-flex;align-items:center;gap:.5rem;color:rgba(255,255,255,.8);text-decoration:none;font-weight:500;font-size:.95rem;padding:1rem 1.5rem;border:1px solid rgba(255,255,255,.2);border-radius:60px;transition:all .3s;min-height:48px}
 .btn-secondary:hover{border-color:var(--lime-accent);color:var(--lime-accent)}
 .hero-visual{animation:fadeInUp 1s .6s both}
-.hero-stats-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:24px;padding:2.5rem;backdrop-filter:blur(20px);position:relative;overflow:hidden}
-.hero-stats-card::before{content:'';position:absolute;top:-50%;right:-50%;width:100%;height:100%;background:radial-gradient(circle,rgba(168,224,99,.08),transparent 60%)}
-.stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;position:relative}
-.stat-item{text-align:center;padding:1.25rem;border-radius:16px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);transition:all .4s}
-.stat-item:hover{background:rgba(168,224,99,.08);border-color:rgba(168,224,99,.2);transform:translateY(-4px)}
-.stat-number{font-family:'Playfair Display',serif;font-size:2.75rem;font-weight:900;color:var(--lime-accent);line-height:1;margin-bottom:.5rem}
-.stat-label{font-size:.8rem;color:rgba(255,255,255,.55);text-transform:uppercase;letter-spacing:1.5px;font-weight:600}
-.stat-divider{grid-column:1/-1;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.1),transparent)}
-.hero-trust{margin-top:2rem;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.08);display:flex;align-items:center;gap:1rem}
-.trust-stars{color:var(--gold);font-size:1.1rem;letter-spacing:2px}
-.trust-text{font-size:.85rem;color:rgba(255,255,255,.55)}.trust-text strong{color:rgba(255,255,255,.85)}
+.hero-stats-card{display:none}
 .licensed-badge{display:inline-flex;align-items:center;gap:.5rem;margin-top:1.25rem;padding:.5rem 1rem;background:rgba(168,224,99,.1);border:1px solid rgba(168,224,99,.2);border-radius:8px;font-size:.78rem;color:var(--lime-accent);font-weight:600;letter-spacing:.5px}
 .scroll-indicator{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);z-index:10;display:flex;flex-direction:column;align-items:center;gap:.5rem;animation:fadeInUp 1s 1.2s both}
 .scroll-indicator span{font-size:.7rem;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:2px}
@@ -226,7 +227,9 @@ body{font-family:'DM Sans',sans-serif;color:var(--text-body);background:var(--of
 .mobile-toggle{display:flex;z-index:1001}
 .hero-content{padding:6.5rem 1.5rem 4rem}.hero h1{letter-spacing:-1px}
 .hero-visual{order:2}.hero-left{order:1}
-.hero-stats-card{display:none}.licensed-badge{justify-content:center}
+.hero-form-card{padding:1.75rem}
+.hero-form-title{font-size:1.15rem}
+.licensed-badge{justify-content:center}
 .services,.testimonials,.cta-section{padding:5rem 1.5rem}
 .why-us,.gallery-band,.service-area{padding:5rem 1.5rem}.our-story{padding:5rem 1.5rem}
 .services-grid{grid-template-columns:1fr}.gallery-grid{grid-template-columns:1fr 1fr}
@@ -267,34 +270,36 @@ body{font-family:'DM Sans',sans-serif;color:var(--text-body);background:var(--of
 </nav>
 
 <main id="main-content">
-<section class="hero" aria-label="Hero">
-    <div class="seasonal-banner" role="complementary"><p>🌱 Now Booking Spring 2026 Cleanups &amp; Lawn Programs — <a href="#contact">Get Your Free Estimate</a></p></div>
+<section class="hero" id="contact" aria-label="Hero">
     <div class="hero-bg" aria-hidden="true"></div>
     <div class="hero-particles" id="particles" aria-hidden="true"></div>
     <div class="hero-content">
         <div class="hero-left">
-            <div class="hero-badge">Serving Southeast Michigan</div>
+            <div class="hero-badge">🌱 Now Booking Spring 2026 — SE Michigan</div>
             <h1>Premium Lawn Care &amp; Landscaping in <em>SE Michigan</em></h1>
             <p class="hero-text">Lee Bros Xscapes delivers expert lawn care, landscape design, and property maintenance that transforms your outdoor space. Family-owned, locally trusted, always dependable.</p>
             <div class="hero-actions">
                 <a href="tel:7344506417" class="btn-primary" aria-label="Call Lee Bros Xscapes at 734-450-6417">Call (734) 450-6417 <span class="arrow" aria-hidden="true">→</span></a>
-                <a href="#contact" class="btn-secondary">Request Estimate ↓</a>
+                <a href="#services" class="btn-secondary">View Services ↓</a>
             </div>
             <div class="licensed-badge">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#a8e063" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
                 Licensed &amp; Insured · Free Estimates · Family-Owned
             </div>
         </div>
-        <div class="hero-visual">
-            <div class="hero-stats-card" aria-label="Company highlights">
-                <div class="stats-grid">
-                    <div class="stat-item"><div class="stat-number">100%</div><div class="stat-label">Satisfaction</div></div>
-                    <div class="stat-item"><div class="stat-number">5★</div><div class="stat-label">Rated Service</div></div>
-                    <div class="stat-divider" aria-hidden="true"></div>
-                    <div class="stat-item"><div class="stat-number">734</div><div class="stat-label">Local Roots</div></div>
-                    <div class="stat-item"><div class="stat-number">Bros</div><div class="stat-label">Family-Owned</div></div>
-                </div>
-                <div class="hero-trust">
+        <div class="hero-visual hero-form">
+            <div class="hero-form-card">
+                <div class="hero-form-title">Get Your Free Estimate</div>
+                <div class="hero-form-sub">Fill out the form — we'll respond within 24 hours.</div>
+                <form class="contact-form" id="contact-form" aria-label="Request a free estimate">
+                    <div class="form-row"><div><label for="f-name">Your Name</label><input type="text" id="f-name" name="name" placeholder="John Smith" required autocomplete="name"></div><div><label for="f-phone">Phone</label><input type="tel" id="f-phone" name="phone" placeholder="(734) 555-0123" required autocomplete="tel"></div></div>
+                    <div><label for="f-email">Email (optional)</label><input type="email" id="f-email" name="email" placeholder="john@email.com" autocomplete="email"></div>
+                    <div class="form-row"><div><label for="f-svc">Service Needed</label><select id="f-svc" name="service" required><option value="" disabled selected>Select a service</option><option value="lawn">Lawn Maintenance</option><option value="landscape">Landscape Design</option><option value="fert">Fertilization &amp; Weed Control</option><option value="cleanup">Seasonal Cleanup</option><option value="shrub">Shrub &amp; Hedge Trimming</option><option value="snow">Snow Removal</option><option value="other">Other / Multiple</option></select></div><div><label for="f-size">Yard Size</label><select id="f-size" name="size"><option value="" disabled selected>Select size</option><option value="s">Small (&lt;¼ acre)</option><option value="m">Medium (¼–½ acre)</option><option value="l">Large (½–1 acre)</option><option value="xl">XL (1+ acre)</option></select></div></div>
+                    <div><label for="f-msg">Anything else?</label><textarea id="f-msg" name="message" placeholder="Tell us about your property..." rows="2"></textarea></div>
+                    <button type="submit" class="form-submit">Request Free Estimate <span class="arrow" aria-hidden="true">→</span></button>
+                </form>
+                <div class="form-success" id="form-success" role="alert"><p>✅ Thank you! We'll be in touch within 24 hours.</p></div>
+                <div class="hero-form-trust">
                     <div class="trust-stars" aria-label="5 star rating">★★★★★</div>
                     <div class="trust-text"><strong>Trusted by homeowners</strong> across SE Michigan</div>
                 </div>
@@ -380,27 +385,18 @@ body{font-family:'DM Sans',sans-serif;color:var(--text-body);background:var(--of
     </div>
 </section>
 
-<section class="cta-section" id="contact" aria-labelledby="cta-title">
+<section class="cta-section" aria-labelledby="cta-title">
     <div class="cta-card reveal">
-        <div class="cta-layout">
+        <div class="cta-layout" style="grid-template-columns:1fr;text-align:center;max-width:650px;margin:0 auto">
             <div class="cta-left">
                 <h2 id="cta-title">Ready for the Best Lawn on Your Block?</h2>
-                <p>Get a free, no-obligation estimate today. Call, email, or fill out the form and we'll get back to you within 24 hours.</p>
+                <p>Get a free, no-obligation estimate today. Call, email, or <a href="#contact" style="color:var(--lime-accent);text-decoration:underline">scroll up to fill out our form</a> — we'll get back to you within 24 hours.</p>
                 <a href="tel:7344506417" class="cta-phone" aria-label="Call 734-450-6417">
                     <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#a8e063" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
                     (734) 450-6417
                 </a>
                 <a href="mailto:info@leebrosxscapes.com" class="cta-email">✉ info@leebrosxscapes.com</a>
-            </div>
-            <div class="cta-right">
-                <form class="contact-form" id="contact-form" aria-label="Request a free estimate">
-                    <div class="form-row"><div><label for="f-name">Your Name</label><input type="text" id="f-name" name="name" placeholder="John Smith" required autocomplete="name"></div><div><label for="f-phone">Phone Number</label><input type="tel" id="f-phone" name="phone" placeholder="(734) 555-0123" required autocomplete="tel"></div></div>
-                    <div><label for="f-email">Email (optional)</label><input type="email" id="f-email" name="email" placeholder="john@email.com" autocomplete="email"></div>
-                    <div class="form-row"><div><label for="f-svc">Service Needed</label><select id="f-svc" name="service" required><option value="" disabled selected>Select a service</option><option value="lawn">Lawn Maintenance</option><option value="landscape">Landscape Design</option><option value="fert">Fertilization &amp; Weed Control</option><option value="cleanup">Seasonal Cleanup</option><option value="shrub">Shrub &amp; Hedge Trimming</option><option value="snow">Snow Removal</option><option value="other">Other / Multiple</option></select></div><div><label for="f-size">Yard Size</label><select id="f-size" name="size"><option value="" disabled selected>Select size</option><option value="s">Small (under ¼ acre)</option><option value="m">Medium (¼–½ acre)</option><option value="l">Large (½–1 acre)</option><option value="xl">Extra Large (1+ acre)</option></select></div></div>
-                    <div><label for="f-msg">Anything else?</label><textarea id="f-msg" name="message" placeholder="Tell us about your property or specific needs..." rows="3"></textarea></div>
-                    <button type="submit" class="form-submit">Request Free Estimate <span class="arrow" aria-hidden="true">→</span></button>
-                </form>
-                <div class="form-success" id="form-success" role="alert"><p>✅ Thank you! We'll be in touch within 24 hours.</p></div>
+                <div style="margin-top:2rem"><a href="#contact" class="btn-primary" style="background:linear-gradient(135deg,var(--spring),var(--lime-accent))">Get Your Free Estimate <span class="arrow" aria-hidden="true">→</span></a></div>
             </div>
         </div>
     </div>
