@@ -26,593 +26,2560 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <style>
-:root{--rich-black:#0a1208;--deep-forest:#1a2e14;--moss:#2d4a22;--fresh-green:#4a7c34;--spring:#6db54a;--lime-accent:#a8e063;--cream:#f5f0e8;--off-white:#faf8f4;--warm-gray:#635e54;--text-dark:#1a1a18;--text-body:#3d3d38;--safe-area-top:max(1rem,env(safe-area-inset-top));--safe-area-bottom:max(1rem,env(safe-area-inset-bottom))}
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth;overflow-x:hidden}
-body{font-family:'DM Sans',sans-serif;color:var(--text-body);background:var(--off-white);overflow:hidden;height:100vh}
-.app-container{display:flex;flex-direction:column;height:100vh;background:var(--off-white)}
-.app-screens{flex:1;position:relative;overflow:hidden;width:100%}
-.app-screen{position:absolute;inset:0;opacity:0;visibility:hidden;transition:opacity .3s ease,visibility .3s ease;overflow-y:auto;padding-top:0;padding-bottom:calc(60px + var(--safe-area-bottom))}
-.app-screen.active{opacity:1;visibility:visible}
-.app-screen-header{position:sticky;top:0;z-index:50;background:rgba(250,248,244,.95);backdrop-filter:blur(10px);border-bottom:1px solid rgba(0,0,0,.05);padding:1rem var(--safe-area-top) 1rem 1rem}
-.app-screen-title{font-family:'Playfair Display',serif;font-size:1.75rem;font-weight:700;color:var(--text-dark);letter-spacing:-.5px}
-.app-nav{position:fixed;bottom:0;left:0;right:0;height:60px;background:#fff;border-top:1px solid rgba(0,0,0,.08);display:flex;justify-content:space-around;align-items:stretch;z-index:100;padding-bottom:var(--safe-area-bottom);background:rgba(255,255,255,.95);backdrop-filter:blur(20px)}
-.nav-tab{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.25rem;background:none;border:none;cursor:pointer;color:var(--warm-gray);font-size:0.7rem;font-weight:500;transition:all .3s ease;position:relative;text-decoration:none;padding:0.5rem 0;touch-action:manipulation}
-.nav-tab svg{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:1.5;transition:all .3s ease}
-.nav-tab.active{color:var(--fresh-green);font-weight:600}
-.nav-tab.active svg{stroke:var(--fresh-green)}
-.nav-tab.active::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:4px;height:4px;background:var(--fresh-green);border-radius:50%}
-*:focus-visible{outline:3px solid var(--lime-accent);outline-offset:2px;border-radius:4px}
-@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
-
-.screen-content{padding:1.5rem;max-width:100%;margin:0 auto}
-
-#screen-home .hero-card{background:linear-gradient(135deg,rgba(74,124,52,.15),rgba(168,224,99,.1));border:1px solid rgba(74,124,52,.2);border-radius:20px;padding:2rem 1.5rem;margin-bottom:1.5rem}
-#screen-home .hero-card h1{font-family:'Playfair Display',serif;font-size:2rem;font-weight:900;color:var(--text-dark);letter-spacing:-1px;margin-bottom:0.5rem}
-#screen-home .hero-card .tagline{font-size:0.95rem;color:var(--warm-gray);margin-bottom:1.5rem;line-height:1.6}
-.hero-buttons{display:flex;gap:0.75rem;margin-bottom:2rem}
-.btn-home{flex:1;padding:1rem;border-radius:14px;border:none;font-weight:600;font-size:0.95rem;cursor:pointer;transition:all .3s;min-height:48px;display:flex;align-items:center;justify-content:center;text-decoration:none;gap:0.5rem}
-.btn-call{background:linear-gradient(135deg,var(--spring),var(--lime-accent));color:var(--deep-forest)}
-.btn-estimate{background:var(--deep-forest);color:#fff;border:2px solid var(--fresh-green)}
-.btn-home:active{transform:scale(.98)}
-.trust-chips{display:flex;gap:0.75rem;overflow-x:auto;padding-bottom:0.5rem;margin-bottom:2rem;scroll-behavior:smooth}
-.trust-chip{flex-shrink:0;background:white;border:1px solid rgba(0,0,0,.1);border-radius:20px;padding:0.65rem 1.25rem;font-size:0.8rem;font-weight:600;color:var(--fresh-green);white-space:nowrap;display:flex;align-items:center;gap:0.5rem}
-.quick-look{margin-bottom:2rem}
-.quick-look h3{font-size:0.9rem;font-weight:700;color:var(--text-dark);margin-bottom:1rem;letter-spacing:.5px;text-transform:uppercase;opacity:.6}
-.quick-cards{display:grid;grid-template-columns:1fr;gap:1rem}
-.quick-card{background:white;border:1px solid rgba(0,0,0,.08);border-radius:14px;padding:1.25rem;cursor:pointer;transition:all .3s;text-decoration:none;color:var(--text-dark)}
-.quick-card:active{transform:scale(.98);background:#f5f5f5}
-.quick-card h4{font-weight:600;margin-bottom:0.5rem;font-size:0.95rem;display:flex;align-items:center;gap:0.75rem}
-.quick-card-arrow{font-size:1.2rem}
-.testimonial-card{background:white;border:1px solid rgba(0,0,0,.1);border-radius:16px;padding:1.5rem;margin-bottom:2rem}
-.testimonial-text{font-size:0.95rem;color:var(--text-dark);line-height:1.7;margin-bottom:1rem;font-style:italic}
-.testimonial-author{font-weight:600;font-size:0.85rem;color:var(--fresh-green)}
-.testimonial-location{font-size:0.75rem;color:var(--warm-gray)}
-
-.services-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:2rem}
-.service-card{background:white;border:1px solid rgba(0,0,0,.08);border-radius:16px;padding:1.25rem;cursor:pointer;transition:all .3s}
-.service-card.active{border-color:var(--fresh-green);box-shadow:0 4px 12px rgba(74,124,52,.1)}
-.service-icon{width:40px;height:40px;background:linear-gradient(135deg,rgba(74,124,52,.15),rgba(168,224,99,.15));border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:0.75rem}
-.service-icon svg{width:20px;height:20px;stroke:var(--fresh-green);stroke-width:1.5;fill:none}
-.service-card h3{font-size:0.95rem;font-weight:700;color:var(--text-dark);margin-bottom:0.5rem}
-.service-card p{font-size:0.8rem;color:var(--warm-gray);line-height:1.5;display:none}
-.service-card.active p{display:block;margin-top:1rem;border-top:1px solid rgba(0,0,0,.05);padding-top:1rem}
-.process-timeline{margin-bottom:2rem}
-.process-item{display:flex;gap:1.25rem;margin-bottom:2rem;position:relative}
-.process-item:not(:last-child)::after{content:'';position:absolute;left:19px;top:60px;bottom:-60px;width:2px;background:linear-gradient(180deg,var(--fresh-green),transparent)}
-.process-step-num{width:40px;height:40px;background:linear-gradient(135deg,var(--spring),var(--lime-accent));color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:1rem;flex-shrink:0;position:relative;z-index:1}
-.process-content h4{font-weight:700;color:var(--text-dark);margin-bottom:0.25rem;font-size:0.95rem}
-.process-content p{font-size:0.85rem;color:var(--warm-gray);line-height:1.5}
-
-.pricing-card{background:white;border:2px solid rgba(0,0,0,.08);border-radius:16px;padding:1.5rem;margin-bottom:1.5rem;transition:all .3s;position:relative}
-.pricing-card.popular{border-color:var(--fresh-green);box-shadow:0 4px 16px rgba(74,124,52,.15)}
-.pricing-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--spring),var(--lime-accent));color:#fff;padding:0.35rem 1rem;border-radius:20px;font-size:0.7rem;font-weight:700;letter-spacing:.5px}
-.pricing-name{font-family:'Playfair Display',serif;font-size:1.25rem;font-weight:700;color:var(--text-dark);margin-bottom:0.5rem}
-.pricing-price{font-size:2rem;font-weight:900;color:var(--fresh-green);margin-bottom:0.25rem}
-.pricing-price-sub{font-size:0.85rem;color:var(--warm-gray);margin-bottom:1.5rem}
-.pricing-features{list-style:none;margin-bottom:1.5rem}
-.pricing-features li{font-size:0.85rem;color:var(--text-body);padding:0.5rem 0;border-bottom:1px solid rgba(0,0,0,.05)}
-.pricing-features li::before{content:'✓ ';color:var(--fresh-green);font-weight:700;margin-right:0.5rem}
-.btn-pricing{width:100%;padding:0.9rem;background:linear-gradient(135deg,var(--spring),var(--lime-accent));color:var(--deep-forest);border:none;border-radius:12px;font-weight:700;cursor:pointer;font-size:0.9rem;transition:all .3s;min-height:44px}
-.btn-pricing:active{transform:scale(.98)}
-.pricing-guarantee{font-size:0.8rem;color:var(--warm-gray);text-align:center;margin-top:1.5rem;line-height:1.5}
-
-.story-text{font-size:0.95rem;color:var(--text-body);line-height:1.8;margin-bottom:1.5rem}
-.stat-badges{display:flex;gap:0.75rem;margin-bottom:2rem;flex-wrap:wrap}
-.stat-badge{background:rgba(74,124,52,.1);border:1px solid rgba(74,124,52,.2);border-radius:12px;padding:0.75rem 1rem;font-size:0.8rem;font-weight:600;color:var(--fresh-green);flex:1;min-width:120px;text-align:center}
-.why-grid{display:grid;grid-template-columns:1fr;gap:1rem;margin-bottom:2rem}
-.why-card{background:white;border:1px solid rgba(0,0,0,.08);border-radius:16px;padding:1.25rem;cursor:pointer;transition:all .3s}
-.why-card.active{border-color:var(--fresh-green);background:rgba(74,124,52,.02)}
-.why-card h4{font-weight:700;color:var(--text-dark);margin-bottom:0.5rem;font-size:0.95rem}
-.why-card p{font-size:0.8rem;color:var(--warm-gray);line-height:1.5;display:none}
-.why-card.active p{display:block}
-.faq-item{background:white;border:1px solid rgba(0,0,0,.08);border-radius:16px;margin-bottom:1rem;overflow:hidden}
-.faq-question{padding:1rem;cursor:pointer;display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;font-weight:600;color:var(--text-dark);font-size:0.9rem;transition:background .3s}
-.faq-question:active{background:rgba(0,0,0,.02)}
-.faq-icon{width:20px;height:20px;flex-shrink:0;font-weight:700;transition:transform .3s}
-.faq-item.active .faq-icon{transform:rotate(180deg)}
-.faq-answer{max-height:0;overflow:hidden;transition:max-height .3s;padding:0 1rem}
-.faq-item.active .faq-answer{max-height:500px;padding:0 1rem 1rem}
-.faq-answer p{font-size:0.85rem;color:var(--text-body);line-height:1.6}
-
-.contact-info{background:white;border:1px solid rgba(0,0,0,.08);border-radius:16px;padding:1.25rem;margin-bottom:1.5rem;text-align:center}
-.contact-button{display:flex;align-items:center;justify-content:center;gap:0.75rem;padding:1rem;border:none;background:linear-gradient(135deg,var(--spring),var(--lime-accent));color:var(--deep-forest);border-radius:12px;font-weight:700;font-size:0.95rem;cursor:pointer;transition:all .3s;text-decoration:none;margin-bottom:1rem;min-height:48px}
-.contact-button.email{background:var(--deep-forest);color:#fff}
-.contact-button:active{transform:scale(.98)}
-.contact-form{display:flex;flex-direction:column;gap:1rem;margin-bottom:2rem}
-.form-group{display:flex;flex-direction:column}
-.form-group label{font-size:0.8rem;font-weight:600;color:var(--text-dark);margin-bottom:0.4rem;text-transform:uppercase;letter-spacing:.5px;opacity:.7}
-.form-group input,.form-group select,.form-group textarea{padding:0.85rem;border:1px solid rgba(0,0,0,.1);border-radius:10px;font-family:'DM Sans',sans-serif;font-size:0.95rem;color:var(--text-dark);transition:border .3s}
-.form-group input:focus,.form-group select:focus,.form-group textarea:focus{outline:none;border-color:var(--fresh-green);background:rgba(74,124,52,.02)}
-.form-group textarea{resize:vertical;min-height:100px}
-.char-count{font-size:0.75rem;color:var(--warm-gray);margin-top:0.35rem}
-.btn-submit{padding:1rem;background:linear-gradient(135deg,var(--spring),var(--lime-accent));color:var(--deep-forest);border:none;border-radius:12px;font-weight:700;font-size:0.95rem;cursor:pointer;transition:all .3s;min-height:48px;width:100%}
-.btn-submit:active{transform:scale(.98)}
-.form-success{display:none;text-align:center;padding:2rem 1.5rem;background:rgba(74,124,52,.1);border:1px solid var(--fresh-green);border-radius:16px;margin-bottom:2rem}
-.form-success.show{display:block}
-.form-success h3{font-family:'Playfair Display',serif;color:var(--fresh-green);margin-bottom:0.5rem;font-size:1.25rem}
-.form-success p{font-size:0.9rem;color:var(--text-body);line-height:1.6}
-.hours-badge{background:white;border:1px solid rgba(0,0,0,.08);border-radius:16px;padding:1.25rem;margin-bottom:1.5rem;text-align:center}
-.hours-badge h4{font-weight:700;color:var(--text-dark);margin-bottom:0.5rem}
-.hours-badge p{font-size:0.9rem;color:var(--text-body)}
-.service-area-section{margin-bottom:2rem}
-.service-area-section h3{font-size:0.9rem;font-weight:700;color:var(--text-dark);margin-bottom:1rem;letter-spacing:.5px;text-transform:uppercase;opacity:.6}
-.cities-scroll{display:flex;gap:0.75rem;overflow-x:auto;padding-bottom:0.5rem;scroll-behavior:smooth}
-.city-pill{flex-shrink:0;background:white;border:1px solid rgba(74,124,52,.2);border-radius:20px;padding:0.65rem 1.25rem;font-size:0.8rem;font-weight:600;color:var(--fresh-green);white-space:nowrap}
-.social-links{display:flex;gap:1rem;justify-content:center;margin-top:1.5rem}
-.social-link{width:44px;height:44px;border-radius:50%;background:white;border:1px solid rgba(0,0,0,.1);display:flex;align-items:center;justify-content:center;text-decoration:none;color:var(--fresh-green);transition:all .3s;cursor:pointer}
-.social-link:active{transform:scale(.95)}
-
-@media(min-width:481px){
-    body{display:flex;align-items:center;justify-content:center;padding:2rem;min-height:100vh;background:linear-gradient(135deg,#1a2e14 0%,#0a1208 40%,#2d4a22 100%);background-attachment:fixed}
-    body::before{content:'Lee Bros Xscapes';position:fixed;top:2rem;left:50%;transform:translateX(-50%);font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;color:rgba(168,224,99,.15);letter-spacing:2px;pointer-events:none;z-index:0}
-    .app-container{width:390px;height:844px;border-radius:44px;box-shadow:0 25px 80px rgba(0,0,0,.5),0 0 0 1px rgba(168,224,99,.1);border:10px solid var(--rich-black);overflow:hidden;position:relative;z-index:1}
-    .app-container::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:120px;height:28px;background:var(--rich-black);border-radius:0 0 16px 16px;z-index:100}
-    .app-screen{padding-bottom:calc(60px + 10px)}
+:root {
+    --rich-black: #0a1208;
+    --deep-forest: #1a2e14;
+    --moss: #2d4a22;
+    --fresh-green: #4a7c34;
+    --spring: #6db54a;
+    --lime-accent: #a8e063;
+    --gold: #d4a843;
+    --cream: #f5f0e8;
+    --off-white: #faf8f4;
+    --warm-gray: #635e54;
+    --text-dark: #1a1a18;
+    --text-body: #3d3d38;
+    --safe-area-top: max(1rem, env(safe-area-inset-top));
+    --safe-area-bottom: max(1rem, env(safe-area-inset-bottom));
 }
 
-.app-screen::-webkit-scrollbar{width:4px}
-.app-screen::-webkit-scrollbar-track{background:transparent}
-.app-screen::-webkit-scrollbar-thumb{background:rgba(74,124,52,.3);border-radius:2px}
-.app-screen::-webkit-scrollbar-thumb:hover{background:rgba(74,124,52,.5)}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+body {
+    font-family: 'DM Sans', sans-serif;
+    color: var(--text-body);
+    background: var(--off-white);
+    line-height: 1.6;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button {
+    font-family: 'DM Sans', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    color: var(--text-dark);
+    letter-spacing: -0.5px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* ============================================
+   MOBILE LAYOUT (≤768px)
+   ============================================ */
+
+@media (max-width: 768px) {
+    body {
+        overflow: hidden;
+        height: 100vh;
+    }
+
+    /* Skip link */
+    .skip-link {
+        position: absolute;
+        top: -40px;
+        left: 0;
+        background: var(--fresh-green);
+        color: white;
+        padding: 8px;
+        text-decoration: none;
+        z-index: 100;
+    }
+
+    .skip-link:focus {
+        top: 0;
+    }
+
+    /* Hide desktop nav */
+    .desktop-nav {
+        display: none;
+    }
+
+    .back-to-top {
+        display: none;
+    }
+
+    .scroll-progress {
+        display: none;
+    }
+
+    /* Mobile section layout */
+    .site-main {
+        position: relative;
+        height: calc(100vh - 60px);
+        overflow: hidden;
+    }
+
+    .site-section {
+        position: absolute;
+        inset: 0;
+        opacity: 0;
+        visibility: hidden;
+        overflow-y: auto;
+        padding-bottom: calc(60px + var(--safe-area-bottom));
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    .site-section.active {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .site-section::-webkit-scrollbar {
+        width: 4px;
+    }
+
+    .site-section::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    .site-section::-webkit-scrollbar-thumb {
+        background: rgba(74, 124, 52, 0.3);
+        border-radius: 2px;
+    }
+
+    .site-section::-webkit-scrollbar-thumb:hover {
+        background: rgba(74, 124, 52, 0.5);
+    }
+
+    /* Section header - sticky */
+    .section-header {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        background: rgba(250, 248, 244, 0.95);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        padding: 1rem;
+    }
+
+    .section-header h2 {
+        font-size: 1.75rem;
+        font-weight: 700;
+    }
+
+    .section-content {
+        padding: 1.5rem;
+        max-width: 100%;
+    }
+
+    /* ---- HOME SCREEN ---- */
+    .hero-card {
+        background: linear-gradient(135deg, rgba(74, 124, 52, 0.15), rgba(168, 224, 99, 0.1));
+        border: 1px solid rgba(74, 124, 52, 0.2);
+        border-radius: 20px;
+        padding: 2rem 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .hero-card h1 {
+        font-size: 2rem;
+        font-weight: 900;
+        margin-bottom: 0.5rem;
+    }
+
+    .hero-card .tagline {
+        font-size: 0.95rem;
+        color: var(--warm-gray);
+        margin-bottom: 1.5rem;
+        line-height: 1.6;
+    }
+
+    .hero-buttons {
+        display: flex;
+        gap: 0.75rem;
+        margin-bottom: 2rem;
+    }
+
+    .btn-home {
+        flex: 1;
+        padding: 1rem;
+        border-radius: 14px;
+        border: none;
+        font-weight: 600;
+        font-size: 0.95rem;
+        cursor: pointer;
+        transition: all 0.3s;
+        min-height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+    }
+
+    .btn-call {
+        background: linear-gradient(135deg, var(--spring), var(--lime-accent));
+        color: var(--deep-forest);
+    }
+
+    .btn-estimate {
+        background: var(--deep-forest);
+        color: #fff;
+        border: 2px solid var(--fresh-green);
+    }
+
+    .btn-home:active {
+        transform: scale(0.98);
+    }
+
+    .trust-chips {
+        display: flex;
+        gap: 0.75rem;
+        overflow-x: auto;
+        padding-bottom: 0.5rem;
+        margin-bottom: 2rem;
+        scroll-behavior: smooth;
+    }
+
+    .trust-chip {
+        flex-shrink: 0;
+        background: white;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        border-radius: 20px;
+        padding: 0.65rem 1.25rem;
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: var(--fresh-green);
+        white-space: nowrap;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .quick-look {
+        margin-bottom: 2rem;
+    }
+
+    .quick-look h3 {
+        font-size: 0.9rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        opacity: 0.6;
+    }
+
+    .quick-cards {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .quick-card {
+        background: white;
+        border: 1px solid rgba(0, 0, 0, 0.08);
+        border-radius: 14px;
+        padding: 1.25rem;
+        cursor: pointer;
+        transition: all 0.3s;
+        text-decoration: none;
+        color: var(--text-dark);
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        font-size: 0.95rem;
+    }
+
+    .quick-card:active {
+        transform: scale(0.98);
+        background: #f5f5f5;
+    }
+
+    .testimonial-card {
+        background: white;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        border-radius: 16px;
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+    }
+
+    .testimonial-text {
+        font-size: 0.95rem;
+        color: var(--text-dark);
+        line-height: 1.7;
+        margin-bottom: 1rem;
+        font-style: italic;
+    }
+
+    .testimonial-author {
+        font-weight: 600;
+        font-size: 0.85rem;
+        color: var(--fresh-green);
+    }
+
+    .testimonial-location {
+        font-size: 0.75rem;
+        color: var(--warm-gray);
+    }
+
+    /* ---- SERVICES SCREEN ---- */
+    .services-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .service-card {
+        background: white;
+        border: 1px solid rgba(0, 0, 0, 0.08);
+        border-radius: 16px;
+        padding: 1.25rem;
+        cursor: pointer;
+        transition: all 0.3s;
+        border: none;
+        text-align: left;
+    }
+
+    .service-card:active {
+        border-color: var(--fresh-green);
+        box-shadow: 0 4px 12px rgba(74, 124, 52, 0.1);
+    }
+
+    .service-icon {
+        width: 40px;
+        height: 40px;
+        background: linear-gradient(135deg, rgba(74, 124, 52, 0.15), rgba(168, 224, 99, 0.15));
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 0.75rem;
+    }
+
+    .service-icon svg {
+        width: 20px;
+        height: 20px;
+        stroke: var(--fresh-green);
+        stroke-width: 1.5;
+        fill: none;
+    }
+
+    .service-card h3 {
+        font-size: 0.95rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .service-card p {
+        font-size: 0.8rem;
+        color: var(--warm-gray);
+        line-height: 1.5;
+        display: none;
+    }
+
+    .service-card.expanded p {
+        display: block;
+        margin-top: 1rem;
+        border-top: 1px solid rgba(0, 0, 0, 0.05);
+        padding-top: 1rem;
+    }
+
+    /* How It Works */
+    .process-section {
+        margin-top: 2rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .process-section h3 {
+        font-size: 1.1rem;
+        margin-bottom: 1.5rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .process-timeline {
+        margin-bottom: 2rem;
+    }
+
+    .process-item {
+        display: flex;
+        gap: 1.25rem;
+        margin-bottom: 2rem;
+        position: relative;
+    }
+
+    .process-item:not(:last-child)::after {
+        content: '';
+        position: absolute;
+        left: 19px;
+        top: 60px;
+        bottom: -60px;
+        width: 2px;
+        background: linear-gradient(180deg, var(--fresh-green), transparent);
+    }
+
+    .process-step-num {
+        width: 40px;
+        height: 40px;
+        background: linear-gradient(135deg, var(--spring), var(--lime-accent));
+        color: #fff;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-size: 1rem;
+        flex-shrink: 0;
+        position: relative;
+        z-index: 1;
+    }
+
+    .process-content h4 {
+        font-weight: 700;
+        margin-bottom: 0.25rem;
+        font-size: 0.95rem;
+    }
+
+    .process-content p {
+        font-size: 0.85rem;
+        color: var(--warm-gray);
+        line-height: 1.5;
+    }
+
+    /* ---- PLANS SCREEN ---- */
+    .pricing-intro {
+        margin-bottom: 1rem;
+        text-align: center;
+    }
+
+    .pricing-intro p {
+        font-size: 0.95rem;
+        color: var(--warm-gray);
+    }
+
+    .pricing-card {
+        background: white;
+        border: 2px solid rgba(0, 0, 0, 0.08);
+        border-radius: 16px;
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+        transition: all 0.3s;
+        position: relative;
+    }
+
+    .pricing-card.popular {
+        border-color: var(--fresh-green);
+        box-shadow: 0 4px 16px rgba(74, 124, 52, 0.15);
+    }
+
+    .pricing-badge {
+        position: absolute;
+        top: -12px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: linear-gradient(135deg, var(--spring), var(--lime-accent));
+        color: #fff;
+        padding: 0.35rem 1rem;
+        border-radius: 20px;
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+    }
+
+    .pricing-name {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.25rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+    }
+
+    .pricing-price {
+        font-size: 2rem;
+        font-weight: 900;
+        color: var(--fresh-green);
+        margin-bottom: 0.25rem;
+    }
+
+    .pricing-price-sub {
+        font-size: 0.85rem;
+        color: var(--warm-gray);
+        margin-bottom: 1.5rem;
+    }
+
+    .pricing-features {
+        list-style: none;
+        margin-bottom: 1.5rem;
+    }
+
+    .pricing-features li {
+        font-size: 0.85rem;
+        color: var(--text-body);
+        padding: 0.5rem 0;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .pricing-features li::before {
+        content: '✓ ';
+        color: var(--fresh-green);
+        font-weight: 700;
+        margin-right: 0.5rem;
+    }
+
+    .btn-pricing {
+        width: 100%;
+        padding: 0.9rem;
+        background: linear-gradient(135deg, var(--spring), var(--lime-accent));
+        color: var(--deep-forest);
+        border: none;
+        border-radius: 12px;
+        font-weight: 700;
+        font-size: 0.9rem;
+        cursor: pointer;
+        transition: all 0.3s;
+        min-height: 44px;
+    }
+
+    .btn-pricing:active {
+        transform: scale(0.98);
+    }
+
+    .pricing-guarantee {
+        font-size: 0.8rem;
+        color: var(--warm-gray);
+        text-align: center;
+        margin-top: 1.5rem;
+        line-height: 1.5;
+    }
+
+    /* ---- ABOUT SCREEN ---- */
+    .story-text {
+        font-size: 0.95rem;
+        color: var(--text-body);
+        line-height: 1.8;
+        margin-bottom: 1.5rem;
+    }
+
+    .stat-badges {
+        display: flex;
+        gap: 0.75rem;
+        margin-bottom: 2rem;
+        flex-wrap: wrap;
+    }
+
+    .stat-badge {
+        background: rgba(74, 124, 52, 0.1);
+        border: 1px solid rgba(74, 124, 52, 0.2);
+        border-radius: 12px;
+        padding: 0.75rem 1rem;
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: var(--fresh-green);
+        flex: 1;
+        min-width: 120px;
+        text-align: center;
+    }
+
+    .why-section {
+        margin-bottom: 2rem;
+        padding-bottom: 1.5rem;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .why-section h3 {
+        font-size: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .why-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .why-card {
+        background: white;
+        border: 1px solid rgba(0, 0, 0, 0.08);
+        border-radius: 16px;
+        padding: 1.25rem;
+        cursor: pointer;
+        transition: all 0.3s;
+        text-align: left;
+    }
+
+    .why-card:active {
+        border-color: var(--fresh-green);
+        background: rgba(74, 124, 52, 0.02);
+    }
+
+    .why-card h4 {
+        font-size: 0.95rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .why-card p {
+        font-size: 0.8rem;
+        color: var(--warm-gray);
+        line-height: 1.5;
+        display: none;
+    }
+
+    .why-card.expanded p {
+        display: block;
+    }
+
+    .faq-section {
+        margin-bottom: 2rem;
+    }
+
+    .faq-section h3 {
+        font-size: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .faq-item {
+        background: white;
+        border: 1px solid rgba(0, 0, 0, 0.08);
+        border-radius: 16px;
+        margin-bottom: 1rem;
+        overflow: hidden;
+    }
+
+    .faq-question {
+        padding: 1rem;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 1rem;
+        font-weight: 600;
+        color: var(--text-dark);
+        font-size: 0.9rem;
+        transition: background 0.3s;
+        background: none;
+        border: none;
+        width: 100%;
+        text-align: left;
+    }
+
+    .faq-question:active {
+        background: rgba(0, 0, 0, 0.02);
+    }
+
+    .faq-icon {
+        width: 20px;
+        height: 20px;
+        flex-shrink: 0;
+        font-weight: 700;
+        transition: transform 0.3s;
+    }
+
+    .faq-item.expanded .faq-icon {
+        transform: rotate(180deg);
+    }
+
+    .faq-answer {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s;
+        padding: 0 1rem;
+    }
+
+    .faq-item.expanded .faq-answer {
+        max-height: 500px;
+        padding: 0 1rem 1rem;
+    }
+
+    .faq-answer p {
+        font-size: 0.85rem;
+        color: var(--text-body);
+        line-height: 1.6;
+    }
+
+    /* ---- CONTACT SCREEN ---- */
+    .contact-button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.75rem;
+        padding: 1rem;
+        border: none;
+        background: linear-gradient(135deg, var(--spring), var(--lime-accent));
+        color: var(--deep-forest);
+        border-radius: 12px;
+        font-weight: 700;
+        font-size: 0.95rem;
+        cursor: pointer;
+        transition: all 0.3s;
+        text-decoration: none;
+        margin-bottom: 1rem;
+        min-height: 48px;
+        width: 100%;
+    }
+
+    .contact-button.email {
+        background: var(--deep-forest);
+        color: #fff;
+    }
+
+    .contact-button:active {
+        transform: scale(0.98);
+    }
+
+    .hours-badge {
+        background: white;
+        border: 1px solid rgba(0, 0, 0, 0.08);
+        border-radius: 16px;
+        padding: 1.25rem;
+        margin-bottom: 1.5rem;
+        text-align: center;
+    }
+
+    .hours-badge h4 {
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+    }
+
+    .hours-badge p {
+        font-size: 0.9rem;
+        color: var(--text-body);
+    }
+
+    .contact-form {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .form-group {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .form-group label {
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: var(--text-dark);
+        margin-bottom: 0.4rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        opacity: 0.7;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        padding: 0.85rem;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        font-family: 'DM Sans', sans-serif;
+        font-size: 0.95rem;
+        color: var(--text-dark);
+        transition: border 0.3s;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+        outline: none;
+        border-color: var(--fresh-green);
+        background: rgba(74, 124, 52, 0.02);
+    }
+
+    .form-group textarea {
+        resize: vertical;
+        min-height: 100px;
+    }
+
+    .char-count {
+        font-size: 0.75rem;
+        color: var(--warm-gray);
+        margin-top: 0.35rem;
+    }
+
+    .btn-submit {
+        padding: 1rem;
+        background: linear-gradient(135deg, var(--spring), var(--lime-accent));
+        color: var(--deep-forest);
+        border: none;
+        border-radius: 12px;
+        font-weight: 700;
+        font-size: 0.95rem;
+        cursor: pointer;
+        transition: all 0.3s;
+        min-height: 48px;
+        width: 100%;
+    }
+
+    .btn-submit:active {
+        transform: scale(0.98);
+    }
+
+    .form-success {
+        display: none;
+        text-align: center;
+        padding: 2rem 1.5rem;
+        background: rgba(74, 124, 52, 0.1);
+        border: 1px solid var(--fresh-green);
+        border-radius: 16px;
+        margin-bottom: 2rem;
+    }
+
+    .form-success.show {
+        display: block;
+    }
+
+    .form-success h3 {
+        font-family: 'Playfair Display', serif;
+        color: var(--fresh-green);
+        margin-bottom: 0.5rem;
+        font-size: 1.25rem;
+    }
+
+    .form-success p {
+        font-size: 0.9rem;
+        color: var(--text-body);
+        line-height: 1.6;
+    }
+
+    .service-area-section {
+        margin-bottom: 2rem;
+    }
+
+    .service-area-section h3 {
+        font-size: 0.9rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        opacity: 0.6;
+    }
+
+    .cities-scroll {
+        display: flex;
+        gap: 0.75rem;
+        overflow-x: auto;
+        padding-bottom: 0.5rem;
+        scroll-behavior: smooth;
+    }
+
+    .city-pill {
+        flex-shrink: 0;
+        background: white;
+        border: 1px solid rgba(74, 124, 52, 0.2);
+        border-radius: 20px;
+        padding: 0.65rem 1.25rem;
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: var(--fresh-green);
+        white-space: nowrap;
+    }
+
+    .social-links {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        margin-top: 1.5rem;
+    }
+
+    .social-link {
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        background: white;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        color: var(--fresh-green);
+        transition: all 0.3s;
+        cursor: pointer;
+    }
+
+    .social-link:active {
+        transform: scale(0.95);
+    }
+
+    .social-link svg {
+        width: 18px;
+        height: 18px;
+    }
+
+    /* Bottom Mobile Navigation */
+    .mobile-nav {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 60px;
+        background: #fff;
+        border-top: 1px solid rgba(0, 0, 0, 0.08);
+        display: flex;
+        justify-content: space-around;
+        align-items: stretch;
+        z-index: 100;
+        padding-bottom: var(--safe-area-bottom);
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(20px);
+    }
+
+    .mobile-nav-tab {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 0.25rem;
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: var(--warm-gray);
+        font-size: 0.7rem;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        position: relative;
+        text-decoration: none;
+        padding: 0.5rem 0;
+        touch-action: manipulation;
+    }
+
+    .mobile-nav-tab svg {
+        width: 24px;
+        height: 24px;
+        stroke: currentColor;
+        fill: none;
+        stroke-width: 1.5;
+        transition: all 0.3s ease;
+    }
+
+    .mobile-nav-tab.active {
+        color: var(--fresh-green);
+        font-weight: 600;
+    }
+
+    .mobile-nav-tab.active svg {
+        stroke: var(--fresh-green);
+    }
+
+    .mobile-nav-tab.active::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 4px;
+        height: 4px;
+        background: var(--fresh-green);
+        border-radius: 50%;
+    }
+
+    *:focus-visible {
+        outline: 3px solid var(--lime-accent);
+        outline-offset: 2px;
+        border-radius: 4px;
+    }
+}
+
+/* ============================================
+   DESKTOP LAYOUT (>768px)
+   ============================================ */
+
+@media (min-width: 769px) {
+    body {
+        overflow-y: auto;
+        background: var(--off-white);
+    }
+
+    .mobile-nav {
+        display: none;
+    }
+
+    .site-main {
+        position: static;
+        height: auto;
+        overflow: visible;
+    }
+
+    .site-section {
+        position: relative;
+        opacity: 1;
+        visibility: visible;
+        overflow-y: visible;
+        padding-bottom: 0;
+    }
+
+    .section-header {
+        display: none;
+    }
+
+    .section-content {
+        padding: 0;
+    }
+
+    /* ---- DESKTOP NAV ---- */
+    .desktop-nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 70px;
+        background: transparent;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 3rem;
+        z-index: 1000;
+        transition: all 0.3s ease;
+    }
+
+    .desktop-nav.scrolled {
+        background: rgba(10, 18, 8, 0.95);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-logo {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.75rem;
+        font-weight: 700;
+        color: var(--fresh-green);
+        text-decoration: none;
+        letter-spacing: -0.5px;
+    }
+
+    .nav-links {
+        display: flex;
+        gap: 3rem;
+        align-items: center;
+        flex: 1;
+        justify-content: center;
+        list-style: none;
+    }
+
+    .nav-links a {
+        color: var(--text-dark);
+        text-decoration: none;
+        font-size: 0.95rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: color 0.3s;
+        position: relative;
+    }
+
+    .nav-links a::after {
+        content: '';
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--fresh-green);
+        transition: width 0.3s;
+    }
+
+    .nav-links a:hover::after {
+        width: 100%;
+    }
+
+    .nav-links a.active {
+        color: var(--fresh-green);
+    }
+
+    .nav-cta {
+        padding: 0.75rem 1.5rem;
+        background: linear-gradient(135deg, var(--spring), var(--lime-accent));
+        color: var(--deep-forest);
+        border: none;
+        border-radius: 8px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s;
+        font-size: 0.95rem;
+    }
+
+    .nav-cta:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 16px rgba(109, 181, 74, 0.3);
+    }
+
+    .desktop-nav.scrolled .nav-links a {
+        color: var(--off-white);
+    }
+
+    .desktop-nav.scrolled .nav-logo {
+        color: var(--lime-accent);
+    }
+
+    /* ---- SCROLL PROGRESS BAR ---- */
+    .scroll-progress {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 3px;
+        background: linear-gradient(90deg, var(--spring), var(--lime-accent));
+        z-index: 1001;
+        transition: width 0.1s ease;
+    }
+
+    /* ---- HERO SECTION ---- */
+    .hero-section {
+        min-height: 100vh;
+        background: linear-gradient(135deg, rgba(26, 46, 20, 0.95) 0%, rgba(10, 18, 8, 0.98) 40%, rgba(45, 74, 34, 0.95) 100%);
+        background-attachment: fixed;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 4rem 3rem;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .hero-section::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background:
+            radial-gradient(circle at 20% 50%, rgba(74, 124, 52, 0.1) 0%, transparent 50%),
+            radial-gradient(circle at 80% 80%, rgba(168, 224, 99, 0.05) 0%, transparent 50%);
+        pointer-events: none;
+    }
+
+    .hero-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: center;
+        max-width: 1400px;
+        width: 100%;
+        position: relative;
+        z-index: 1;
+    }
+
+    .hero-left h1 {
+        font-size: 3.5rem;
+        font-weight: 900;
+        color: #fff;
+        margin-bottom: 1rem;
+        line-height: 1.1;
+        letter-spacing: -1px;
+    }
+
+    .hero-left .hero-badge {
+        display: inline-block;
+        background: rgba(74, 124, 52, 0.2);
+        border: 1px solid rgba(168, 224, 99, 0.3);
+        color: var(--lime-accent);
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        margin-bottom: 2rem;
+    }
+
+    .hero-left .hero-subtitle {
+        font-size: 1.1rem;
+        color: rgba(255, 255, 255, 0.8);
+        margin-bottom: 2rem;
+        line-height: 1.6;
+    }
+
+    .hero-buttons {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .btn-primary {
+        padding: 1.1rem 2.5rem;
+        background: linear-gradient(135deg, var(--spring), var(--lime-accent));
+        color: var(--deep-forest);
+        border: none;
+        border-radius: 10px;
+        font-weight: 700;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: all 0.3s;
+    }
+
+    .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 30px rgba(109, 181, 74, 0.3);
+    }
+
+    .btn-secondary {
+        padding: 1.1rem 2.5rem;
+        background: transparent;
+        color: #fff;
+        border: 2px solid var(--lime-accent);
+        border-radius: 10px;
+        font-weight: 700;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: all 0.3s;
+    }
+
+    .btn-secondary:hover {
+        background: rgba(168, 224, 99, 0.1);
+        transform: translateY(-2px);
+    }
+
+    .hero-trust {
+        display: flex;
+        gap: 2rem;
+        font-size: 0.9rem;
+        color: rgba(255, 255, 255, 0.7);
+    }
+
+    .hero-trust span {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .hero-right {
+        background: white;
+        border-radius: 20px;
+        padding: 2.5rem;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+    }
+
+    .hero-form h3 {
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+        color: var(--text-dark);
+    }
+
+    .hero-form .form-intro {
+        font-size: 0.95rem;
+        color: var(--warm-gray);
+        margin-bottom: 1.5rem;
+    }
+
+    /* ---- SERVICES SECTION ---- */
+    .services-section {
+        padding: 6rem 3rem;
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+
+    .services-section h2 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        text-align: center;
+    }
+
+    .services-intro {
+        text-align: center;
+        color: var(--warm-gray);
+        margin-bottom: 3rem;
+        font-size: 1.1rem;
+    }
+
+    .services-grid-desktop {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+    }
+
+    .service-card-desktop {
+        background: white;
+        border-radius: 16px;
+        padding: 2rem;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+        transition: all 0.3s;
+        border: 2px solid transparent;
+    }
+
+    .service-card-desktop:hover {
+        border-color: var(--fresh-green);
+        box-shadow: 0 10px 40px rgba(74, 124, 52, 0.15);
+        transform: translateY(-4px);
+    }
+
+    .service-card-desktop h3 {
+        font-size: 1.3rem;
+        margin-bottom: 1rem;
+    }
+
+    .service-card-desktop p {
+        font-size: 0.95rem;
+        color: var(--text-body);
+        line-height: 1.7;
+    }
+
+    /* ---- HOW IT WORKS SECTION ---- */
+    .how-it-works-section {
+        padding: 6rem 3rem;
+        background: rgba(74, 124, 52, 0.02);
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+
+    .how-it-works-section h2 {
+        font-size: 2.5rem;
+        margin-bottom: 3rem;
+        text-align: center;
+    }
+
+    .process-grid-desktop {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 2rem;
+        position: relative;
+    }
+
+    .process-grid-desktop::before {
+        content: '';
+        position: absolute;
+        top: 60px;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, var(--fresh-green), transparent);
+    }
+
+    .process-card-desktop {
+        position: relative;
+        z-index: 1;
+    }
+
+    .process-card-desktop .step-number {
+        width: 60px;
+        height: 60px;
+        background: linear-gradient(135deg, var(--spring), var(--lime-accent));
+        color: #fff;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+    }
+
+    .process-card-desktop h4 {
+        font-size: 1.1rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .process-card-desktop p {
+        font-size: 0.95rem;
+        color: var(--warm-gray);
+        line-height: 1.6;
+    }
+
+    /* ---- PRICING SECTION ---- */
+    .pricing-section {
+        padding: 6rem 3rem;
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+
+    .pricing-section h2 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        text-align: center;
+    }
+
+    .pricing-intro-desktop {
+        text-align: center;
+        color: var(--warm-gray);
+        margin-bottom: 3rem;
+        font-size: 1.1rem;
+    }
+
+    .pricing-grid-desktop {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+        align-items: flex-start;
+    }
+
+    .pricing-card-desktop {
+        background: white;
+        border-radius: 16px;
+        padding: 2.5rem;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+        transition: all 0.3s;
+        border: 2px solid transparent;
+        position: relative;
+    }
+
+    .pricing-card-desktop.featured {
+        border-color: var(--fresh-green);
+        box-shadow: 0 20px 60px rgba(74, 124, 52, 0.2);
+        transform: translateY(-10px);
+    }
+
+    .pricing-card-desktop.featured .pricing-badge {
+        display: block;
+    }
+
+    .pricing-badge {
+        display: none;
+        position: absolute;
+        top: -15px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: linear-gradient(135deg, var(--spring), var(--lime-accent));
+        color: #fff;
+        padding: 0.5rem 1.2rem;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+    }
+
+    .pricing-card-desktop h3 {
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .pricing-card-desktop .price {
+        font-size: 2.5rem;
+        font-weight: 900;
+        color: var(--fresh-green);
+        margin-bottom: 0.5rem;
+    }
+
+    .pricing-card-desktop .price-sub {
+        font-size: 0.95rem;
+        color: var(--warm-gray);
+        margin-bottom: 2rem;
+    }
+
+    .pricing-features-desktop {
+        list-style: none;
+        margin-bottom: 2rem;
+    }
+
+    .pricing-features-desktop li {
+        font-size: 0.95rem;
+        color: var(--text-body);
+        padding: 0.75rem 0;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+    }
+
+    .pricing-features-desktop li::before {
+        content: '✓';
+        color: var(--fresh-green);
+        font-weight: 700;
+        font-size: 1.2rem;
+    }
+
+    .btn-pricing-desktop {
+        width: 100%;
+        padding: 1rem;
+        background: linear-gradient(135deg, var(--spring), var(--lime-accent));
+        color: var(--deep-forest);
+        border: none;
+        border-radius: 10px;
+        font-weight: 700;
+        font-size: 0.95rem;
+        cursor: pointer;
+        transition: all 0.3s;
+    }
+
+    .btn-pricing-desktop:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(109, 181, 74, 0.3);
+    }
+
+    /* ---- STORY SECTION ---- */
+    .story-section {
+        padding: 6rem 3rem;
+        background: linear-gradient(135deg, rgba(245, 240, 232, 0.5) 0%, rgba(250, 248, 244, 0.5) 100%);
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+
+    .story-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: center;
+    }
+
+    .story-image {
+        width: 100%;
+        height: 400px;
+        background: linear-gradient(135deg, rgba(74, 124, 52, 0.1), rgba(168, 224, 99, 0.1));
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--warm-gray);
+        font-size: 4rem;
+    }
+
+    .story-content h2 {
+        font-size: 2.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .story-content p {
+        font-size: 1rem;
+        color: var(--text-body);
+        line-height: 1.8;
+        margin-bottom: 1.5rem;
+    }
+
+    .stat-badges-desktop {
+        display: flex;
+        gap: 1rem;
+        margin-top: 2rem;
+    }
+
+    .stat-badge-desktop {
+        background: white;
+        border: 1px solid rgba(74, 124, 52, 0.2);
+        border-radius: 12px;
+        padding: 1rem 1.5rem;
+        text-align: center;
+    }
+
+    .stat-badge-desktop .stat-number {
+        font-size: 1.5rem;
+        font-weight: 900;
+        color: var(--fresh-green);
+    }
+
+    .stat-badge-desktop .stat-label {
+        font-size: 0.8rem;
+        color: var(--warm-gray);
+        margin-top: 0.5rem;
+    }
+
+    /* ---- WHY CHOOSE US SECTION ---- */
+    .why-section-desktop {
+        padding: 6rem 3rem;
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+
+    .why-section-desktop h2 {
+        font-size: 2.5rem;
+        margin-bottom: 3rem;
+        text-align: center;
+    }
+
+    .why-grid-desktop {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+
+    .why-card-desktop {
+        background: white;
+        border-radius: 16px;
+        padding: 2rem;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+        transition: all 0.3s;
+    }
+
+    .why-card-desktop:hover {
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        transform: translateY(-4px);
+    }
+
+    .why-card-desktop h3 {
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+    }
+
+    .why-card-desktop p {
+        font-size: 0.95rem;
+        color: var(--text-body);
+        line-height: 1.7;
+    }
+
+    /* ---- TESTIMONIAL SECTION ---- */
+    .testimonial-section {
+        padding: 4rem 3rem;
+        background: rgba(74, 124, 52, 0.03);
+    }
+
+    .testimonial-card-desktop {
+        max-width: 700px;
+        margin: 0 auto;
+        background: white;
+        border-radius: 16px;
+        padding: 3rem;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+        text-align: center;
+    }
+
+    .testimonial-quote {
+        font-size: 3rem;
+        color: var(--lime-accent);
+        margin-bottom: 1rem;
+        opacity: 0.3;
+    }
+
+    .testimonial-text-desktop {
+        font-size: 1.2rem;
+        color: var(--text-dark);
+        font-style: italic;
+        line-height: 1.8;
+        margin-bottom: 2rem;
+    }
+
+    .testimonial-stars {
+        color: #ffc107;
+        font-size: 1.3rem;
+        margin-bottom: 1rem;
+        letter-spacing: 0.3rem;
+    }
+
+    .testimonial-author-desktop {
+        font-weight: 700;
+        color: var(--fresh-green);
+        font-size: 1rem;
+    }
+
+    .testimonial-location-desktop {
+        font-size: 0.9rem;
+        color: var(--warm-gray);
+        margin-top: 0.5rem;
+    }
+
+    /* ---- FAQ SECTION ---- */
+    .faq-section-desktop {
+        padding: 6rem 3rem;
+        max-width: 900px;
+        margin: 0 auto;
+    }
+
+    .faq-section-desktop h2 {
+        font-size: 2.5rem;
+        margin-bottom: 3rem;
+        text-align: center;
+    }
+
+    .faq-item-desktop {
+        background: white;
+        border: 1px solid rgba(0, 0, 0, 0.08);
+        border-radius: 12px;
+        margin-bottom: 1.5rem;
+        overflow: hidden;
+        transition: all 0.3s;
+    }
+
+    .faq-item-desktop:hover {
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    }
+
+    .faq-question-desktop {
+        padding: 1.5rem;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+        font-weight: 600;
+        color: var(--text-dark);
+        font-size: 1rem;
+        background: none;
+        border: none;
+        width: 100%;
+        text-align: left;
+    }
+
+    .faq-question-desktop:hover {
+        background: rgba(74, 124, 52, 0.02);
+    }
+
+    .faq-icon-desktop {
+        width: 24px;
+        height: 24px;
+        flex-shrink: 0;
+        font-weight: 700;
+        transition: transform 0.3s;
+    }
+
+    .faq-item-desktop.expanded .faq-icon-desktop {
+        transform: rotate(180deg);
+    }
+
+    .faq-answer-desktop {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s;
+        padding: 0 1.5rem;
+    }
+
+    .faq-item-desktop.expanded .faq-answer-desktop {
+        max-height: 400px;
+        padding: 0 1.5rem 1.5rem;
+    }
+
+    .faq-answer-desktop p {
+        font-size: 0.95rem;
+        color: var(--text-body);
+        line-height: 1.7;
+    }
+
+    /* ---- CTA SECTION ---- */
+    .cta-section {
+        padding: 4rem 3rem;
+        background: linear-gradient(135deg, var(--deep-forest) 0%, var(--moss) 100%);
+        text-align: center;
+        color: white;
+    }
+
+    .cta-section h2 {
+        font-size: 2rem;
+        color: white;
+        margin-bottom: 1rem;
+    }
+
+    .cta-section p {
+        font-size: 1.1rem;
+        color: rgba(255, 255, 255, 0.9);
+        margin-bottom: 2rem;
+    }
+
+    .cta-buttons {
+        display: flex;
+        gap: 1.5rem;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .cta-btn {
+        padding: 1rem 2rem;
+        border: none;
+        border-radius: 10px;
+        font-weight: 700;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: all 0.3s;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.75rem;
+    }
+
+    .cta-btn.primary {
+        background: linear-gradient(135deg, var(--spring), var(--lime-accent));
+        color: var(--deep-forest);
+    }
+
+    .cta-btn.primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 30px rgba(109, 181, 74, 0.3);
+    }
+
+    .cta-btn.secondary {
+        background: transparent;
+        color: white;
+        border: 2px solid var(--lime-accent);
+    }
+
+    .cta-btn.secondary:hover {
+        background: rgba(168, 224, 99, 0.1);
+        transform: translateY(-2px);
+    }
+
+    /* ---- FOOTER ---- */
+    .footer {
+        background: var(--rich-black);
+        color: rgba(255, 255, 255, 0.8);
+        padding: 3rem;
+    }
+
+    .footer-content {
+        max-width: 1400px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    .footer-section h4 {
+        color: white;
+        margin-bottom: 1rem;
+        font-size: 1.1rem;
+    }
+
+    .footer-section ul {
+        list-style: none;
+    }
+
+    .footer-section ul li {
+        margin-bottom: 0.75rem;
+    }
+
+    .footer-section a {
+        color: rgba(255, 255, 255, 0.7);
+        text-decoration: none;
+        transition: color 0.3s;
+        font-size: 0.95rem;
+    }
+
+    .footer-section a:hover {
+        color: var(--lime-accent);
+    }
+
+    .footer-divider {
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding-top: 2rem;
+        margin-top: 2rem;
+    }
+
+    .footer-bottom {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+
+    .footer-copyright {
+        font-size: 0.9rem;
+        color: rgba(255, 255, 255, 0.6);
+    }
+
+    .footer-social {
+        display: flex;
+        gap: 1rem;
+    }
+
+    .footer-social a {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s;
+    }
+
+    .footer-social a:hover {
+        background: var(--lime-accent);
+        color: var(--deep-forest);
+    }
+
+    /* ---- BACK TO TOP ---- */
+    .back-to-top {
+        position: fixed;
+        bottom: 2rem;
+        right: 2rem;
+        width: 50px;
+        height: 50px;
+        background: linear-gradient(135deg, var(--spring), var(--lime-accent));
+        border-radius: 50%;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.3s;
+        z-index: 999;
+        border: none;
+        color: var(--deep-forest);
+        font-weight: 700;
+        font-size: 1.5rem;
+    }
+
+    .back-to-top.show {
+        display: flex;
+    }
+
+    .back-to-top:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 24px rgba(109, 181, 74, 0.3);
+    }
+
+    /* ---- REVEAL ANIMATION ---- */
+    .reveal {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    .reveal.active {
+        opacity: 1;
+        transform: translateY(0);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+}
+
     </style>
 </head>
 <body>
-    <div class="app-container">
-        <div class="app-screens">
-            <!-- HOME SCREEN -->
-            <div id="screen-home" class="app-screen active" role="tabpanel" aria-labelledby="tab-home">
-                <div class="app-screen-header">
-                    <h2 class="app-screen-title">Lee Bros Xscapes</h2>
-                </div>
-                <div class="screen-content">
-                    <div class="hero-card">
-                        <h1>Lee Bros Xscapes</h1>
-                        <p class="tagline">Premium Lawn Care & Landscaping — SE Michigan</p>
-                    </div>
+    <a href="#main" class="skip-link">Skip to main content</a>
 
-                    <div class="hero-buttons">
-                        <a href="tel:7344506417" class="btn-home btn-call">📞 Call Now</a>
-                        <button class="btn-home btn-estimate" onclick="switchScreen('contact')">💬 Get Estimate</button>
-                    </div>
+    <!-- ===== DESKTOP NAV ===== -->
+    <nav class="desktop-nav">
+        <a href="#home" class="nav-logo">Lee Bros</a>
+        <ul class="nav-links">
+            <li><a href="#services">Services</a></li>
+            <li><a href="#pricing">Plans</a></li>
+            <li><a href="#story">Our Story</a></li>
+            <li><a href="#testimonial">Reviews</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <button class="nav-cta" onclick="scrollToSection('contact')">Get Estimate</button>
+    </nav>
 
-                    <div class="trust-chips">
-                        <div class="trust-chip">⭐ 5.0 Rated</div>
-                        <div class="trust-chip">🏠 500+ Properties</div>
-                        <div class="trust-chip">📋 Licensed & Insured</div>
-                        <div class="trust-chip">❄️ All 4 Seasons</div>
-                    </div>
+    <!-- ===== SCROLL PROGRESS ===== -->
+    <div class="scroll-progress"></div>
 
-                    <div class="quick-look">
-                        <h3>Quick Links</h3>
-                        <div class="quick-cards">
-                            <button class="quick-card" onclick="switchScreen('services')">
-                                <h4><span class="quick-card-arrow">🌿</span> Our Services</h4>
-                            </button>
-                            <button class="quick-card" onclick="switchScreen('plans')">
-                                <h4><span class="quick-card-arrow">💰</span> See Plans</h4>
-                            </button>
-                            <button class="quick-card" onclick="switchScreen('about')">
-                                <h4><span class="quick-card-arrow">ℹ️</span> Our Story</h4>
-                            </button>
+    <!-- ===== MAIN CONTENT ===== -->
+    <main id="main" class="site-main">
+        <!-- ===== HOME SECTION ===== -->
+        <section id="home" class="site-section hero-section active">
+            <div class="section-header" style="display: none;">
+                <h2 class="section-header">Welcome</h2>
+            </div>
+            <div class="section-content">
+                <div class="hero-content">
+                    <div class="hero-left">
+                        <div class="hero-badge">SE Michigan's Trusted Lawn Care</div>
+                        <h1>Your Lawn Deserves Better</h1>
+                        <p class="hero-subtitle">Professional lawn care, landscape design, and year-round property maintenance. Family-owned. Free estimates. Love your yard again.</p>
+                        <div class="hero-buttons">
+                            <button class="btn-primary" onclick="scrollToSection('contact')">Get Your Free Estimate</button>
+                            <a href="tel:7344506417" class="btn-secondary">Call (734) 450-6417</a>
+                        </div>
+                        <div class="hero-trust">
+                            <span>✓ Licensed & Insured</span>
+                            <span>✓ Free Estimates</span>
+                            <span>✓ Family-Owned</span>
                         </div>
                     </div>
-
-                    <div class="testimonial-card">
-                        <p class="testimonial-text">"The best decision I made for my lawn. These guys show up, do incredible work, and actually care about how my yard looks. Highly recommend!"</p>
-                        <p class="testimonial-author">Tyler H.</p>
-                        <p class="testimonial-location">Ypsilanti, MI</p>
+                    <div class="hero-right">
+                        <form id="hero-form" class="hero-form">
+                            <h3>Free Estimate</h3>
+                            <p class="form-intro">Tell us about your property and we'll send you a custom quote within 24 hours.</p>
+                            <div class="form-group">
+                                <label for="hero-name">Your Name</label>
+                                <input type="text" id="hero-name" name="name" placeholder="John Smith" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="hero-phone">Phone</label>
+                                <input type="tel" id="hero-phone" name="phone" placeholder="(734) 555-0123" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="hero-service">Service</label>
+                                <select id="hero-service" name="service" required>
+                                    <option value="">Select a service</option>
+                                    <option value="lawn">Lawn Maintenance</option>
+                                    <option value="landscape">Landscape Design</option>
+                                    <option value="fert">Fertilization & Weed Control</option>
+                                    <option value="cleanup">Seasonal Cleanup</option>
+                                    <option value="shrub">Shrub & Hedge Trimming</option>
+                                    <option value="snow">Snow Removal</option>
+                                    <option value="other">Other / Multiple</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn-submit">Request Estimate</button>
+                        </form>
                     </div>
                 </div>
             </div>
+        </section>
 
-            <!-- SERVICES SCREEN -->
-            <div id="screen-services" class="app-screen" role="tabpanel" aria-labelledby="tab-services">
-                <div class="app-screen-header">
-                    <h2 class="app-screen-title">What We Do</h2>
-                </div>
-                <div class="screen-content">
-                    <div class="services-grid">
-                        <button class="service-card" onclick="toggleService(this)">
-                            <div class="service-icon">
-                                <svg viewBox="0 0 24 24"><path d="M7 20h10"/><path d="M10 20c5.5-2.5.8-6.4 3-10"/><path d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8z"/><path d="M14.1 6a7 7 0 0 0-1.1 4c1.9-.1 3.3-.6 4.3-1.4 1-1 1.6-2.3 1.7-4.6-2.7.1-4 1-4.9 2z"/></svg>
-                            </div>
-                            <h3>Lawn Maintenance</h3>
-                            <p>Precision mowing with commercial-grade equipment, crisp edging, detailed trimming, and a thorough clean-blow every visit. We stripe your lawn like the pros.</p>
-                        </button>
-                        <button class="service-card" onclick="toggleService(this)">
-                            <div class="service-icon">
-                                <svg viewBox="0 0 24 24"><path d="M12 22V8"/><path d="M5 12H2a10 10 0 0 0 20 0h-3"/><path d="M8 5.2C9 4.5 10.4 4 12 4s3 .5 4 1.2"/><circle cx="12" cy="5" r="1"/></svg>
-                            </div>
-                            <h3>Landscape Design</h3>
-                            <p>Custom garden beds, decorative borders, mulch installation, and seasonal color planting — all designed to maximize your property's curb appeal and value.</p>
-                        </button>
-                        <button class="service-card" onclick="toggleService(this)">
-                            <div class="service-icon">
-                                <svg viewBox="0 0 24 24"><path d="M12 22c-4.97 0-9-2-9-4.5S7.03 4 12 4s9 11 9 13.5-4.03 4.5-9 4.5z"/><path d="M12 4V2"/><path d="M15 4.5l1-1.5"/><path d="M9 4.5L8 3"/></svg>
-                            </div>
-                            <h3>Fertilization & Weed Control</h3>
-                            <p>6-step lawn treatment program calibrated for Michigan soil and climate. Pre-emergent, broadleaf control, slow-release feeding — thick, green results guaranteed.</p>
-                        </button>
-                        <button class="service-card" onclick="toggleService(this)">
-                            <div class="service-icon">
-                                <svg viewBox="0 0 24 24"><path d="M8 2v4"/><path d="M16 2v4"/><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M3 10h18"/><path d="M8 14h.01"/><path d="M12 14h.01"/><path d="M16 14h.01"/></svg>
-                            </div>
-                            <h3>Seasonal Cleanups</h3>
-                            <p>Thorough spring and fall cleanups: complete leaf removal, bed prep, gutter clearing, debris haul-off, and seasonal transitions to keep your property immaculate.</p>
-                        </button>
-                        <button class="service-card" onclick="toggleService(this)">
-                            <div class="service-icon">
-                                <svg viewBox="0 0 24 24"><circle cx="6" cy="6" r="3"/><path d="M6 9v12"/><path d="M13 6l-3.5 6H17l-3.5 6"/></svg>
-                            </div>
-                            <h3>Shrub & Hedge Trimming</h3>
-                            <p>Expert shaping and seasonal pruning for all shrub varieties. Clean lines, healthy growth, and manicured beds year-round.</p>
-                        </button>
-                        <button class="service-card" onclick="toggleService(this)">
-                            <div class="service-icon">
-                                <svg viewBox="0 0 24 24"><path d="M20 17.58A5 5 0 0 0 18 8h-1.26A8 8 0 1 0 4 16.25"/><path d="M8 16h.01"/><path d="M8 20h.01"/><path d="M12 18h.01"/><path d="M12 22h.01"/><path d="M16 16h.01"/><path d="M16 20h.01"/></svg>
-                            </div>
-                            <h3>Snow Removal</h3>
-                            <p>Reliable residential snow plowing, driveway clearing, and sidewalk salt treatment. Early-bird contracts available — never worry about a Michigan winter again.</p>
-                        </button>
+        <!-- ===== SERVICES SECTION ===== -->
+        <section id="services" class="site-section services-section">
+            <div class="section-header">
+                <h2>Services</h2>
+            </div>
+            <div class="section-content">
+                <h2>What We Do</h2>
+                <p class="services-intro">Six core services to keep your property looking its best — all year.</p>
+                <div class="services-grid-desktop">
+                    <div class="service-card-desktop reveal">
+                        <h3>Lawn Maintenance</h3>
+                        <p>Precision mowing with commercial-grade equipment, crisp edging, detailed trimming, and a thorough clean-blow every visit. We stripe your lawn like the pros.</p>
                     </div>
+                    <div class="service-card-desktop reveal">
+                        <h3>Landscape Design</h3>
+                        <p>Custom garden beds, decorative borders, mulch installation, and seasonal color planting — all designed to maximize your property's curb appeal and value.</p>
+                    </div>
+                    <div class="service-card-desktop reveal">
+                        <h3>Fertilization & Weed Control</h3>
+                        <p>6-step lawn treatment program calibrated for Michigan soil and climate. Pre-emergent, broadleaf control, slow-release feeding — thick, green results guaranteed.</p>
+                    </div>
+                    <div class="service-card-desktop reveal">
+                        <h3>Seasonal Cleanups</h3>
+                        <p>Thorough spring and fall cleanups: complete leaf removal, bed prep, gutter clearing, debris haul-off, and seasonal transitions to keep your property immaculate.</p>
+                    </div>
+                    <div class="service-card-desktop reveal">
+                        <h3>Shrub & Hedge Trimming</h3>
+                        <p>Expert shaping and seasonal pruning for all shrub varieties. Clean lines, healthy growth, and manicured beds year-round.</p>
+                    </div>
+                    <div class="service-card-desktop reveal">
+                        <h3>Snow Removal</h3>
+                        <p>Reliable residential snow plowing, driveway clearing, and sidewalk salt treatment. Early-bird contracts available — never worry about a Michigan winter again.</p>
+                    </div>
+                </div>
 
-                    <div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid rgba(0,0,0,.1)">
-                        <h3 style="font-size:1.1rem;font-weight:700;color:var(--text-dark);margin-bottom:1.5rem;text-transform:uppercase;letter-spacing:.5px;font-family:'Playfair Display',serif">How It Works</h3>
-                        <div class="process-timeline">
-                            <div class="process-item">
-                                <div class="process-step-num">1</div>
-                                <div class="process-content">
-                                    <h4>Request Your Free Estimate</h4>
-                                    <p>Call or fill out our form. We'll get back to you within 24 hours with no obligations.</p>
-                                </div>
-                            </div>
-                            <div class="process-item">
-                                <div class="process-step-num">2</div>
-                                <div class="process-content">
-                                    <h4>We Assess Your Property</h4>
-                                    <p>Our team visits your yard to understand your needs, soil, and vision for the space.</p>
-                                </div>
-                            </div>
-                            <div class="process-item">
-                                <div class="process-step-num">3</div>
-                                <div class="process-content">
-                                    <h4>Get a Custom Plan & Price</h4>
-                                    <p>We provide a detailed proposal with honest pricing and a timeline you can count on.</p>
-                                </div>
-                            </div>
-                            <div class="process-item">
-                                <div class="process-step-num">4</div>
-                                <div class="process-content">
-                                    <h4>Love Your Yard Again</h4>
-                                    <p>We handle every detail on schedule. You get the best-looking lawn on the block — guaranteed.</p>
-                                </div>
-                            </div>
+                <!-- How It Works -->
+                <div class="how-it-works-section" style="padding: 4rem 0; background: transparent;">
+                    <h2 style="font-size: 2rem; margin-bottom: 2rem;">How It Works</h2>
+                    <div class="process-grid-desktop">
+                        <div class="process-card-desktop reveal">
+                            <div class="step-number">1</div>
+                            <h4>Request Your Free Estimate</h4>
+                            <p>Call or fill out our form. We'll get back to you within 24 hours with no obligations.</p>
+                        </div>
+                        <div class="process-card-desktop reveal">
+                            <div class="step-number">2</div>
+                            <h4>We Assess Your Property</h4>
+                            <p>Our team visits your yard to understand your needs, soil, and vision for the space.</p>
+                        </div>
+                        <div class="process-card-desktop reveal">
+                            <div class="step-number">3</div>
+                            <h4>Get a Custom Plan & Price</h4>
+                            <p>We provide a detailed proposal with honest pricing and a timeline you can count on.</p>
+                        </div>
+                        <div class="process-card-desktop reveal">
+                            <div class="step-number">4</div>
+                            <h4>Love Your Yard Again</h4>
+                            <p>We handle every detail on schedule. You get the best-looking lawn on the block — guaranteed.</p>
                         </div>
                     </div>
                 </div>
             </div>
+        </section>
 
-            <!-- PLANS SCREEN -->
-            <div id="screen-plans" class="app-screen" role="tabpanel" aria-labelledby="tab-plans">
-                <div class="app-screen-header">
-                    <h2 class="app-screen-title">Plans</h2>
-                </div>
-                <div class="screen-content">
-                    <div style="margin-bottom:1rem;text-align:center">
-                        <p style="font-size:0.95rem;color:var(--warm-gray)">Simple, transparent pricing. No contracts.</p>
-                    </div>
-
-                    <div class="pricing-card">
-                        <div class="pricing-name">Essential</div>
-                        <div class="pricing-price">$35<span style="font-size:0.9rem;color:var(--warm-gray)">/visit</span></div>
-                        <p class="pricing-price-sub">Weekly lawn care</p>
-                        <ul class="pricing-features">
+        <!-- ===== PRICING SECTION ===== -->
+        <section id="pricing" class="site-section pricing-section">
+            <div class="section-header">
+                <h2>Plans</h2>
+            </div>
+            <div class="section-content">
+                <h2>Simple, Transparent Pricing</h2>
+                <p class="pricing-intro-desktop">No contracts. No surprises. Cancel anytime.</p>
+                <div class="pricing-grid-desktop">
+                    <div class="pricing-card-desktop reveal">
+                        <h3>Essential</h3>
+                        <div class="price">$35<span style="font-size: 0.6em; color: var(--warm-gray);">/visit</span></div>
+                        <p class="price-sub">Weekly lawn care</p>
+                        <ul class="pricing-features-desktop">
                             <li>Weekly mowing</li>
                             <li>Edging & trimming</li>
                             <li>Blowing & cleanup</li>
                         </ul>
-                        <button class="btn-pricing" onclick="switchScreen('contact')">Get Started</button>
+                        <button class="btn-pricing-desktop" onclick="scrollToSection('contact')">Get Started</button>
                     </div>
-
-                    <div class="pricing-card popular">
+                    <div class="pricing-card-desktop featured reveal">
                         <div class="pricing-badge">Most Popular</div>
-                        <div class="pricing-name">Premium</div>
-                        <div class="pricing-price">$55<span style="font-size:0.9rem;color:var(--warm-gray)">/visit</span></div>
-                        <p class="pricing-price-sub">Complete lawn care</p>
-                        <ul class="pricing-features">
+                        <h3>Premium</h3>
+                        <div class="price">$55<span style="font-size: 0.6em; color: var(--warm-gray);">/visit</span></div>
+                        <p class="price-sub">Complete lawn care</p>
+                        <ul class="pricing-features-desktop">
                             <li>Everything in Essential</li>
                             <li>Fertilization program</li>
                             <li>Weed control</li>
                             <li>Seasonal treatments</li>
                         </ul>
-                        <button class="btn-pricing" onclick="switchScreen('contact')">Get Started</button>
+                        <button class="btn-pricing-desktop" onclick="scrollToSection('contact')">Get Started</button>
                     </div>
-
-                    <div class="pricing-card">
-                        <div class="pricing-name">Complete</div>
-                        <div class="pricing-price">$85<span style="font-size:0.9rem;color:var(--warm-gray)">/visit</span></div>
-                        <p class="pricing-price-sub">Premium everything</p>
-                        <ul class="pricing-features">
+                    <div class="pricing-card-desktop reveal">
+                        <h3>Complete</h3>
+                        <div class="price">$85<span style="font-size: 0.6em; color: var(--warm-gray);">/visit</span></div>
+                        <p class="price-sub">Premium everything</p>
+                        <ul class="pricing-features-desktop">
                             <li>Everything in Premium</li>
                             <li>Seasonal cleanups</li>
                             <li>Snow removal</li>
                             <li>Priority scheduling</li>
                         </ul>
-                        <button class="btn-pricing" onclick="switchScreen('contact')">Get Started</button>
+                        <button class="btn-pricing-desktop" onclick="scrollToSection('contact')">Get Started</button>
                     </div>
-
-                    <p class="pricing-guarantee">No contracts. Cancel anytime. 100% satisfaction guarantee.</p>
                 </div>
             </div>
+        </section>
 
-            <!-- ABOUT SCREEN -->
-            <div id="screen-about" class="app-screen" role="tabpanel" aria-labelledby="tab-about">
-                <div class="app-screen-header">
-                    <h2 class="app-screen-title">About Us</h2>
-                </div>
-                <div class="screen-content">
-                    <h3 style="font-size:1.2rem;font-weight:700;color:var(--text-dark);margin-bottom:1rem;font-family:'Playfair Display',serif">Our Story</h3>
-                    <p class="story-text">Lee Bros Xscapes started with a simple idea: what if a lawn care company actually cared as much about your yard as you do? Growing up right here in Southeast Michigan, we spent our weekends helping family and neighbors keep their properties looking sharp.</p>
-                    <p class="story-text">Today, we're proud to serve 500+ properties across the 734 — from spring blooms to winter snow, all four seasons. Our commitment: professional results, clear communication, and genuine care for every yard we touch. Because your lawn is our reputation.</p>
-
-                    <div class="stat-badges">
-                        <div class="stat-badge">100% Family-Owned</div>
-                        <div class="stat-badge">SE MI Born & Raised</div>
-                        <div class="stat-badge">All 4 Seasons</div>
-                    </div>
-
-                    <div style="margin-bottom:2rem;padding-bottom:1.5rem;border-bottom:1px solid rgba(0,0,0,.1)">
-                        <h3 style="font-size:1rem;font-weight:700;color:var(--text-dark);margin-bottom:1rem">Why Choose Us</h3>
-                        <div class="why-grid">
-                            <button class="why-card" onclick="toggleWhy(this)">
-                                <h4>🤝 Family-Owned & Operated</h4>
-                                <p>Brothers working together means accountability, pride, and a personal touch on every job. Your lawn is our reputation — and our name is on every stripe.</p>
-                            </button>
-                            <button class="why-card" onclick="toggleWhy(this)">
-                                <h4>🌍 Locally Rooted</h4>
-                                <p>We live and work right here in the 734. We know Michigan soil, climate, and what it takes to keep a lawn thriving through four demanding seasons.</p>
-                            </button>
-                            <button class="why-card" onclick="toggleWhy(this)">
-                                <h4>💬 Clear Communication</h4>
-                                <p>No runaround. You'll always know what we're doing, when we're coming, and what it costs — before we start. Text, call, or email — we respond fast.</p>
-                            </button>
-                            <button class="why-card" onclick="toggleWhy(this)">
-                                <h4>✅ Guaranteed Results</h4>
-                                <p>If you're not 100% satisfied with our work, we'll come back and make it right — no questions, no hassle. That's the Lee Bros guarantee. Ask about our referral program and save on your next service.</p>
-                            </button>
-                        </div>
-                    </div>
-
-                    <div style="margin-bottom:2rem">
-                        <h3 style="font-size:1rem;font-weight:700;color:var(--text-dark);margin-bottom:1rem">Testimonial</h3>
-                        <div class="testimonial-card">
-                            <p class="testimonial-text">"The best decision I made for my lawn. These guys show up, do incredible work, and actually care about how my yard looks. Highly recommend!"</p>
-                            <p class="testimonial-author">Tyler H.</p>
-                            <p class="testimonial-location">Ypsilanti, MI</p>
-                        </div>
-                    </div>
-
-                    <div>
-                        <h3 style="font-size:1rem;font-weight:700;color:var(--text-dark);margin-bottom:1rem">FAQ</h3>
-                        <div class="faq-item">
-                            <button class="faq-question" onclick="toggleFaq(this)">
-                                <span>What areas do you serve?</span>
-                                <span class="faq-icon">+</span>
-                            </button>
-                            <div class="faq-answer">
-                                <p>We serve the greater Southeast Michigan area including Ann Arbor, Canton, Ypsilanti, Plymouth, Saline, Belleville, Dexter, Chelsea, Milan, Whitmore Lake, South Lyon, and Northville.</p>
+        <!-- ===== STORY SECTION ===== -->
+        <section id="story" class="site-section story-section">
+            <div class="section-header">
+                <h2>Our Story</h2>
+            </div>
+            <div class="section-content">
+                <div class="story-grid">
+                    <div class="story-image">🌿</div>
+                    <div class="story-content">
+                        <h2>Lee Bros Xscapes</h2>
+                        <p>Lee Bros Xscapes started with a simple idea: what if a lawn care company actually cared as much about your yard as you do? Growing up right here in Southeast Michigan, we spent our weekends helping family and neighbors keep their properties looking sharp.</p>
+                        <p>Today, we're proud to serve 500+ properties across the 734 — from spring blooms to winter snow, all four seasons. Our commitment: professional results, clear communication, and genuine care for every yard we touch. Because your lawn is our reputation.</p>
+                        <div class="stat-badges-desktop">
+                            <div class="stat-badge-desktop reveal">
+                                <div class="stat-number">500+</div>
+                                <div class="stat-label">Properties</div>
                             </div>
-                        </div>
-                        <div class="faq-item">
-                            <button class="faq-question" onclick="toggleFaq(this)">
-                                <span>How do I get a quote?</span>
-                                <span class="faq-icon">+</span>
-                            </button>
-                            <div class="faq-answer">
-                                <p>Call us at (734) 450-6417, email info@leebrosxscapes.com, or fill out our online form. We respond within 24 hours with a free, no-obligation estimate.</p>
+                            <div class="stat-badge-desktop reveal">
+                                <div class="stat-number">100%</div>
+                                <div class="stat-label">Family-Owned</div>
                             </div>
-                        </div>
-                        <div class="faq-item">
-                            <button class="faq-question" onclick="toggleFaq(this)">
-                                <span>Are you licensed and insured?</span>
-                                <span class="faq-icon">+</span>
-                            </button>
-                            <div class="faq-answer">
-                                <p>Yes. Lee Bros Xscapes is fully licensed and insured with comprehensive general liability and workers compensation coverage.</p>
-                            </div>
-                        </div>
-                        <div class="faq-item">
-                            <button class="faq-question" onclick="toggleFaq(this)">
-                                <span>What if it rains on my service day?</span>
-                                <span class="faq-icon">+</span>
-                            </button>
-                            <div class="faq-answer">
-                                <p>If weather prevents us from completing your service, we'll reschedule for the next available slot, usually the next day or within the same week. Mowing wet grass damages the lawn, so we always wait for dry conditions.</p>
-                            </div>
-                        </div>
-                        <div class="faq-item">
-                            <button class="faq-question" onclick="toggleFaq(this)">
-                                <span>Do you offer seasonal contracts?</span>
-                                <span class="faq-icon">+</span>
-                            </button>
-                            <div class="faq-answer">
-                                <p>Yes, we offer flexible seasonal contracts for lawn maintenance, fertilization programs, and snow removal with locked-in rates and priority scheduling.</p>
-                            </div>
-                        </div>
-                        <div class="faq-item">
-                            <button class="faq-question" onclick="toggleFaq(this)">
-                                <span>What forms of payment do you accept?</span>
-                                <span class="faq-icon">+</span>
-                            </button>
-                            <div class="faq-answer">
-                                <p>We accept cash, check, credit cards (Visa, Mastercard, Amex), and digital payments via Venmo or PayPal. Invoices are sent after service completion, and contracts can be set up for recurring payments on your preferred schedule.</p>
+                            <div class="stat-badge-desktop reveal">
+                                <div class="stat-number">12</div>
+                                <div class="stat-label">Cities Served</div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </section>
 
-            <!-- CONTACT SCREEN -->
-            <div id="screen-contact" class="app-screen" role="tabpanel" aria-labelledby="tab-contact">
-                <div class="app-screen-header">
-                    <h2 class="app-screen-title">Contact Us</h2>
+        <!-- ===== WHY CHOOSE US ===== -->
+        <section class="why-section-desktop">
+            <h2>Why Choose Lee Bros</h2>
+            <div class="why-grid-desktop">
+                <div class="why-card-desktop reveal">
+                    <h3>🤝 Family-Owned & Operated</h3>
+                    <p>Brothers working together means accountability, pride, and a personal touch on every job. Your lawn is our reputation — and our name is on every stripe.</p>
                 </div>
-                <div class="screen-content">
-                    <a href="tel:7344506417" class="contact-button">
-                        <span>📞</span>
-                        (734) 450-6417
-                    </a>
+                <div class="why-card-desktop reveal">
+                    <h3>🌍 Locally Rooted</h3>
+                    <p>We live and work right here in the 734. We know Michigan soil, climate, and what it takes to keep a lawn thriving through four demanding seasons.</p>
+                </div>
+                <div class="why-card-desktop reveal">
+                    <h3>💬 Clear Communication</h3>
+                    <p>No runaround. You'll always know what we're doing, when we're coming, and what it costs — before we start. Text, call, or email — we respond fast.</p>
+                </div>
+                <div class="why-card-desktop reveal">
+                    <h3>✅ Guaranteed Results</h3>
+                    <p>If you're not 100% satisfied with our work, we'll come back and make it right — no questions, no hassle. That's the Lee Bros guarantee.</p>
+                </div>
+            </div>
+        </section>
 
-                    <a href="mailto:info@leebrosxscapes.com" class="contact-button email">
-                        <span>✉️</span>
-                        info@leebrosxscapes.com
-                    </a>
+        <!-- ===== TESTIMONIAL SECTION ===== -->
+        <section id="testimonial" class="site-section testimonial-section">
+            <div class="testimonial-card-desktop reveal">
+                <div class="testimonial-quote">"</div>
+                <p class="testimonial-text-desktop">These guys are the real deal. Professional, reliable, and they genuinely care about making your yard look its absolute best. I wouldn't call anyone else.</p>
+                <div class="testimonial-stars">★★★★★</div>
+                <p class="testimonial-author-desktop">Tyler H.</p>
+                <p class="testimonial-location-desktop">Ypsilanti, MI</p>
+            </div>
+        </section>
 
-                    <div class="hours-badge">
-                        <h4>Hours</h4>
-                        <p>Mon–Sat: 7AM–7PM</p>
+        <!-- ===== FAQ SECTION ===== -->
+        <section id="faq" class="site-section faq-section-desktop">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-item-desktop reveal">
+                <button class="faq-question-desktop" onclick="toggleFaqDesktop(this)">
+                    <span>What areas do you serve?</span>
+                    <span class="faq-icon-desktop">+</span>
+                </button>
+                <div class="faq-answer-desktop">
+                    <p>We serve the greater Southeast Michigan area including Ann Arbor, Canton, Ypsilanti, Plymouth, Saline, Belleville, Dexter, Chelsea, Milan, Whitmore Lake, South Lyon, and Northville.</p>
+                </div>
+            </div>
+            <div class="faq-item-desktop reveal">
+                <button class="faq-question-desktop" onclick="toggleFaqDesktop(this)">
+                    <span>How do I get a quote?</span>
+                    <span class="faq-icon-desktop">+</span>
+                </button>
+                <div class="faq-answer-desktop">
+                    <p>Call us at (734) 450-6417, email info@leebrosxscapes.com, or fill out our online form. We respond within 24 hours with a free, no-obligation estimate.</p>
+                </div>
+            </div>
+            <div class="faq-item-desktop reveal">
+                <button class="faq-question-desktop" onclick="toggleFaqDesktop(this)">
+                    <span>Are you licensed and insured?</span>
+                    <span class="faq-icon-desktop">+</span>
+                </button>
+                <div class="faq-answer-desktop">
+                    <p>Yes. Lee Bros Xscapes is fully licensed and insured with comprehensive general liability and workers compensation coverage.</p>
+                </div>
+            </div>
+            <div class="faq-item-desktop reveal">
+                <button class="faq-question-desktop" onclick="toggleFaqDesktop(this)">
+                    <span>What if it rains on my service day?</span>
+                    <span class="faq-icon-desktop">+</span>
+                </button>
+                <div class="faq-answer-desktop">
+                    <p>If weather prevents us from completing your service, we'll reschedule for the next available slot, usually the next day or within the same week. Mowing wet grass damages the lawn, so we always wait for dry conditions.</p>
+                </div>
+            </div>
+            <div class="faq-item-desktop reveal">
+                <button class="faq-question-desktop" onclick="toggleFaqDesktop(this)">
+                    <span>Do you offer seasonal contracts?</span>
+                    <span class="faq-icon-desktop">+</span>
+                </button>
+                <div class="faq-answer-desktop">
+                    <p>Yes, we offer flexible seasonal contracts for lawn maintenance, fertilization programs, and snow removal with locked-in rates and priority scheduling.</p>
+                </div>
+            </div>
+            <div class="faq-item-desktop reveal">
+                <button class="faq-question-desktop" onclick="toggleFaqDesktop(this)">
+                    <span>What forms of payment do you accept?</span>
+                    <span class="faq-icon-desktop">+</span>
+                </button>
+                <div class="faq-answer-desktop">
+                    <p>We accept cash, check, credit cards (Visa, Mastercard, Amex), and digital payments via Venmo or PayPal. Invoices are sent after service completion, and contracts can be set up for recurring payments on your preferred schedule.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== CONTACT SECTION ===== -->
+        <section id="contact" class="site-section">
+            <div class="section-header">
+                <h2>Contact</h2>
+            </div>
+            <div class="section-content">
+                <a href="tel:7344506417" class="contact-button">
+                    <span>📞</span>
+                    (734) 450-6417
+                </a>
+
+                <a href="mailto:info@leebrosxscapes.com" class="contact-button email">
+                    <span>✉️</span>
+                    info@leebrosxscapes.com
+                </a>
+
+                <div class="hours-badge">
+                    <h4>Hours</h4>
+                    <p>Mon–Sat: 7AM–7PM</p>
+                </div>
+
+                <form class="contact-form" id="contact-form" onsubmit="submitContactForm(event)">
+                    <div class="form-group">
+                        <label for="form-name">Your Name *</label>
+                        <input type="text" id="form-name" name="name" placeholder="John Smith" required>
                     </div>
-
-                    <form class="contact-form" id="contact-form" onsubmit="submitForm(event)">
-                        <div class="form-group">
-                            <label for="form-name">Your Name *</label>
-                            <input type="text" id="form-name" name="name" placeholder="John Smith" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="form-phone">Phone *</label>
-                            <input type="tel" id="form-phone" name="phone" placeholder="(734) 555-0123" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="form-email">Email (optional)</label>
-                            <input type="email" id="form-email" name="email" placeholder="you@example.com">
-                        </div>
-                        <div class="form-group">
-                            <label for="form-service">Service Needed *</label>
-                            <select id="form-service" name="service" required>
-                                <option value="" disabled selected>Select a service</option>
-                                <option value="lawn">Lawn Maintenance</option>
-                                <option value="landscape">Landscape Design</option>
-                                <option value="fert">Fertilization & Weed Control</option>
-                                <option value="cleanup">Seasonal Cleanup</option>
-                                <option value="shrub">Shrub & Hedge Trimming</option>
-                                <option value="snow">Snow Removal</option>
-                                <option value="other">Other / Multiple</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="form-size">Yard Size</label>
-                            <select id="form-size" name="size">
-                                <option value="" disabled selected>Select size</option>
-                                <option value="s">Small (&lt;¼ acre)</option>
-                                <option value="m">Medium (¼–½ acre)</option>
-                                <option value="l">Large (½–1 acre)</option>
-                                <option value="xl">XL (1+ acre)</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="form-message">Tell us more (optional)</label>
-                            <textarea id="form-message" name="message" placeholder="Any details about your property..." maxlength="200"></textarea>
-                            <div class="char-count"><span id="char-count">0</span>/200</div>
-                        </div>
-                        <button type="submit" class="btn-submit">Request Free Estimate</button>
-                    </form>
-
-                    <div id="form-success" class="form-success">
-                        <h3>✅ Thank you!</h3>
-                        <p>We'll get in touch within 24 hours with your free estimate.</p>
+                    <div class="form-group">
+                        <label for="form-phone">Phone *</label>
+                        <input type="tel" id="form-phone" name="phone" placeholder="(734) 555-0123" required>
                     </div>
-
-                    <div class="service-area-section">
-                        <h3>Service Area</h3>
-                        <div class="cities-scroll">
-                            <div class="city-pill">Ann Arbor</div>
-                            <div class="city-pill">Canton</div>
-                            <div class="city-pill">Ypsilanti</div>
-                            <div class="city-pill">Plymouth</div>
-                            <div class="city-pill">Saline</div>
-                            <div class="city-pill">Belleville</div>
-                            <div class="city-pill">Dexter</div>
-                            <div class="city-pill">Chelsea</div>
-                            <div class="city-pill">Milan</div>
-                            <div class="city-pill">Whitmore Lake</div>
-                            <div class="city-pill">South Lyon</div>
-                            <div class="city-pill">Northville</div>
-                        </div>
-                        <p style="font-size:0.8rem;color:var(--warm-gray);margin-top:1rem">Don't see your city? Give us a call — we may still be able to help!</p>
+                    <div class="form-group">
+                        <label for="form-email">Email (optional)</label>
+                        <input type="email" id="form-email" name="email" placeholder="you@example.com">
                     </div>
-
-                    <div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid rgba(0,0,0,.1)">
-                        <h3 style="font-size:0.9rem;font-weight:700;color:var(--text-dark);margin-bottom:1rem;letter-spacing:.5px;text-transform:uppercase;opacity:.6">Follow Us</h3>
-                        <div class="social-links">
-                            <!-- ⚠️ DEAD LINK: Replace # with actual Facebook URL -->
-                            <a href="#" class="social-link" title="Facebook" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
-                            <!-- ⚠️ DEAD LINK: Replace # with actual Instagram URL -->
-                            <a href="#" class="social-link" title="Instagram" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
-                            <!-- ⚠️ DEAD LINK: Replace # with actual Google Business URL -->
-                            <a href="#" class="social-link" title="Google Business" aria-label="Google Business"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg></a>
-                        </div>
+                    <div class="form-group">
+                        <label for="form-service">Service Needed *</label>
+                        <select id="form-service" name="service" required>
+                            <option value="" disabled selected>Select a service</option>
+                            <option value="lawn">Lawn Maintenance</option>
+                            <option value="landscape">Landscape Design</option>
+                            <option value="fert">Fertilization & Weed Control</option>
+                            <option value="cleanup">Seasonal Cleanup</option>
+                            <option value="shrub">Shrub & Hedge Trimming</option>
+                            <option value="snow">Snow Removal</option>
+                            <option value="other">Other / Multiple</option>
+                        </select>
                     </div>
+                    <div class="form-group">
+                        <label for="form-size">Yard Size</label>
+                        <select id="form-size" name="size">
+                            <option value="" disabled selected>Select size</option>
+                            <option value="s">Small (&lt;¼ acre)</option>
+                            <option value="m">Medium (¼–½ acre)</option>
+                            <option value="l">Large (½–1 acre)</option>
+                            <option value="xl">XL (1+ acre)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="form-message">Tell us more (optional)</label>
+                        <textarea id="form-message" name="message" placeholder="Any details about your property..." maxlength="200"></textarea>
+                        <div class="char-count"><span id="char-count">0</span>/200</div>
+                    </div>
+                    <button type="submit" class="btn-submit">Request Free Estimate</button>
+                </form>
+
+                <div id="form-success" class="form-success">
+                    <h3>✅ Thank you!</h3>
+                    <p>We'll get in touch within 24 hours with your free estimate.</p>
+                </div>
+
+                <div class="service-area-section">
+                    <h3>Service Area</h3>
+                    <div class="cities-scroll">
+                        <div class="city-pill">Ann Arbor</div>
+                        <div class="city-pill">Canton</div>
+                        <div class="city-pill">Ypsilanti</div>
+                        <div class="city-pill">Plymouth</div>
+                        <div class="city-pill">Saline</div>
+                        <div class="city-pill">Belleville</div>
+                        <div class="city-pill">Dexter</div>
+                        <div class="city-pill">Chelsea</div>
+                        <div class="city-pill">Milan</div>
+                        <div class="city-pill">Whitmore Lake</div>
+                        <div class="city-pill">South Lyon</div>
+                        <div class="city-pill">Northville</div>
+                    </div>
+                    <p style="font-size:0.8rem; color: var(--warm-gray); margin-top:1rem">Don't see your city? Give us a call — we may still be able to help!</p>
+                </div>
+
+                <div style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid rgba(0,0,0,.1)">
+                    <h3 style="font-size: 0.9rem; font-weight: 700; color: var(--text-dark); margin-bottom: 1rem; letter-spacing: .5px; text-transform: uppercase; opacity: .6">Follow Us</h3>
+                    <div class="social-links">
+                        <!-- ⚠️ DEAD LINK: Replace # with actual Facebook URL -->
+                        <a href="#" class="social-link" title="Facebook" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+                        <!-- ⚠️ DEAD LINK: Replace # with actual Instagram URL -->
+                        <a href="#" class="social-link" title="Instagram" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+                        <!-- ⚠️ DEAD LINK: Replace # with actual Google Business URL -->
+                        <a href="#" class="social-link" title="Google Business" aria-label="Google Business"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== CTA SECTION ===== -->
+        <section class="cta-section reveal">
+            <h2>Ready to Love Your Lawn?</h2>
+            <p>Get started with a free estimate. No contracts, no obligation.</p>
+            <div class="cta-buttons">
+                <a href="tel:7344506417" class="cta-btn primary">Call (734) 450-6417</a>
+                <button class="cta-btn secondary" onclick="scrollToSection('contact')">Get Free Estimate</button>
+            </div>
+        </section>
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Lee Bros Xscapes</h4>
+                <p style="font-size: 0.9rem; margin-bottom: 1rem;">Premium lawn care and landscaping for Southeast Michigan.</p>
+                <p style="font-size: 0.85rem; color: rgba(255,255,255,0.6);">Licensed & Insured | Family-Owned</p>
+            </div>
+            <div class="footer-section">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="#services">Lawn Maintenance</a></li>
+                    <li><a href="#services">Landscape Design</a></li>
+                    <li><a href="#services">Fertilization</a></li>
+                    <li><a href="#services">Seasonal Cleanups</a></li>
+                    <li><a href="#services">Snow Removal</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="#story">Our Story</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Get In Touch</h4>
+                <p style="margin-bottom: 0.5rem;"><strong>(734) 450-6417</strong></p>
+                <p style="margin-bottom: 1rem;"><a href="mailto:info@leebrosxscapes.com" style="color: var(--lime-accent);">info@leebrosxscapes.com</a></p>
+                <p style="font-size: 0.9rem;">Mon–Sat: 7AM–7PM</p>
+            </div>
+        </div>
+        <div class="footer-divider">
+            <div class="footer-bottom">
+                <p class="footer-copyright">&copy; 2024 Lee Bros Xscapes. All rights reserved.</p>
+                <div class="footer-social">
+                    <!-- ⚠️ DEAD LINK: Replace # with actual Facebook URL -->
+                    <a href="#" title="Facebook"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+                    <!-- ⚠️ DEAD LINK: Replace # with actual Instagram URL -->
+                    <a href="#" title="Instagram"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" fill="currentColor"/></svg></a>
+                    <!-- ⚠️ DEAD LINK: Replace # with actual Google Business URL -->
+                    <a href="#" title="Google Business"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg></a>
                 </div>
             </div>
         </div>
+    </footer>
 
-        <!-- BOTTOM NAVIGATION -->
-        <nav class="app-nav" role="tablist">
-            <button class="nav-tab active" role="tab" aria-selected="true" aria-controls="screen-home" id="tab-home" onclick="switchScreen('home')">
-                <svg viewBox="0 0 24 24"><path d="M3 10l9-9 9 9v1H20v10H4V11H3zm1 0h16v10H4V11z"/><path d="M9 13h6v7H9z"/></svg>
-                <span>Home</span>
-            </button>
-            <button class="nav-tab" role="tab" aria-selected="false" aria-controls="screen-services" id="tab-services" onclick="switchScreen('services')">
-                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-                <span>Services</span>
-            </button>
-            <button class="nav-tab" role="tab" aria-selected="false" aria-controls="screen-plans" id="tab-plans" onclick="switchScreen('plans')">
-                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm3.5-9c.83 0 1.5-.67 1.5-1.5S16.33 8 15.5 8 14 8.67 14 9.5s.67 1.5 1.5 1.5zm-7 0c.83 0 1.5-.67 1.5-1.5S9.33 8 8.5 8 7 8.67 7 9.5 7.67 11 8.5 11zm3.5 6.5c2.33 0 4.31-1.46 5.11-3.5H6.89c.8 2.04 2.78 3.5 5.11 3.5z"/></svg>
-                <span>Plans</span>
-            </button>
-            <button class="nav-tab" role="tab" aria-selected="false" aria-controls="screen-about" id="tab-about" onclick="switchScreen('about')">
-                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm3.5-9c.83 0 1.5-.67 1.5-1.5S16.33 8 15.5 8 14 8.67 14 9.5s.67 1.5 1.5 1.5zm-7 0c.83 0 1.5-.67 1.5-1.5S9.33 8 8.5 8 7 8.67 7 9.5 7.67 11 8.5 11zm3.5 6.5c2.33 0 4.31-1.46 5.11-3.5H6.89c.8 2.04 2.78 3.5 5.11 3.5z"/></svg>
-                <span>About</span>
-            </button>
-            <button class="nav-tab" role="tab" aria-selected="false" aria-controls="screen-contact" id="tab-contact" onclick="switchScreen('contact')">
-                <svg viewBox="0 0 24 24"><path d="M17 10.5V7c0 .55-.45 1-1 1H4c-.55 0-1-.45-1-1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z"/></svg>
-                <span>Contact</span>
-            </button>
-        </nav>
-    </div>
+    <!-- ===== BACK TO TOP ===== -->
+    <button class="back-to-top" onclick="scrollToTop()">↑</button>
+
+    <!-- ===== MOBILE NAV ===== -->
+    <nav class="mobile-nav" role="tablist">
+        <button class="mobile-nav-tab active" role="tab" aria-selected="true" aria-controls="home" onclick="switchMobileTab('home')">
+            <svg viewBox="0 0 24 24"><path d="M3 10l9-9 9 9v1H20v10H4V11H3zm1 0h16v10H4V11z"/><path d="M9 13h6v7H9z"/></svg>
+            <span>Home</span>
+        </button>
+        <button class="mobile-nav-tab" role="tab" aria-selected="false" aria-controls="services" onclick="switchMobileTab('services')">
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+            <span>Services</span>
+        </button>
+        <button class="mobile-nav-tab" role="tab" aria-selected="false" aria-controls="pricing" onclick="switchMobileTab('pricing')">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v12M9 9h6a2 2 0 0 1 0 4h-6a2 2 0 0 0 0 4h6"/></svg>
+            <span>Plans</span>
+        </button>
+        <button class="mobile-nav-tab" role="tab" aria-selected="false" aria-controls="story" onclick="switchMobileTab('story')">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M12 14c-4 0-6 2-6 4v4h12v-4c0-2-2-4-6-4z"/></svg>
+            <span>About</span>
+        </button>
+        <button class="mobile-nav-tab" role="tab" aria-selected="false" aria-controls="contact" onclick="switchMobileTab('contact')">
+            <svg viewBox="0 0 24 24"><path d="M17 10.5V7c0 .55-.45 1-1 1H4c-.55 0-1-.45-1-1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z"/></svg>
+            <span>Contact</span>
+        </button>
+    </nav>
+
+    <noscript>
+        <p style="text-align: center; padding: 2rem; color: #d32f2f;">This website requires JavaScript to function properly. Please enable JavaScript in your browser settings.</p>
+    </noscript>
 
     <script>
-        function switchScreen(screenName) {
-            document.querySelectorAll('.app-screen').forEach(screen => {
-                screen.classList.remove('active');
-            });
-            document.getElementById(`screen-${screenName}`).classList.add('active');
+        // ===== MODE DETECTION & INITIALIZATION =====
+        let isMobile = window.innerWidth <= 768;
 
-            document.querySelectorAll('.nav-tab').forEach(tab => {
+        window.addEventListener('resize', () => {
+            isMobile = window.innerWidth <= 768;
+        });
+
+        // ===== MOBILE: TAB SWITCHING =====
+        function switchMobileTab(tabName) {
+            if (!isMobile) return;
+
+            // Hide all sections
+            document.querySelectorAll('.site-section').forEach(section => {
+                section.classList.remove('active');
+            });
+
+            // Show selected section
+            const section = document.getElementById(tabName);
+            if (section) {
+                section.classList.add('active');
+                section.scrollTop = 0;
+            }
+
+            // Update tab buttons
+            document.querySelectorAll('.mobile-nav-tab').forEach(tab => {
                 tab.classList.remove('active');
                 tab.setAttribute('aria-selected', 'false');
             });
-            document.getElementById(`tab-${screenName}`).classList.add('active');
-            document.getElementById(`tab-${screenName}`).setAttribute('aria-selected', 'true');
 
-            document.getElementById(`screen-${screenName}`).scrollTop = 0;
+            const activeTab = document.querySelector(`[aria-controls="${tabName}"]`);
+            if (activeTab) {
+                activeTab.classList.add('active');
+                activeTab.setAttribute('aria-selected', 'true');
+            }
         }
 
-        function toggleService(card) {
-            card.classList.toggle('active');
+        // ===== DESKTOP: SCROLL SPY & NAV UPDATES =====
+        function updateDesktopNav() {
+            if (isMobile) return;
+
+            const sections = document.querySelectorAll('.site-section');
+            const navLinks = document.querySelectorAll('.nav-links a');
+            const scrollPosition = window.scrollY + 100;
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.offsetHeight;
+
+                if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                    navLinks.forEach(link => link.classList.remove('active'));
+                    const activeLink = document.querySelector(`a[href="#${section.id}"]`);
+                    if (activeLink) activeLink.classList.add('active');
+                }
+            });
         }
 
-        function toggleWhy(card) {
-            card.classList.toggle('active');
+        // ===== NAV SCROLL STATE =====
+        function updateNavScrollState() {
+            if (isMobile) return;
+
+            const nav = document.querySelector('.desktop-nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
         }
 
-        function toggleFaq(question) {
-            const item = question.closest('.faq-item');
-            item.classList.toggle('active');
+        // ===== SCROLL PROGRESS BAR =====
+        function updateScrollProgress() {
+            const scrollProgress = document.querySelector('.scroll-progress');
+            if (!scrollProgress) return;
+
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollPercent = (scrollTop / docHeight) * 100;
+            scrollProgress.style.width = scrollPercent + '%';
         }
 
-        function submitForm(e) {
+        // ===== BACK TO TOP BUTTON =====
+        function showBackToTop() {
+            const btn = document.querySelector('.back-to-top');
+            if (!btn) return;
+
+            if (window.scrollY > 300) {
+                btn.classList.add('show');
+            } else {
+                btn.classList.remove('show');
+            }
+        }
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // ===== SMOOTH SCROLL TO SECTION =====
+        function scrollToSection(sectionId) {
+            if (isMobile) {
+                switchMobileTab(sectionId);
+            } else {
+                const section = document.getElementById(sectionId);
+                if (section) {
+                    section.scrollIntoView({ behavior: 'smooth' });
+                }
+            }
+        }
+
+        // ===== DESKTOP: SCROLL-TRIGGERED ANIMATIONS =====
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => {
+            if (!isMobile) {
+                observer.observe(el);
+            } else {
+                el.classList.add('active');
+            }
+        });
+
+        // ===== FAQ ACCORDION (DESKTOP) =====
+        function toggleFaqDesktop(button) {
+            const item = button.closest('.faq-item-desktop');
+            item.classList.toggle('expanded');
+        }
+
+        // ===== FORM: CHARACTER COUNTER =====
+        const msgField = document.getElementById('form-message');
+        if (msgField) {
+            msgField.addEventListener('input', function() {
+                document.getElementById('char-count').textContent = this.value.length;
+            });
+        }
+
+        // ===== FORM: SUBMISSION =====
+        function submitContactForm(e) {
             e.preventDefault();
             const form = document.getElementById('contact-form');
             const success = document.getElementById('form-success');
@@ -624,25 +2591,57 @@ body{font-family:'DM Sans',sans-serif;color:var(--text-body);background:var(--of
                 form.reset();
                 form.style.display = 'block';
                 success.classList.remove('show');
-                document.getElementById('char-count').textContent = '0';
+                if (document.getElementById('char-count')) {
+                    document.getElementById('char-count').textContent = '0';
+                }
             }, 3000);
         }
 
-        document.getElementById('form-message').addEventListener('input', function() {
-            document.getElementById('char-count').textContent = this.value.length;
-        });
+        // ===== HERO FORM SUBMISSION =====
+        const heroForm = document.getElementById('hero-form');
+        if (heroForm) {
+            heroForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                // Show success
+                this.style.display = 'none';
+                const msg = document.createElement('div');
+                msg.style.cssText = 'text-align: center; padding: 2rem; background: rgba(74,124,52,.1); border-radius: 12px; border: 1px solid var(--fresh-green);';
+                msg.innerHTML = '<h3 style="color: var(--fresh-green); margin-bottom: 0.5rem;">✅ Thanks!</h3><p style="font-size: 0.9rem; color: var(--text-body);">We\'ll contact you within 24 hours with your free estimate.</p>';
+                this.parentElement.appendChild(msg);
+                setTimeout(() => {
+                    this.reset();
+                    this.style.display = 'block';
+                    if (msg.parentElement) msg.remove();
+                }, 3000);
+            });
+        }
 
-        document.querySelectorAll('.nav-tab').forEach((tab, index) => {
+        // ===== KEYBOARD NAVIGATION (MOBILE) =====
+        document.querySelectorAll('.mobile-nav-tab').forEach((tab, index) => {
             tab.addEventListener('keydown', function(e) {
                 if (e.key === 'ArrowLeft' && index > 0) {
                     e.preventDefault();
-                    document.querySelectorAll('.nav-tab')[index - 1].click();
-                } else if (e.key === 'ArrowRight' && index < document.querySelectorAll('.nav-tab').length - 1) {
+                    document.querySelectorAll('.mobile-nav-tab')[index - 1].click();
+                } else if (e.key === 'ArrowRight' && index < document.querySelectorAll('.mobile-nav-tab').length - 1) {
                     e.preventDefault();
-                    document.querySelectorAll('.nav-tab')[index + 1].click();
+                    document.querySelectorAll('.mobile-nav-tab')[index + 1].click();
                 }
             });
         });
+
+        // ===== EVENT LISTENERS =====
+        window.addEventListener('scroll', () => {
+            updateNavScrollState();
+            updateScrollProgress();
+            updateDesktopNav();
+            showBackToTop();
+        });
+
+        // Initial call
+        updateNavScrollState();
+        updateScrollProgress();
+        updateDesktopNav();
+        showBackToTop();
     </script>
 </body>
 </html>
