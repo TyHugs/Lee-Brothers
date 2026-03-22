@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Lee Bros Xscapes | Premium Lawn Care &amp; Landscaping in Southeast Michigan</title>
     <meta name="description" content="Lee Bros Xscapes provides premium lawn care, landscaping, and snow removal across SE Michigan — Ann Arbor, Canton, Ypsilanti, Plymouth and more. Family-owned. Free estimates. Call (734) 450-6417.">
     <meta name="robots" content="index, follow">
@@ -12,444 +12,637 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.leebrosxscapes.com/">
     <meta property="og:locale" content="en_US">
+    <meta property="og:image" content="https://www.leebrosxscapes.com/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%234a7c34'/%3E%3Ctext x='16' y='22' text-anchor='middle' font-family='Georgia,serif' font-size='16' font-weight='bold' fill='%23a8e063'%3ELB%3C/text%3E%3C/svg%3E">
     <script type="application/ld+json">
     {"@context":"https://schema.org","@type":"LandscapingBusiness","name":"Lee Bros Xscapes","telephone":"+1-734-450-6417","email":"info@leebrosxscapes.com","url":"https://www.leebrosxscapes.com","description":"Premium lawn care, landscaping, and snow removal services serving Southeast Michigan.","areaServed":[{"@type":"City","name":"Ann Arbor","addressRegion":"MI"},{"@type":"City","name":"Canton","addressRegion":"MI"},{"@type":"City","name":"Ypsilanti","addressRegion":"MI"},{"@type":"City","name":"Plymouth","addressRegion":"MI"},{"@type":"City","name":"Saline","addressRegion":"MI"},{"@type":"City","name":"Belleville","addressRegion":"MI"},{"@type":"City","name":"Dexter","addressRegion":"MI"},{"@type":"City","name":"Chelsea","addressRegion":"MI"}],"openingHoursSpecification":{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"opens":"07:00","closes":"19:00"},"priceRange":"$$"}
+    </script>
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What areas do you serve?","acceptedAnswer":{"@type":"Answer","text":"We serve the greater Southeast Michigan area including Ann Arbor, Canton, Ypsilanti, Plymouth, Saline, Belleville, Dexter, Chelsea, Milan, Whitmore Lake, South Lyon, and Northville."}},{"@type":"Question","name":"How do I get a quote?","acceptedAnswer":{"@type":"Answer","text":"Call us at (734) 450-6417, email info@leebrosxscapes.com, or fill out our online form. We respond within 24 hours with a free, no-obligation estimate."}},{"@type":"Question","name":"Are you licensed and insured?","acceptedAnswer":{"@type":"Answer","text":"Yes. Lee Bros Xscapes is fully licensed and insured with comprehensive general liability and workers compensation coverage."}},{"@type":"Question","name":"What if it rains on my service day?","acceptedAnswer":{"@type":"Answer","text":"We reschedule for the next available slot, usually the next day or within the same week, to avoid damaging wet grass."}},{"@type":"Question","name":"Do you offer seasonal contracts?","acceptedAnswer":{"@type":"Answer","text":"Yes, we offer flexible seasonal contracts for lawn maintenance, fertilization programs, and snow removal with locked-in rates and priority scheduling."}},{"@type":"Question","name":"What forms of payment do you accept?","acceptedAnswer":{"@type":"Answer","text":"We accept cash, check, credit cards (Visa, Mastercard, Amex), and digital payments via Venmo or PayPal."}}]}
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <style>
-:root{--rich-black:#0a1208;--deep-forest:#1a2e14;--moss:#2d4a22;--fresh-green:#4a7c34;--spring:#6db54a;--lime-accent:#a8e063;--gold:#d4a843;--cream:#f5f0e8;--off-white:#faf8f4;--warm-gray:#635e54;--text-dark:#1a1a18;--text-body:#3d3d38}
+:root{--rich-black:#0a1208;--deep-forest:#1a2e14;--moss:#2d4a22;--fresh-green:#4a7c34;--spring:#6db54a;--lime-accent:#a8e063;--cream:#f5f0e8;--off-white:#faf8f4;--warm-gray:#635e54;--text-dark:#1a1a18;--text-body:#3d3d38;--safe-area-top:max(1rem,env(safe-area-inset-top));--safe-area-bottom:max(1rem,env(safe-area-inset-bottom))}
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth;overflow-x:hidden}
-body{font-family:'DM Sans',sans-serif;color:var(--text-body);background:var(--off-white);overflow-x:hidden}
-.skip-link{position:absolute;top:-100%;left:1rem;background:var(--lime-accent);color:var(--deep-forest);padding:.75rem 1.5rem;border-radius:0 0 8px 8px;font-weight:700;z-index:9999;text-decoration:none;transition:top .3s}
-.skip-link:focus{top:0}
-*:focus-visible{outline:3px solid var(--lime-accent);outline-offset:3px;border-radius:4px}
-@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}.hero-particles{display:none}}
+body{font-family:'DM Sans',sans-serif;color:var(--text-body);background:var(--off-white);overflow:hidden;height:100vh}
+.app-container{display:flex;flex-direction:column;height:100vh;background:var(--off-white)}
+.app-screens{flex:1;position:relative;overflow:hidden;width:100%}
+.app-screen{position:absolute;inset:0;opacity:0;visibility:hidden;transition:opacity .3s ease,visibility .3s ease;overflow-y:auto;padding-top:0;padding-bottom:calc(60px + var(--safe-area-bottom))}
+.app-screen.active{opacity:1;visibility:visible}
+.app-screen-header{position:sticky;top:0;z-index:50;background:rgba(250,248,244,.95);backdrop-filter:blur(10px);border-bottom:1px solid rgba(0,0,0,.05);padding:1rem var(--safe-area-top) 1rem 1rem}
+.app-screen-title{font-family:'Playfair Display',serif;font-size:1.75rem;font-weight:700;color:var(--text-dark);letter-spacing:-.5px}
+.app-nav{position:fixed;bottom:0;left:0;right:0;height:60px;background:#fff;border-top:1px solid rgba(0,0,0,.08);display:flex;justify-content:space-around;align-items:stretch;z-index:100;padding-bottom:var(--safe-area-bottom);background:rgba(255,255,255,.95);backdrop-filter:blur(20px)}
+.nav-tab{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.25rem;background:none;border:none;cursor:pointer;color:var(--warm-gray);font-size:0.7rem;font-weight:500;transition:all .3s ease;position:relative;text-decoration:none;padding:0.5rem 0;touch-action:manipulation}
+.nav-tab svg{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:1.5;transition:all .3s ease}
+.nav-tab.active{color:var(--fresh-green);font-weight:600}
+.nav-tab.active svg{stroke:var(--fresh-green)}
+.nav-tab.active::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:4px;height:4px;background:var(--fresh-green);border-radius:50%}
+*:focus-visible{outline:3px solid var(--lime-accent);outline-offset:2px;border-radius:4px}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
 
-.hero-form-card{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:24px;padding:2.25rem;backdrop-filter:blur(20px);position:relative;overflow:hidden}
-.hero-form-card::before{content:'';position:absolute;top:-50%;right:-50%;width:100%;height:100%;background:radial-gradient(circle,rgba(168,224,99,.08),transparent 60%)}
-.hero-form-card>*{position:relative;z-index:1}
-.hero-form-title{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:700;color:#fff;margin-bottom:.25rem}
-.hero-form-sub{font-size:.85rem;color:rgba(255,255,255,.5);margin-bottom:1.25rem}
-.hero-form .contact-form{gap:.75rem}
-.hero-form .form-row{gap:.75rem}
-.hero-form .contact-form input,.hero-form .contact-form select,.hero-form .contact-form textarea{padding:.7rem .85rem;font-size:.9rem;border-radius:10px}
-.hero-form .contact-form label{font-size:.7rem;margin-bottom:.3rem}
-.hero-form .form-submit{padding:.85rem 1.75rem;font-size:.95rem}
-.hero-form .form-success{padding:1.5rem}
-.hero-form-trust{display:flex;align-items:center;gap:.75rem;margin-top:1rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,.08)}
-.hero-form-trust .trust-stars{font-size:.9rem}
-.hero-form-trust .trust-text{font-size:.78rem}
+.screen-content{padding:1.5rem;max-width:100%;margin:0 auto}
 
-.nav{position:fixed;top:0;left:0;width:100%;z-index:1000;padding:1.25rem 3rem;display:flex;justify-content:space-between;align-items:center;transition:all .5s cubic-bezier(.22,1,.36,1)}
-.nav.scrolled{background:rgba(10,18,8,.95);backdrop-filter:blur(20px);padding:.75rem 3rem;box-shadow:0 4px 30px rgba(0,0,0,.15)}
-.nav-logo{display:flex;align-items:center;gap:.75rem;text-decoration:none}
-.nav-logo-icon{width:44px;height:44px;display:flex;align-items:center;justify-content:center}
-.nav-logo-icon svg{width:44px;height:44px}
-.nav-logo-text{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:700;color:#fff;letter-spacing:-.5px}
-.nav-logo-text span{color:var(--lime-accent)}
-.nav-links{display:flex;gap:2.5rem;list-style:none;align-items:center}
-.nav-links a{text-decoration:none;color:rgba(255,255,255,.8);font-size:.9rem;font-weight:500;letter-spacing:.5px;transition:color .3s;text-transform:uppercase;padding:.5rem 0}
-.nav-links a:hover{color:var(--lime-accent)}
-.nav-links .nav-cta{background:linear-gradient(135deg,var(--spring),var(--lime-accent));color:var(--deep-forest);padding:.65rem 1.5rem;border-radius:50px;font-weight:700;font-size:.85rem;letter-spacing:1px;transition:transform .3s,box-shadow .3s}
-.nav-links .nav-cta:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(109,181,74,.4);color:var(--deep-forest)}
-.mobile-toggle{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:10px;min-width:44px;min-height:44px;align-items:center;justify-content:center}
-.mobile-toggle span{width:24px;height:2px;background:#fff;border-radius:2px;transition:all .3s;display:block}
-.mobile-toggle[aria-expanded="true"] span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
-.mobile-toggle[aria-expanded="true"] span:nth-child(2){opacity:0}
-.mobile-toggle[aria-expanded="true"] span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+#screen-home .hero-card{background:linear-gradient(135deg,rgba(74,124,52,.15),rgba(168,224,99,.1));border:1px solid rgba(74,124,52,.2);border-radius:20px;padding:2rem 1.5rem;margin-bottom:1.5rem}
+#screen-home .hero-card h1{font-family:'Playfair Display',serif;font-size:2rem;font-weight:900;color:var(--text-dark);letter-spacing:-1px;margin-bottom:0.5rem}
+#screen-home .hero-card .tagline{font-size:0.95rem;color:var(--warm-gray);margin-bottom:1.5rem;line-height:1.6}
+.hero-buttons{display:flex;gap:0.75rem;margin-bottom:2rem}
+.btn-home{flex:1;padding:1rem;border-radius:14px;border:none;font-weight:600;font-size:0.95rem;cursor:pointer;transition:all .3s;min-height:48px;display:flex;align-items:center;justify-content:center;text-decoration:none;gap:0.5rem}
+.btn-call{background:linear-gradient(135deg,var(--spring),var(--lime-accent));color:var(--deep-forest)}
+.btn-estimate{background:var(--deep-forest);color:#fff;border:2px solid var(--fresh-green)}
+.btn-home:active{transform:scale(.98)}
+.trust-chips{display:flex;gap:0.75rem;overflow-x:auto;padding-bottom:0.5rem;margin-bottom:2rem;scroll-behavior:smooth}
+.trust-chip{flex-shrink:0;background:white;border:1px solid rgba(0,0,0,.1);border-radius:20px;padding:0.65rem 1.25rem;font-size:0.8rem;font-weight:600;color:var(--fresh-green);white-space:nowrap;display:flex;align-items:center;gap:0.5rem}
+.quick-look{margin-bottom:2rem}
+.quick-look h3{font-size:0.9rem;font-weight:700;color:var(--text-dark);margin-bottom:1rem;letter-spacing:.5px;text-transform:uppercase;opacity:.6}
+.quick-cards{display:grid;grid-template-columns:1fr;gap:1rem}
+.quick-card{background:white;border:1px solid rgba(0,0,0,.08);border-radius:14px;padding:1.25rem;cursor:pointer;transition:all .3s;text-decoration:none;color:var(--text-dark)}
+.quick-card:active{transform:scale(.98);background:#f5f5f5}
+.quick-card h4{font-weight:600;margin-bottom:0.5rem;font-size:0.95rem;display:flex;align-items:center;gap:0.75rem}
+.quick-card-arrow{font-size:1.2rem}
+.testimonial-card{background:white;border:1px solid rgba(0,0,0,.1);border-radius:16px;padding:1.5rem;margin-bottom:2rem}
+.testimonial-text{font-size:0.95rem;color:var(--text-dark);line-height:1.7;margin-bottom:1rem;font-style:italic}
+.testimonial-author{font-weight:600;font-size:0.85rem;color:var(--fresh-green)}
+.testimonial-location{font-size:0.75rem;color:var(--warm-gray)}
 
-.hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;background:var(--rich-black)}
-.hero-bg{position:absolute;inset:0;background:linear-gradient(135deg,rgba(10,18,8,.85) 0%,rgba(26,46,20,.6) 50%,rgba(45,74,34,.4) 100%),radial-gradient(ellipse at 80% 20%,rgba(168,224,99,.15) 0%,transparent 60%),radial-gradient(ellipse at 20% 80%,rgba(74,124,52,.2) 0%,transparent 50%);background-color:var(--deep-forest)}
-.hero-bg::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");opacity:.5;mix-blend-mode:overlay}
-.hero-particles{position:absolute;inset:0;overflow:hidden}
-.particle{position:absolute;width:4px;height:4px;background:var(--lime-accent);border-radius:50%;opacity:0;animation:float-particle 8s infinite;will-change:transform,opacity}
-@keyframes float-particle{0%{transform:translateY(100vh) scale(0);opacity:0}10%{opacity:.6}90%{opacity:.6}100%{transform:translateY(-10vh) scale(1);opacity:0}}
-.hero-content{position:relative;z-index:2;max-width:1400px;margin:0 auto;padding:8rem 3rem 5rem;display:grid;grid-template-columns:1.1fr .9fr;gap:4rem;align-items:center}
-.hero-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(168,224,99,.15);border:1px solid rgba(168,224,99,.3);padding:.5rem 1.25rem;border-radius:50px;font-size:.8rem;font-weight:600;color:var(--lime-accent);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:1.5rem;animation:fadeInUp 1s .2s both}
-.hero-badge::before{content:'';width:8px;height:8px;background:var(--lime-accent);border-radius:50%;animation:pulse-dot 2s infinite}
-@keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.5)}}
-.hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.75rem,5.5vw,5rem);font-weight:900;color:#fff;line-height:1.05;letter-spacing:-2px;margin-bottom:1.5rem;animation:fadeInUp 1s .4s both}
-.hero h1 em{font-style:italic;color:var(--lime-accent)}
-.hero-text{font-size:1.15rem;color:rgba(255,255,255,.75);line-height:1.75;max-width:520px;margin-bottom:2.5rem;animation:fadeInUp 1s .6s both}
-.hero-actions{display:flex;gap:1rem;align-items:center;flex-wrap:wrap;animation:fadeInUp 1s .8s both}
-.btn-primary{display:inline-flex;align-items:center;gap:.75rem;background:linear-gradient(135deg,var(--spring),var(--lime-accent));color:var(--deep-forest);padding:1rem 2.25rem;border-radius:60px;font-weight:700;font-size:1rem;text-decoration:none;letter-spacing:.5px;transition:all .4s cubic-bezier(.22,1,.36,1);box-shadow:0 4px 20px rgba(109,181,74,.3);border:none;cursor:pointer;min-height:48px}
-.btn-primary:hover{transform:translateY(-3px);box-shadow:0 12px 35px rgba(109,181,74,.45)}
-.btn-primary .arrow{transition:transform .3s}.btn-primary:hover .arrow{transform:translateX(4px)}
-.btn-secondary{display:inline-flex;align-items:center;gap:.5rem;color:rgba(255,255,255,.8);text-decoration:none;font-weight:500;font-size:.95rem;padding:1rem 1.5rem;border:1px solid rgba(255,255,255,.2);border-radius:60px;transition:all .3s;min-height:48px}
-.btn-secondary:hover{border-color:var(--lime-accent);color:var(--lime-accent)}
-.hero-visual{animation:fadeInUp 1s .6s both}
-.hero-stats-card{display:none}
-.licensed-badge{display:inline-flex;align-items:center;gap:.5rem;margin-top:1.25rem;padding:.5rem 1rem;background:rgba(168,224,99,.1);border:1px solid rgba(168,224,99,.2);border-radius:8px;font-size:.78rem;color:var(--lime-accent);font-weight:600;letter-spacing:.5px}
-.scroll-indicator{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);z-index:10;display:flex;flex-direction:column;align-items:center;gap:.5rem;animation:fadeInUp 1s 1.2s both}
-.scroll-indicator span{font-size:.7rem;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:2px}
-.scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,var(--lime-accent),transparent);animation:scroll-pulse 2s infinite}
-@keyframes scroll-pulse{0%,100%{opacity:1;height:40px}50%{opacity:.3;height:25px}}
+.services-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:2rem}
+.service-card{background:white;border:1px solid rgba(0,0,0,.08);border-radius:16px;padding:1.25rem;cursor:pointer;transition:all .3s}
+.service-card.active{border-color:var(--fresh-green);box-shadow:0 4px 12px rgba(74,124,52,.1)}
+.service-icon{width:40px;height:40px;background:linear-gradient(135deg,rgba(74,124,52,.15),rgba(168,224,99,.15));border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:0.75rem}
+.service-icon svg{width:20px;height:20px;stroke:var(--fresh-green);stroke-width:1.5;fill:none}
+.service-card h3{font-size:0.95rem;font-weight:700;color:var(--text-dark);margin-bottom:0.5rem}
+.service-card p{font-size:0.8rem;color:var(--warm-gray);line-height:1.5;display:none}
+.service-card.active p{display:block;margin-top:1rem;border-top:1px solid rgba(0,0,0,.05);padding-top:1rem}
+.process-timeline{margin-bottom:2rem}
+.process-item{display:flex;gap:1.25rem;margin-bottom:2rem;position:relative}
+.process-item:not(:last-child)::after{content:'';position:absolute;left:19px;top:60px;bottom:-60px;width:2px;background:linear-gradient(180deg,var(--fresh-green),transparent)}
+.process-step-num{width:40px;height:40px;background:linear-gradient(135deg,var(--spring),var(--lime-accent));color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:1rem;flex-shrink:0;position:relative;z-index:1}
+.process-content h4{font-weight:700;color:var(--text-dark);margin-bottom:0.25rem;font-size:0.95rem}
+.process-content p{font-size:0.85rem;color:var(--warm-gray);line-height:1.5}
 
-.icon-svg{width:28px;height:28px;stroke:var(--fresh-green);stroke-width:1.8;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.pricing-card{background:white;border:2px solid rgba(0,0,0,.08);border-radius:16px;padding:1.5rem;margin-bottom:1.5rem;transition:all .3s;position:relative}
+.pricing-card.popular{border-color:var(--fresh-green);box-shadow:0 4px 16px rgba(74,124,52,.15)}
+.pricing-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--spring),var(--lime-accent));color:#fff;padding:0.35rem 1rem;border-radius:20px;font-size:0.7rem;font-weight:700;letter-spacing:.5px}
+.pricing-name{font-family:'Playfair Display',serif;font-size:1.25rem;font-weight:700;color:var(--text-dark);margin-bottom:0.5rem}
+.pricing-price{font-size:2rem;font-weight:900;color:var(--fresh-green);margin-bottom:0.25rem}
+.pricing-price-sub{font-size:0.85rem;color:var(--warm-gray);margin-bottom:1.5rem}
+.pricing-features{list-style:none;margin-bottom:1.5rem}
+.pricing-features li{font-size:0.85rem;color:var(--text-body);padding:0.5rem 0;border-bottom:1px solid rgba(0,0,0,.05)}
+.pricing-features li::before{content:'✓ ';color:var(--fresh-green);font-weight:700;margin-right:0.5rem}
+.btn-pricing{width:100%;padding:0.9rem;background:linear-gradient(135deg,var(--spring),var(--lime-accent));color:var(--deep-forest);border:none;border-radius:12px;font-weight:700;cursor:pointer;font-size:0.9rem;transition:all .3s;min-height:44px}
+.btn-pricing:active{transform:scale(.98)}
+.pricing-guarantee{font-size:0.8rem;color:var(--warm-gray);text-align:center;margin-top:1.5rem;line-height:1.5}
 
-.services{padding:8rem 3rem;max-width:1400px;margin:0 auto}
-.section-label{display:inline-flex;align-items:center;gap:.75rem;font-size:.8rem;font-weight:700;color:var(--fresh-green);text-transform:uppercase;letter-spacing:3px;margin-bottom:1.25rem}
-.section-label::before{content:'';width:30px;height:2px;background:var(--fresh-green)}
-.section-title{font-family:'Playfair Display',serif;font-size:clamp(2.25rem,4vw,3.25rem);font-weight:900;color:var(--text-dark);letter-spacing:-1.5px;line-height:1.1;margin-bottom:1rem}
-.section-subtitle{font-size:1.1rem;color:var(--warm-gray);max-width:550px;line-height:1.7;margin-bottom:4rem}
-.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.75rem}
-.service-card{background:#fff;border-radius:20px;padding:2.5rem 2rem;border:1px solid rgba(0,0,0,.06);transition:all .5s cubic-bezier(.22,1,.36,1);position:relative;overflow:hidden}
-.service-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:4px;background:linear-gradient(90deg,var(--fresh-green),var(--lime-accent));transform:scaleX(0);transform-origin:left;transition:transform .5s cubic-bezier(.22,1,.36,1)}
-.service-card:hover{transform:translateY(-8px);box-shadow:0 20px 60px rgba(0,0,0,.08);border-color:transparent}
-.service-card:hover::before{transform:scaleX(1)}
-.service-icon{width:56px;height:56px;border-radius:16px;display:flex;align-items:center;justify-content:center;margin-bottom:1.5rem;background:linear-gradient(135deg,rgba(74,124,52,.1),rgba(168,224,99,.15))}
-.service-card h3{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:700;color:var(--text-dark);margin-bottom:.75rem;letter-spacing:-.5px}
-.service-card p{font-size:.95rem;color:var(--warm-gray);line-height:1.7}
+.story-text{font-size:0.95rem;color:var(--text-body);line-height:1.8;margin-bottom:1.5rem}
+.stat-badges{display:flex;gap:0.75rem;margin-bottom:2rem;flex-wrap:wrap}
+.stat-badge{background:rgba(74,124,52,.1);border:1px solid rgba(74,124,52,.2);border-radius:12px;padding:0.75rem 1rem;font-size:0.8rem;font-weight:600;color:var(--fresh-green);flex:1;min-width:120px;text-align:center}
+.why-grid{display:grid;grid-template-columns:1fr;gap:1rem;margin-bottom:2rem}
+.why-card{background:white;border:1px solid rgba(0,0,0,.08);border-radius:16px;padding:1.25rem;cursor:pointer;transition:all .3s}
+.why-card.active{border-color:var(--fresh-green);background:rgba(74,124,52,.02)}
+.why-card h4{font-weight:700;color:var(--text-dark);margin-bottom:0.5rem;font-size:0.95rem}
+.why-card p{font-size:0.8rem;color:var(--warm-gray);line-height:1.5;display:none}
+.why-card.active p{display:block}
+.faq-item{background:white;border:1px solid rgba(0,0,0,.08);border-radius:16px;margin-bottom:1rem;overflow:hidden}
+.faq-question{padding:1rem;cursor:pointer;display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;font-weight:600;color:var(--text-dark);font-size:0.9rem;transition:background .3s}
+.faq-question:active{background:rgba(0,0,0,.02)}
+.faq-icon{width:20px;height:20px;flex-shrink:0;font-weight:700;transition:transform .3s}
+.faq-item.active .faq-icon{transform:rotate(180deg)}
+.faq-answer{max-height:0;overflow:hidden;transition:max-height .3s;padding:0 1rem}
+.faq-item.active .faq-answer{max-height:500px;padding:0 1rem 1rem}
+.faq-answer p{font-size:0.85rem;color:var(--text-body);line-height:1.6}
 
-.our-story{background:var(--cream);padding:7rem 3rem}
-.our-story-inner{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
-.story-image-placeholder{aspect-ratio:4/3;border-radius:24px;background:linear-gradient(135deg,var(--moss),var(--fresh-green));position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
-.story-image-text{position:relative;z-index:1;color:rgba(255,255,255,.6);font-size:.85rem;font-weight:600;text-transform:uppercase;letter-spacing:2px;text-align:center;padding:2rem}
-.story-text{font-size:1.05rem;color:var(--warm-gray);line-height:1.8;margin-bottom:1.5rem}
-.story-content .section-subtitle{margin-bottom:1.5rem}
-.story-highlights{display:flex;gap:2rem;margin-top:2rem}
-.story-highlight{text-align:center}
-.story-highlight .number{font-family:'Playfair Display',serif;font-size:2rem;font-weight:900;color:var(--fresh-green)}
-.story-highlight .label{font-size:.8rem;color:var(--warm-gray);text-transform:uppercase;letter-spacing:1px;font-weight:600}
+.contact-info{background:white;border:1px solid rgba(0,0,0,.08);border-radius:16px;padding:1.25rem;margin-bottom:1.5rem;text-align:center}
+.contact-button{display:flex;align-items:center;justify-content:center;gap:0.75rem;padding:1rem;border:none;background:linear-gradient(135deg,var(--spring),var(--lime-accent));color:var(--deep-forest);border-radius:12px;font-weight:700;font-size:0.95rem;cursor:pointer;transition:all .3s;text-decoration:none;margin-bottom:1rem;min-height:48px}
+.contact-button.email{background:var(--deep-forest);color:#fff}
+.contact-button:active{transform:scale(.98)}
+.contact-form{display:flex;flex-direction:column;gap:1rem;margin-bottom:2rem}
+.form-group{display:flex;flex-direction:column}
+.form-group label{font-size:0.8rem;font-weight:600;color:var(--text-dark);margin-bottom:0.4rem;text-transform:uppercase;letter-spacing:.5px;opacity:.7}
+.form-group input,.form-group select,.form-group textarea{padding:0.85rem;border:1px solid rgba(0,0,0,.1);border-radius:10px;font-family:'DM Sans',sans-serif;font-size:0.95rem;color:var(--text-dark);transition:border .3s}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{outline:none;border-color:var(--fresh-green);background:rgba(74,124,52,.02)}
+.form-group textarea{resize:vertical;min-height:100px}
+.char-count{font-size:0.75rem;color:var(--warm-gray);margin-top:0.35rem}
+.btn-submit{padding:1rem;background:linear-gradient(135deg,var(--spring),var(--lime-accent));color:var(--deep-forest);border:none;border-radius:12px;font-weight:700;font-size:0.95rem;cursor:pointer;transition:all .3s;min-height:48px;width:100%}
+.btn-submit:active{transform:scale(.98)}
+.form-success{display:none;text-align:center;padding:2rem 1.5rem;background:rgba(74,124,52,.1);border:1px solid var(--fresh-green);border-radius:16px;margin-bottom:2rem}
+.form-success.show{display:block}
+.form-success h3{font-family:'Playfair Display',serif;color:var(--fresh-green);margin-bottom:0.5rem;font-size:1.25rem}
+.form-success p{font-size:0.9rem;color:var(--text-body);line-height:1.6}
+.hours-badge{background:white;border:1px solid rgba(0,0,0,.08);border-radius:16px;padding:1.25rem;margin-bottom:1.5rem;text-align:center}
+.hours-badge h4{font-weight:700;color:var(--text-dark);margin-bottom:0.5rem}
+.hours-badge p{font-size:0.9rem;color:var(--text-body)}
+.service-area-section{margin-bottom:2rem}
+.service-area-section h3{font-size:0.9rem;font-weight:700;color:var(--text-dark);margin-bottom:1rem;letter-spacing:.5px;text-transform:uppercase;opacity:.6}
+.cities-scroll{display:flex;gap:0.75rem;overflow-x:auto;padding-bottom:0.5rem;scroll-behavior:smooth}
+.city-pill{flex-shrink:0;background:white;border:1px solid rgba(74,124,52,.2);border-radius:20px;padding:0.65rem 1.25rem;font-size:0.8rem;font-weight:600;color:var(--fresh-green);white-space:nowrap}
+.social-links{display:flex;gap:1rem;justify-content:center;margin-top:1.5rem}
+.social-link{width:44px;height:44px;border-radius:50%;background:white;border:1px solid rgba(0,0,0,.1);display:flex;align-items:center;justify-content:center;text-decoration:none;color:var(--fresh-green);transition:all .3s;cursor:pointer}
+.social-link:active{transform:scale(.95)}
 
-.why-us{background:var(--deep-forest);padding:8rem 3rem;position:relative;overflow:hidden}
-.why-us::before{content:'';position:absolute;top:-100px;right:-100px;width:500px;height:500px;background:radial-gradient(circle,rgba(168,224,99,.08),transparent 60%);border-radius:50%}
-.why-us-inner{max-width:1400px;margin:0 auto;position:relative}
-.why-us .section-label{color:var(--lime-accent)}.why-us .section-label::before{background:var(--lime-accent)}
-.why-us .section-title{color:#fff}.why-us .section-subtitle{color:rgba(255,255,255,.55)}
-.why-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem}
-.why-item{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:2.25rem;display:flex;gap:1.25rem;transition:all .4s}
-.why-item:hover{background:rgba(168,224,99,.06);border-color:rgba(168,224,99,.15);transform:translateY(-4px)}
-.why-icon{width:48px;height:48px;min-width:48px;border-radius:14px;background:linear-gradient(135deg,var(--moss),var(--fresh-green));display:flex;align-items:center;justify-content:center}
-.why-icon .icon-svg{stroke:var(--lime-accent);width:24px;height:24px}
-.why-item h4{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;color:#fff;margin-bottom:.5rem}
-.why-item p{font-size:.9rem;color:rgba(255,255,255,.55);line-height:1.65}
+@media(min-width:481px){
+    body{display:flex;align-items:center;justify-content:center;padding:2rem;min-height:100vh;background:linear-gradient(135deg,#1a2e14 0%,#0a1208 40%,#2d4a22 100%);background-attachment:fixed}
+    body::before{content:'Lee Bros Xscapes';position:fixed;top:2rem;left:50%;transform:translateX(-50%);font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;color:rgba(168,224,99,.15);letter-spacing:2px;pointer-events:none;z-index:0}
+    .app-container{width:390px;height:844px;border-radius:44px;box-shadow:0 25px 80px rgba(0,0,0,.5),0 0 0 1px rgba(168,224,99,.1);border:10px solid var(--rich-black);overflow:hidden;position:relative;z-index:1}
+    .app-container::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:120px;height:28px;background:var(--rich-black);border-radius:0 0 16px 16px;z-index:100}
+    .app-screen{padding-bottom:calc(60px + 10px)}
+}
 
-.testimonials{padding:8rem 3rem;max-width:1400px;margin:0 auto}
-.testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.75rem}
-.testimonial-card{background:#fff;border:1px solid rgba(0,0,0,.06);border-radius:20px;padding:2.25rem;transition:all .4s}
-.testimonial-card:hover{transform:translateY(-6px);box-shadow:0 20px 50px rgba(0,0,0,.07)}
-.testimonial-stars{color:var(--gold);font-size:.9rem;letter-spacing:2px;margin-bottom:1.25rem}
-.testimonial-card blockquote{font-size:1rem;color:var(--text-body);line-height:1.75;margin-bottom:1.5rem;font-style:italic}
-.testimonial-author{display:flex;align-items:center;gap:.75rem}
-.author-avatar{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,var(--fresh-green),var(--lime-accent));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:.85rem}
-.author-name{font-weight:600;color:var(--text-dark);font-size:.9rem}
-.author-location{font-size:.8rem;color:var(--warm-gray)}
-.testimonials-note{text-align:center;margin-top:2rem;font-size:.8rem;color:var(--warm-gray);font-style:italic}
-
-.service-area{background:var(--cream);padding:6rem 3rem}
-.service-area-inner{max-width:1400px;margin:0 auto;text-align:center}
-.area-cities{display:flex;flex-wrap:wrap;justify-content:center;gap:.75rem;margin-top:2.5rem}
-.area-city{background:#fff;border:1px solid rgba(0,0,0,.06);padding:.6rem 1.5rem;border-radius:50px;font-size:.9rem;font-weight:500;color:var(--text-body);transition:all .3s}
-.area-city:hover{background:var(--fresh-green);color:#fff;border-color:var(--fresh-green);transform:translateY(-2px)}
-.area-note{margin-top:1.5rem;font-size:.9rem;color:var(--warm-gray)}
-
-.gallery-band{padding:7rem 3rem;text-align:center}
-.gallery-band-inner{max-width:1400px;margin:0 auto}
-.gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem;margin-top:3rem}
-.gallery-item{aspect-ratio:1;border-radius:20px;overflow:hidden;position:relative;cursor:pointer}
-.gallery-item-bg{width:100%;height:100%;transition:transform .6s cubic-bezier(.22,1,.36,1)}
-.gallery-item:hover .gallery-item-bg{transform:scale(1.1)}
-.gallery-item::after{content:attr(data-label);position:absolute;bottom:0;left:0;right:0;padding:1.5rem 1.25rem 1.25rem;background:linear-gradient(to top,rgba(10,18,8,.85),transparent);color:#fff;font-size:.85rem;font-weight:600;letter-spacing:.5px;transform:translateY(100%);transition:transform .4s cubic-bezier(.22,1,.36,1)}
-.gallery-item:hover::after{transform:translateY(0)}
-.g1 .gallery-item-bg{background:linear-gradient(135deg,#4a7c34,#2d4a22)}
-.g2 .gallery-item-bg{background:linear-gradient(135deg,#6db54a,#4a7c34)}
-.g3 .gallery-item-bg{background:linear-gradient(135deg,#a8e063,#6db54a)}
-.g4 .gallery-item-bg{background:linear-gradient(135deg,#d4a843,#a8e063)}
-.gallery-note{margin-top:1.5rem;font-size:.85rem;color:var(--warm-gray);font-style:italic}
-
-.cta-section{padding:8rem 3rem;max-width:1400px;margin:0 auto}
-.cta-card{background:linear-gradient(135deg,var(--deep-forest) 0%,var(--moss) 50%,var(--fresh-green) 100%);border-radius:32px;padding:5rem;position:relative;overflow:hidden}
-.cta-card::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle at 30% 50%,rgba(168,224,99,.1),transparent 40%),radial-gradient(circle at 70% 50%,rgba(212,168,67,.08),transparent 40%)}
-.cta-card>*{position:relative;z-index:1}
-.cta-layout{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
-.cta-left h2{font-family:'Playfair Display',serif;font-size:clamp(2rem,3.5vw,3rem);color:#fff;font-weight:900;letter-spacing:-1.5px;margin-bottom:1rem;line-height:1.1}
-.cta-left p{font-size:1.1rem;color:rgba(255,255,255,.65);line-height:1.7;margin-bottom:2rem}
-.cta-phone{display:inline-flex;align-items:center;gap:.75rem;font-family:'Playfair Display',serif;font-size:1.75rem;color:var(--lime-accent);font-weight:700;text-decoration:none;margin-bottom:1rem;transition:transform .3s}
-.cta-phone:hover{transform:scale(1.05)}
-.cta-email{display:block;color:rgba(255,255,255,.6);text-decoration:none;font-size:1rem;transition:color .3s}
-.cta-email:hover{color:var(--lime-accent)}
-.contact-form{display:grid;gap:1rem}
-.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
-.contact-form label{display:block;font-size:.78rem;font-weight:600;color:rgba(255,255,255,.6);text-transform:uppercase;letter-spacing:1px;margin-bottom:.4rem}
-.contact-form input,.contact-form select,.contact-form textarea{width:100%;padding:.85rem 1rem;border-radius:12px;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.08);color:#fff;font-family:'DM Sans',sans-serif;font-size:.95rem;transition:border-color .3s,background .3s}
-.contact-form input::placeholder,.contact-form textarea::placeholder{color:rgba(255,255,255,.35)}
-.contact-form input:focus,.contact-form select:focus,.contact-form textarea:focus{outline:2px solid var(--lime-accent);outline-offset:2px;border-color:var(--lime-accent);background:rgba(255,255,255,.12)}
-.contact-form select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='rgba(255,255,255,0.5)' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center;cursor:pointer}
-.contact-form select option{background:var(--deep-forest);color:#fff}
-.contact-form textarea{resize:vertical;min-height:80px}
-.form-submit{display:inline-flex;align-items:center;justify-content:center;gap:.75rem;background:linear-gradient(135deg,var(--spring),var(--lime-accent));color:var(--deep-forest);padding:1rem 2.25rem;border-radius:60px;font-weight:700;font-size:1rem;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .4s;min-height:48px;width:100%}
-.form-submit:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(109,181,74,.4)}
-.form-success{display:none;text-align:center;padding:2rem;color:var(--lime-accent);font-size:1.1rem;font-weight:600}
-
-.footer{background:var(--rich-black);padding:5rem 3rem 2rem}
-.footer-inner{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:3rem;padding-bottom:3rem;border-bottom:1px solid rgba(255,255,255,.08)}
-.footer-brand p{color:rgba(255,255,255,.45);font-size:.9rem;line-height:1.7;margin-top:1rem;max-width:300px}
-.footer h5{font-family:'Playfair Display',serif;color:#fff;font-size:1rem;margin-bottom:1.25rem}
-.footer ul{list-style:none}.footer ul li{margin-bottom:.6rem}
-.footer ul a{color:rgba(255,255,255,.45);text-decoration:none;font-size:.9rem;transition:color .3s;padding:.25rem 0;display:inline-block}
-.footer ul a:hover{color:var(--lime-accent)}
-.footer-contact-item{display:flex;align-items:flex-start;gap:.5rem;margin-bottom:.75rem;color:rgba(255,255,255,.45);font-size:.9rem}
-.footer-contact-item .ic{width:16px;height:16px;stroke:var(--lime-accent);stroke-width:1.8;fill:none;stroke-linecap:round;stroke-linejoin:round;min-width:16px;margin-top:2px}
-.footer-contact-item a{color:var(--lime-accent);text-decoration:none;transition:opacity .3s}.footer-contact-item a:hover{opacity:.8}
-.footer-bottom{max-width:1400px;margin:0 auto;padding-top:2rem;display:flex;justify-content:space-between;align-items:center}
-.footer-bottom p{color:rgba(255,255,255,.25);font-size:.8rem}
-.footer-socials{display:flex;gap:.75rem}
-.footer-socials a{width:40px;height:40px;border-radius:10px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;text-decoration:none;transition:all .3s}
-.footer-socials a:hover{background:var(--fresh-green);border-color:var(--fresh-green)}
-.footer-socials a svg{width:18px;height:18px;fill:rgba(255,255,255,.5)}
-.footer-socials a:hover svg{fill:#fff}
-
-@keyframes fadeInUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
-.reveal{opacity:0;transform:translateY(40px);transition:all .8s cubic-bezier(.22,1,.36,1)}
-.reveal.visible{opacity:1;transform:translateY(0)}
-
-@media(max-width:1024px){
-.hero-content{grid-template-columns:1fr;text-align:center}
-.hero-text{margin:0 auto 2.5rem}.hero-actions{justify-content:center}
-.hero-visual{max-width:500px;margin:0 auto}
-.services-grid{grid-template-columns:repeat(2,1fr)}.why-grid{grid-template-columns:1fr}
-.testimonials-grid{grid-template-columns:1fr;max-width:500px;margin:0 auto}
-.gallery-grid{grid-template-columns:repeat(2,1fr)}.footer-inner{grid-template-columns:1fr 1fr}
-.cta-layout{grid-template-columns:1fr}.our-story-inner{grid-template-columns:1fr}
-.story-image-placeholder{max-height:300px}}
-
-@media(max-width:768px){
-.nav{padding:1rem 1.5rem}.nav.scrolled{padding:.75rem 1.5rem}
-.nav-links{display:none;position:fixed;top:0;left:0;width:100%;height:100vh;background:rgba(10,18,8,.98);backdrop-filter:blur(20px);flex-direction:column;justify-content:center;align-items:center;gap:2rem;z-index:999}
-.nav-links.show{display:flex}
-.nav-links a{font-size:1.25rem;padding:.75rem 1.5rem;min-height:48px;display:flex;align-items:center}
-.nav-links .nav-cta{font-size:1rem;padding:.85rem 2rem}
-.mobile-toggle{display:flex;z-index:1001}
-.hero-content{padding:6.5rem 1.5rem 4rem}.hero h1{letter-spacing:-1px}
-.hero-visual{order:2}.hero-left{order:1}
-.hero-form-card{padding:1.75rem}
-.hero-form-title{font-size:1.15rem}
-.licensed-badge{justify-content:center}
-.services,.testimonials,.cta-section{padding:5rem 1.5rem}
-.why-us,.gallery-band,.service-area{padding:5rem 1.5rem}.our-story{padding:5rem 1.5rem}
-.services-grid{grid-template-columns:1fr}.gallery-grid{grid-template-columns:1fr 1fr}
-.form-row{grid-template-columns:1fr}
-.cta-card{padding:3rem 1.75rem;border-radius:24px}.cta-phone{font-size:1.35rem}
-.story-highlights{flex-direction:row;justify-content:center}
-.footer{padding:3rem 1.5rem 1.5rem}.footer-inner{grid-template-columns:1fr;gap:2.5rem}
-.footer-inner>div{padding-bottom:1.5rem;border-bottom:1px solid rgba(255,255,255,.06)}
-.footer-inner>div:last-child{border-bottom:none}
-.footer-bottom{flex-direction:column;gap:1rem;text-align:center}
-.scroll-indicator{display:none}}
+.app-screen::-webkit-scrollbar{width:4px}
+.app-screen::-webkit-scrollbar-track{background:transparent}
+.app-screen::-webkit-scrollbar-thumb{background:rgba(74,124,52,.3);border-radius:2px}
+.app-screen::-webkit-scrollbar-thumb:hover{background:rgba(74,124,52,.5)}
     </style>
 </head>
 <body>
-<a href="#main-content" class="skip-link">Skip to main content</a>
+    <div class="app-container">
+        <div class="app-screens">
+            <!-- HOME SCREEN -->
+            <div id="screen-home" class="app-screen active" role="tabpanel" aria-labelledby="tab-home">
+                <div class="app-screen-header">
+                    <h2 class="app-screen-title">Lee Bros Xscapes</h2>
+                </div>
+                <div class="screen-content">
+                    <div class="hero-card">
+                        <h1>Lee Bros Xscapes</h1>
+                        <p class="tagline">Premium Lawn Care & Landscaping — SE Michigan</p>
+                    </div>
 
-<nav class="nav" id="navbar" aria-label="Main navigation">
-    <a href="#" class="nav-logo" aria-label="Lee Bros Xscapes - Home">
-        <div class="nav-logo-icon">
-            <svg viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <rect width="44" height="44" rx="12" fill="url(#lg1)"/>
-                <path d="M12 30V14h3v13h7v3H12z" fill="#1a2e14"/>
-                <path d="M24 30V14h5c3.5 0 5.5 1.8 5.5 4.5 0 2-1 3.4-2.8 4l3.3 7.5h-3.5l-2.8-6.8H27V30h-3zm3-9.5h2c1.5 0 2.5-.8 2.5-2.2s-1-2-2.5-2H27v4.2z" fill="#1a2e14"/>
-                <path d="M34 11c-2 0-4 2-4 4 2 0 4-2 4-4z" fill="#a8e063" opacity=".8"/>
-                <defs><linearGradient id="lg1" x1="0" y1="0" x2="44" y2="44"><stop stop-color="#6db54a"/><stop offset="1" stop-color="#a8e063"/></linearGradient></defs>
-            </svg>
-        </div>
-        <div class="nav-logo-text">Lee Bros <span>Xscapes</span></div>
-    </a>
-    <ul class="nav-links" id="nav-menu">
-        <li><a href="#services">Services</a></li>
-        <li><a href="#our-story">Our Story</a></li>
-        <li><a href="#why-us">Why Us</a></li>
-        <li><a href="#testimonials">Reviews</a></li>
-        <li><a href="#contact" class="nav-cta">Free Estimate</a></li>
-    </ul>
-    <button class="mobile-toggle" id="mobile-toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="nav-menu"><span></span><span></span><span></span></button>
-</nav>
+                    <div class="hero-buttons">
+                        <a href="tel:7344506417" class="btn-home btn-call">📞 Call Now</a>
+                        <button class="btn-home btn-estimate" onclick="switchScreen('contact')">💬 Get Estimate</button>
+                    </div>
 
-<main id="main-content">
-<section class="hero" id="contact" aria-label="Hero">
-    <div class="hero-bg" aria-hidden="true"></div>
-    <div class="hero-particles" id="particles" aria-hidden="true"></div>
-    <div class="hero-content">
-        <div class="hero-left">
-            <div class="hero-badge">🌱 Now Booking Spring 2026 — SE Michigan</div>
-            <h1>Premium Lawn Care &amp; Landscaping in <em>SE Michigan</em></h1>
-            <p class="hero-text">Lee Bros Xscapes delivers expert lawn care, landscape design, and property maintenance that transforms your outdoor space. Family-owned, locally trusted, always dependable.</p>
-            <div class="hero-actions">
-                <a href="tel:7344506417" class="btn-primary" aria-label="Call Lee Bros Xscapes at 734-450-6417">Call (734) 450-6417 <span class="arrow" aria-hidden="true">→</span></a>
-                <a href="#services" class="btn-secondary">View Services ↓</a>
+                    <div class="trust-chips">
+                        <div class="trust-chip">⭐ 5.0 Rated</div>
+                        <div class="trust-chip">🏠 500+ Properties</div>
+                        <div class="trust-chip">📋 Licensed & Insured</div>
+                        <div class="trust-chip">❄️ All 4 Seasons</div>
+                    </div>
+
+                    <div class="quick-look">
+                        <h3>Quick Links</h3>
+                        <div class="quick-cards">
+                            <button class="quick-card" onclick="switchScreen('services')">
+                                <h4><span class="quick-card-arrow">🌿</span> Our Services</h4>
+                            </button>
+                            <button class="quick-card" onclick="switchScreen('plans')">
+                                <h4><span class="quick-card-arrow">💰</span> See Plans</h4>
+                            </button>
+                            <button class="quick-card" onclick="switchScreen('about')">
+                                <h4><span class="quick-card-arrow">ℹ️</span> Our Story</h4>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">"The best decision I made for my lawn. These guys show up, do incredible work, and actually care about how my yard looks. Highly recommend!"</p>
+                        <p class="testimonial-author">Tyler H.</p>
+                        <p class="testimonial-location">Ypsilanti, MI</p>
+                    </div>
+                </div>
             </div>
-            <div class="licensed-badge">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#a8e063" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
-                Licensed &amp; Insured · Free Estimates · Family-Owned
+
+            <!-- SERVICES SCREEN -->
+            <div id="screen-services" class="app-screen" role="tabpanel" aria-labelledby="tab-services">
+                <div class="app-screen-header">
+                    <h2 class="app-screen-title">What We Do</h2>
+                </div>
+                <div class="screen-content">
+                    <div class="services-grid">
+                        <button class="service-card" onclick="toggleService(this)">
+                            <div class="service-icon">
+                                <svg viewBox="0 0 24 24"><path d="M7 20h10"/><path d="M10 20c5.5-2.5.8-6.4 3-10"/><path d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8z"/><path d="M14.1 6a7 7 0 0 0-1.1 4c1.9-.1 3.3-.6 4.3-1.4 1-1 1.6-2.3 1.7-4.6-2.7.1-4 1-4.9 2z"/></svg>
+                            </div>
+                            <h3>Lawn Maintenance</h3>
+                            <p>Precision mowing with commercial-grade equipment, crisp edging, detailed trimming, and a thorough clean-blow every visit. We stripe your lawn like the pros.</p>
+                        </button>
+                        <button class="service-card" onclick="toggleService(this)">
+                            <div class="service-icon">
+                                <svg viewBox="0 0 24 24"><path d="M12 22V8"/><path d="M5 12H2a10 10 0 0 0 20 0h-3"/><path d="M8 5.2C9 4.5 10.4 4 12 4s3 .5 4 1.2"/><circle cx="12" cy="5" r="1"/></svg>
+                            </div>
+                            <h3>Landscape Design</h3>
+                            <p>Custom garden beds, decorative borders, mulch installation, and seasonal color planting — all designed to maximize your property's curb appeal and value.</p>
+                        </button>
+                        <button class="service-card" onclick="toggleService(this)">
+                            <div class="service-icon">
+                                <svg viewBox="0 0 24 24"><path d="M12 22c-4.97 0-9-2-9-4.5S7.03 4 12 4s9 11 9 13.5-4.03 4.5-9 4.5z"/><path d="M12 4V2"/><path d="M15 4.5l1-1.5"/><path d="M9 4.5L8 3"/></svg>
+                            </div>
+                            <h3>Fertilization & Weed Control</h3>
+                            <p>6-step lawn treatment program calibrated for Michigan soil and climate. Pre-emergent, broadleaf control, slow-release feeding — thick, green results guaranteed.</p>
+                        </button>
+                        <button class="service-card" onclick="toggleService(this)">
+                            <div class="service-icon">
+                                <svg viewBox="0 0 24 24"><path d="M8 2v4"/><path d="M16 2v4"/><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M3 10h18"/><path d="M8 14h.01"/><path d="M12 14h.01"/><path d="M16 14h.01"/></svg>
+                            </div>
+                            <h3>Seasonal Cleanups</h3>
+                            <p>Thorough spring and fall cleanups: complete leaf removal, bed prep, gutter clearing, debris haul-off, and seasonal transitions to keep your property immaculate.</p>
+                        </button>
+                        <button class="service-card" onclick="toggleService(this)">
+                            <div class="service-icon">
+                                <svg viewBox="0 0 24 24"><circle cx="6" cy="6" r="3"/><path d="M6 9v12"/><path d="M13 6l-3.5 6H17l-3.5 6"/></svg>
+                            </div>
+                            <h3>Shrub & Hedge Trimming</h3>
+                            <p>Expert shaping and seasonal pruning for all shrub varieties. Clean lines, healthy growth, and manicured beds year-round.</p>
+                        </button>
+                        <button class="service-card" onclick="toggleService(this)">
+                            <div class="service-icon">
+                                <svg viewBox="0 0 24 24"><path d="M20 17.58A5 5 0 0 0 18 8h-1.26A8 8 0 1 0 4 16.25"/><path d="M8 16h.01"/><path d="M8 20h.01"/><path d="M12 18h.01"/><path d="M12 22h.01"/><path d="M16 16h.01"/><path d="M16 20h.01"/></svg>
+                            </div>
+                            <h3>Snow Removal</h3>
+                            <p>Reliable residential snow plowing, driveway clearing, and sidewalk salt treatment. Early-bird contracts available — never worry about a Michigan winter again.</p>
+                        </button>
+                    </div>
+
+                    <div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid rgba(0,0,0,.1)">
+                        <h3 style="font-size:1.1rem;font-weight:700;color:var(--text-dark);margin-bottom:1.5rem;text-transform:uppercase;letter-spacing:.5px;font-family:'Playfair Display',serif">How It Works</h3>
+                        <div class="process-timeline">
+                            <div class="process-item">
+                                <div class="process-step-num">1</div>
+                                <div class="process-content">
+                                    <h4>Request Your Free Estimate</h4>
+                                    <p>Call or fill out our form. We'll get back to you within 24 hours with no obligations.</p>
+                                </div>
+                            </div>
+                            <div class="process-item">
+                                <div class="process-step-num">2</div>
+                                <div class="process-content">
+                                    <h4>We Assess Your Property</h4>
+                                    <p>Our team visits your yard to understand your needs, soil, and vision for the space.</p>
+                                </div>
+                            </div>
+                            <div class="process-item">
+                                <div class="process-step-num">3</div>
+                                <div class="process-content">
+                                    <h4>Get a Custom Plan & Price</h4>
+                                    <p>We provide a detailed proposal with honest pricing and a timeline you can count on.</p>
+                                </div>
+                            </div>
+                            <div class="process-item">
+                                <div class="process-step-num">4</div>
+                                <div class="process-content">
+                                    <h4>Love Your Yard Again</h4>
+                                    <p>We handle every detail on schedule. You get the best-looking lawn on the block — guaranteed.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="hero-visual hero-form">
-            <div class="hero-form-card">
-                <div class="hero-form-title">Get Your Free Estimate</div>
-                <div class="hero-form-sub">Fill out the form — we'll respond within 24 hours.</div>
-                <form class="contact-form" id="contact-form" aria-label="Request a free estimate">
-                    <div class="form-row"><div><label for="f-name">Your Name</label><input type="text" id="f-name" name="name" placeholder="John Smith" required autocomplete="name"></div><div><label for="f-phone">Phone</label><input type="tel" id="f-phone" name="phone" placeholder="(734) 555-0123" required autocomplete="tel"></div></div>
-                    <div><label for="f-email">Email (optional)</label><input type="email" id="f-email" name="email" placeholder="john@email.com" autocomplete="email"></div>
-                    <div class="form-row"><div><label for="f-svc">Service Needed</label><select id="f-svc" name="service" required><option value="" disabled selected>Select a service</option><option value="lawn">Lawn Maintenance</option><option value="landscape">Landscape Design</option><option value="fert">Fertilization &amp; Weed Control</option><option value="cleanup">Seasonal Cleanup</option><option value="shrub">Shrub &amp; Hedge Trimming</option><option value="snow">Snow Removal</option><option value="other">Other / Multiple</option></select></div><div><label for="f-size">Yard Size</label><select id="f-size" name="size"><option value="" disabled selected>Select size</option><option value="s">Small (&lt;¼ acre)</option><option value="m">Medium (¼–½ acre)</option><option value="l">Large (½–1 acre)</option><option value="xl">XL (1+ acre)</option></select></div></div>
-                    <div><label for="f-msg">Anything else?</label><textarea id="f-msg" name="message" placeholder="Tell us about your property..." rows="2"></textarea></div>
-                    <button type="submit" class="form-submit">Request Free Estimate <span class="arrow" aria-hidden="true">→</span></button>
-                </form>
-                <div class="form-success" id="form-success" role="alert"><p>✅ Thank you! We'll be in touch within 24 hours.</p></div>
-                <div class="hero-form-trust">
-                    <div class="trust-stars" aria-label="5 star rating">★★★★★</div>
-                    <div class="trust-text"><strong>Trusted by homeowners</strong> across SE Michigan</div>
+
+            <!-- PLANS SCREEN -->
+            <div id="screen-plans" class="app-screen" role="tabpanel" aria-labelledby="tab-plans">
+                <div class="app-screen-header">
+                    <h2 class="app-screen-title">Plans</h2>
+                </div>
+                <div class="screen-content">
+                    <div style="margin-bottom:1rem;text-align:center">
+                        <p style="font-size:0.95rem;color:var(--warm-gray)">Simple, transparent pricing. No contracts.</p>
+                    </div>
+
+                    <div class="pricing-card">
+                        <div class="pricing-name">Essential</div>
+                        <div class="pricing-price">$35<span style="font-size:0.9rem;color:var(--warm-gray)">/visit</span></div>
+                        <p class="pricing-price-sub">Weekly lawn care</p>
+                        <ul class="pricing-features">
+                            <li>Weekly mowing</li>
+                            <li>Edging & trimming</li>
+                            <li>Blowing & cleanup</li>
+                        </ul>
+                        <button class="btn-pricing" onclick="switchScreen('contact')">Get Started</button>
+                    </div>
+
+                    <div class="pricing-card popular">
+                        <div class="pricing-badge">Most Popular</div>
+                        <div class="pricing-name">Premium</div>
+                        <div class="pricing-price">$55<span style="font-size:0.9rem;color:var(--warm-gray)">/visit</span></div>
+                        <p class="pricing-price-sub">Complete lawn care</p>
+                        <ul class="pricing-features">
+                            <li>Everything in Essential</li>
+                            <li>Fertilization program</li>
+                            <li>Weed control</li>
+                            <li>Seasonal treatments</li>
+                        </ul>
+                        <button class="btn-pricing" onclick="switchScreen('contact')">Get Started</button>
+                    </div>
+
+                    <div class="pricing-card">
+                        <div class="pricing-name">Complete</div>
+                        <div class="pricing-price">$85<span style="font-size:0.9rem;color:var(--warm-gray)">/visit</span></div>
+                        <p class="pricing-price-sub">Premium everything</p>
+                        <ul class="pricing-features">
+                            <li>Everything in Premium</li>
+                            <li>Seasonal cleanups</li>
+                            <li>Snow removal</li>
+                            <li>Priority scheduling</li>
+                        </ul>
+                        <button class="btn-pricing" onclick="switchScreen('contact')">Get Started</button>
+                    </div>
+
+                    <p class="pricing-guarantee">No contracts. Cancel anytime. 100% satisfaction guarantee.</p>
+                </div>
+            </div>
+
+            <!-- ABOUT SCREEN -->
+            <div id="screen-about" class="app-screen" role="tabpanel" aria-labelledby="tab-about">
+                <div class="app-screen-header">
+                    <h2 class="app-screen-title">About Us</h2>
+                </div>
+                <div class="screen-content">
+                    <h3 style="font-size:1.2rem;font-weight:700;color:var(--text-dark);margin-bottom:1rem;font-family:'Playfair Display',serif">Our Story</h3>
+                    <p class="story-text">Lee Bros Xscapes started with a simple idea: what if a lawn care company actually cared as much about your yard as you do? Growing up right here in Southeast Michigan, we spent our weekends helping family and neighbors keep their properties looking sharp.</p>
+                    <p class="story-text">Today, we're proud to serve 500+ properties across the 734 — from spring blooms to winter snow, all four seasons. Our commitment: professional results, clear communication, and genuine care for every yard we touch. Because your lawn is our reputation.</p>
+
+                    <div class="stat-badges">
+                        <div class="stat-badge">100% Family-Owned</div>
+                        <div class="stat-badge">SE MI Born & Raised</div>
+                        <div class="stat-badge">All 4 Seasons</div>
+                    </div>
+
+                    <div style="margin-bottom:2rem;padding-bottom:1.5rem;border-bottom:1px solid rgba(0,0,0,.1)">
+                        <h3 style="font-size:1rem;font-weight:700;color:var(--text-dark);margin-bottom:1rem">Why Choose Us</h3>
+                        <div class="why-grid">
+                            <button class="why-card" onclick="toggleWhy(this)">
+                                <h4>🤝 Family-Owned & Operated</h4>
+                                <p>Brothers working together means accountability, pride, and a personal touch on every job. Your lawn is our reputation — and our name is on every stripe.</p>
+                            </button>
+                            <button class="why-card" onclick="toggleWhy(this)">
+                                <h4>🌍 Locally Rooted</h4>
+                                <p>We live and work right here in the 734. We know Michigan soil, climate, and what it takes to keep a lawn thriving through four demanding seasons.</p>
+                            </button>
+                            <button class="why-card" onclick="toggleWhy(this)">
+                                <h4>💬 Clear Communication</h4>
+                                <p>No runaround. You'll always know what we're doing, when we're coming, and what it costs — before we start. Text, call, or email — we respond fast.</p>
+                            </button>
+                            <button class="why-card" onclick="toggleWhy(this)">
+                                <h4>✅ Guaranteed Results</h4>
+                                <p>If you're not 100% satisfied with our work, we'll come back and make it right — no questions, no hassle. That's the Lee Bros guarantee. Ask about our referral program and save on your next service.</p>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div style="margin-bottom:2rem">
+                        <h3 style="font-size:1rem;font-weight:700;color:var(--text-dark);margin-bottom:1rem">Testimonial</h3>
+                        <div class="testimonial-card">
+                            <p class="testimonial-text">"The best decision I made for my lawn. These guys show up, do incredible work, and actually care about how my yard looks. Highly recommend!"</p>
+                            <p class="testimonial-author">Tyler H.</p>
+                            <p class="testimonial-location">Ypsilanti, MI</p>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3 style="font-size:1rem;font-weight:700;color:var(--text-dark);margin-bottom:1rem">FAQ</h3>
+                        <div class="faq-item">
+                            <button class="faq-question" onclick="toggleFaq(this)">
+                                <span>What areas do you serve?</span>
+                                <span class="faq-icon">+</span>
+                            </button>
+                            <div class="faq-answer">
+                                <p>We serve the greater Southeast Michigan area including Ann Arbor, Canton, Ypsilanti, Plymouth, Saline, Belleville, Dexter, Chelsea, Milan, Whitmore Lake, South Lyon, and Northville.</p>
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <button class="faq-question" onclick="toggleFaq(this)">
+                                <span>How do I get a quote?</span>
+                                <span class="faq-icon">+</span>
+                            </button>
+                            <div class="faq-answer">
+                                <p>Call us at (734) 450-6417, email info@leebrosxscapes.com, or fill out our online form. We respond within 24 hours with a free, no-obligation estimate.</p>
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <button class="faq-question" onclick="toggleFaq(this)">
+                                <span>Are you licensed and insured?</span>
+                                <span class="faq-icon">+</span>
+                            </button>
+                            <div class="faq-answer">
+                                <p>Yes. Lee Bros Xscapes is fully licensed and insured with comprehensive general liability and workers compensation coverage.</p>
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <button class="faq-question" onclick="toggleFaq(this)">
+                                <span>What if it rains on my service day?</span>
+                                <span class="faq-icon">+</span>
+                            </button>
+                            <div class="faq-answer">
+                                <p>If weather prevents us from completing your service, we'll reschedule for the next available slot, usually the next day or within the same week. Mowing wet grass damages the lawn, so we always wait for dry conditions.</p>
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <button class="faq-question" onclick="toggleFaq(this)">
+                                <span>Do you offer seasonal contracts?</span>
+                                <span class="faq-icon">+</span>
+                            </button>
+                            <div class="faq-answer">
+                                <p>Yes, we offer flexible seasonal contracts for lawn maintenance, fertilization programs, and snow removal with locked-in rates and priority scheduling.</p>
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <button class="faq-question" onclick="toggleFaq(this)">
+                                <span>What forms of payment do you accept?</span>
+                                <span class="faq-icon">+</span>
+                            </button>
+                            <div class="faq-answer">
+                                <p>We accept cash, check, credit cards (Visa, Mastercard, Amex), and digital payments via Venmo or PayPal. Invoices are sent after service completion, and contracts can be set up for recurring payments on your preferred schedule.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CONTACT SCREEN -->
+            <div id="screen-contact" class="app-screen" role="tabpanel" aria-labelledby="tab-contact">
+                <div class="app-screen-header">
+                    <h2 class="app-screen-title">Contact Us</h2>
+                </div>
+                <div class="screen-content">
+                    <a href="tel:7344506417" class="contact-button">
+                        <span>📞</span>
+                        (734) 450-6417
+                    </a>
+
+                    <a href="mailto:info@leebrosxscapes.com" class="contact-button email">
+                        <span>✉️</span>
+                        info@leebrosxscapes.com
+                    </a>
+
+                    <div class="hours-badge">
+                        <h4>Hours</h4>
+                        <p>Mon–Sat: 7AM–7PM</p>
+                    </div>
+
+                    <form class="contact-form" id="contact-form" onsubmit="submitForm(event)">
+                        <div class="form-group">
+                            <label for="form-name">Your Name *</label>
+                            <input type="text" id="form-name" name="name" placeholder="John Smith" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="form-phone">Phone *</label>
+                            <input type="tel" id="form-phone" name="phone" placeholder="(734) 555-0123" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="form-email">Email (optional)</label>
+                            <input type="email" id="form-email" name="email" placeholder="you@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="form-service">Service Needed *</label>
+                            <select id="form-service" name="service" required>
+                                <option value="" disabled selected>Select a service</option>
+                                <option value="lawn">Lawn Maintenance</option>
+                                <option value="landscape">Landscape Design</option>
+                                <option value="fert">Fertilization & Weed Control</option>
+                                <option value="cleanup">Seasonal Cleanup</option>
+                                <option value="shrub">Shrub & Hedge Trimming</option>
+                                <option value="snow">Snow Removal</option>
+                                <option value="other">Other / Multiple</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="form-size">Yard Size</label>
+                            <select id="form-size" name="size">
+                                <option value="" disabled selected>Select size</option>
+                                <option value="s">Small (&lt;¼ acre)</option>
+                                <option value="m">Medium (¼–½ acre)</option>
+                                <option value="l">Large (½–1 acre)</option>
+                                <option value="xl">XL (1+ acre)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="form-message">Tell us more (optional)</label>
+                            <textarea id="form-message" name="message" placeholder="Any details about your property..." maxlength="200"></textarea>
+                            <div class="char-count"><span id="char-count">0</span>/200</div>
+                        </div>
+                        <button type="submit" class="btn-submit">Request Free Estimate</button>
+                    </form>
+
+                    <div id="form-success" class="form-success">
+                        <h3>✅ Thank you!</h3>
+                        <p>We'll get in touch within 24 hours with your free estimate.</p>
+                    </div>
+
+                    <div class="service-area-section">
+                        <h3>Service Area</h3>
+                        <div class="cities-scroll">
+                            <div class="city-pill">Ann Arbor</div>
+                            <div class="city-pill">Canton</div>
+                            <div class="city-pill">Ypsilanti</div>
+                            <div class="city-pill">Plymouth</div>
+                            <div class="city-pill">Saline</div>
+                            <div class="city-pill">Belleville</div>
+                            <div class="city-pill">Dexter</div>
+                            <div class="city-pill">Chelsea</div>
+                            <div class="city-pill">Milan</div>
+                            <div class="city-pill">Whitmore Lake</div>
+                            <div class="city-pill">South Lyon</div>
+                            <div class="city-pill">Northville</div>
+                        </div>
+                        <p style="font-size:0.8rem;color:var(--warm-gray);margin-top:1rem">Don't see your city? Give us a call — we may still be able to help!</p>
+                    </div>
+
+                    <div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid rgba(0,0,0,.1)">
+                        <h3 style="font-size:0.9rem;font-weight:700;color:var(--text-dark);margin-bottom:1rem;letter-spacing:.5px;text-transform:uppercase;opacity:.6">Follow Us</h3>
+                        <div class="social-links">
+                            <!-- ⚠️ DEAD LINK: Replace # with actual Facebook URL -->
+                            <a href="#" class="social-link" title="Facebook" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+                            <!-- ⚠️ DEAD LINK: Replace # with actual Instagram URL -->
+                            <a href="#" class="social-link" title="Instagram" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+                            <!-- ⚠️ DEAD LINK: Replace # with actual Google Business URL -->
+                            <a href="#" class="social-link" title="Google Business" aria-label="Google Business"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg></a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
+
+        <!-- BOTTOM NAVIGATION -->
+        <nav class="app-nav" role="tablist">
+            <button class="nav-tab active" role="tab" aria-selected="true" aria-controls="screen-home" id="tab-home" onclick="switchScreen('home')">
+                <svg viewBox="0 0 24 24"><path d="M3 10l9-9 9 9v1H20v10H4V11H3zm1 0h16v10H4V11z"/><path d="M9 13h6v7H9z"/></svg>
+                <span>Home</span>
+            </button>
+            <button class="nav-tab" role="tab" aria-selected="false" aria-controls="screen-services" id="tab-services" onclick="switchScreen('services')">
+                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                <span>Services</span>
+            </button>
+            <button class="nav-tab" role="tab" aria-selected="false" aria-controls="screen-plans" id="tab-plans" onclick="switchScreen('plans')">
+                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm3.5-9c.83 0 1.5-.67 1.5-1.5S16.33 8 15.5 8 14 8.67 14 9.5s.67 1.5 1.5 1.5zm-7 0c.83 0 1.5-.67 1.5-1.5S9.33 8 8.5 8 7 8.67 7 9.5 7.67 11 8.5 11zm3.5 6.5c2.33 0 4.31-1.46 5.11-3.5H6.89c.8 2.04 2.78 3.5 5.11 3.5z"/></svg>
+                <span>Plans</span>
+            </button>
+            <button class="nav-tab" role="tab" aria-selected="false" aria-controls="screen-about" id="tab-about" onclick="switchScreen('about')">
+                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm3.5-9c.83 0 1.5-.67 1.5-1.5S16.33 8 15.5 8 14 8.67 14 9.5s.67 1.5 1.5 1.5zm-7 0c.83 0 1.5-.67 1.5-1.5S9.33 8 8.5 8 7 8.67 7 9.5 7.67 11 8.5 11zm3.5 6.5c2.33 0 4.31-1.46 5.11-3.5H6.89c.8 2.04 2.78 3.5 5.11 3.5z"/></svg>
+                <span>About</span>
+            </button>
+            <button class="nav-tab" role="tab" aria-selected="false" aria-controls="screen-contact" id="tab-contact" onclick="switchScreen('contact')">
+                <svg viewBox="0 0 24 24"><path d="M17 10.5V7c0 .55-.45 1-1 1H4c-.55 0-1-.45-1-1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z"/></svg>
+                <span>Contact</span>
+            </button>
+        </nav>
     </div>
-    <div class="scroll-indicator" aria-hidden="true"><span>Scroll</span><div class="scroll-line"></div></div>
-</section>
 
-<section class="services" id="services" aria-labelledby="svc-title">
-    <div class="reveal"><div class="section-label">What We Do</div><h2 class="section-title" id="svc-title">Premium Lawn &amp; Landscape Services</h2><p class="section-subtitle">From weekly mowing to full landscape transformations — we handle every detail so you can simply enjoy your yard. Plans starting at $35/visit.</p></div>
-    <div class="services-grid">
-        <div class="service-card reveal"><div class="service-icon" aria-hidden="true"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M7 20h10"/><path d="M10 20c5.5-2.5.8-6.4 3-10"/><path d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8z"/><path d="M14.1 6a7 7 0 0 0-1.1 4c1.9-.1 3.3-.6 4.3-1.4 1-1 1.6-2.3 1.7-4.6-2.7.1-4 1-4.9 2z"/></svg></div><h3>Lawn Maintenance</h3><p>Precision mowing with commercial-grade equipment, crisp edging, detailed trimming, and a thorough clean-blow every visit. We stripe your lawn like the pros.</p></div>
-        <div class="service-card reveal"><div class="service-icon" aria-hidden="true"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M12 22V8"/><path d="M5 12H2a10 10 0 0 0 20 0h-3"/><path d="M8 5.2C9 4.5 10.4 4 12 4s3 .5 4 1.2"/><circle cx="12" cy="5" r="1"/></svg></div><h3>Landscape Design</h3><p>Custom garden beds, decorative borders, mulch installation, and seasonal color planting — all designed to maximize your property's curb appeal and value.</p></div>
-        <div class="service-card reveal"><div class="service-icon" aria-hidden="true"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M12 22c-4.97 0-9-2-9-4.5S7.03 4 12 4s9 11 9 13.5-4.03 4.5-9 4.5z"/><path d="M12 4V2"/><path d="M15 4.5l1-1.5"/><path d="M9 4.5L8 3"/></svg></div><h3>Fertilization &amp; Weed Control</h3><p>6-step lawn treatment program calibrated for Michigan soil and climate. Pre-emergent, broadleaf control, slow-release feeding — thick, green results guaranteed.</p></div>
-        <div class="service-card reveal"><div class="service-icon" aria-hidden="true"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M8 2v4"/><path d="M16 2v4"/><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M3 10h18"/><path d="M8 14h.01"/><path d="M12 14h.01"/><path d="M16 14h.01"/></svg></div><h3>Seasonal Cleanups</h3><p>Thorough spring and fall cleanups: complete leaf removal, bed prep, gutter clearing, debris haul-off, and seasonal transitions to keep your property immaculate.</p></div>
-        <div class="service-card reveal"><div class="service-icon" aria-hidden="true"><svg class="icon-svg" viewBox="0 0 24 24"><circle cx="6" cy="6" r="3"/><path d="M6 9v12"/><path d="M13 6l-3.5 6H17l-3.5 6"/></svg></div><h3>Shrub &amp; Hedge Trimming</h3><p>Expert shaping and seasonal pruning for all shrub varieties. Clean lines, healthy growth, and manicured beds year-round.</p></div>
-        <div class="service-card reveal"><div class="service-icon" aria-hidden="true"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M20 17.58A5 5 0 0 0 18 8h-1.26A8 8 0 1 0 4 16.25"/><path d="M8 16h.01"/><path d="M8 20h.01"/><path d="M12 18h.01"/><path d="M12 22h.01"/><path d="M16 16h.01"/><path d="M16 20h.01"/></svg></div><h3>Snow Removal</h3><p>Reliable residential snow plowing, driveway clearing, and sidewalk salt treatment. Early-bird contracts available — never worry about a Michigan winter again.</p></div>
-    </div>
-</section>
+    <script>
+        function switchScreen(screenName) {
+            document.querySelectorAll('.app-screen').forEach(screen => {
+                screen.classList.remove('active');
+            });
+            document.getElementById(`screen-${screenName}`).classList.add('active');
 
-<section class="our-story" id="our-story" aria-labelledby="story-title">
-    <div class="our-story-inner">
-        <div class="story-image-placeholder reveal" role="img" aria-label="Photo of the Lee Brothers">
-            <div class="story-image-text"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.4)" stroke-width="1.5" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg><br><br>Photo of the Lee Brothers<br><small>(Replace with real photo)</small></div>
-        </div>
-        <div class="story-content reveal">
-            <div class="section-label">Our Story</div>
-            <h2 class="section-title" id="story-title">Two Brothers, One Mission</h2>
-            <p class="story-text">Lee Bros Xscapes started with a simple idea: what if a lawn care company actually cared as much about your yard as you do? Growing up right here in Southeast Michigan, we spent our weekends helping family and neighbors keep their properties looking sharp.</p>
-            <p class="story-text">What began as a side hustle between brothers turned into a full-time commitment to quality, reliability, and honest pricing. Today, we bring that same family work ethic to every yard we touch — because every lawn we mow represents our name.</p>
-            <div class="story-highlights">
-                <div class="story-highlight"><div class="number">100%</div><div class="label">Family-Owned</div></div>
-                <div class="story-highlight"><div class="number">SE MI</div><div class="label">Born &amp; Raised</div></div>
-                <div class="story-highlight"><div class="number">All 4</div><div class="label">Seasons Covered</div></div>
-            </div>
-        </div>
-    </div>
-</section>
+            document.querySelectorAll('.nav-tab').forEach(tab => {
+                tab.classList.remove('active');
+                tab.setAttribute('aria-selected', 'false');
+            });
+            document.getElementById(`tab-${screenName}`).classList.add('active');
+            document.getElementById(`tab-${screenName}`).setAttribute('aria-selected', 'true');
 
-<section class="why-us" id="why-us" aria-labelledby="why-title">
-    <div class="why-us-inner">
-        <div class="reveal"><div class="section-label">The Lee Bros Difference</div><h2 class="section-title" id="why-title">Why Homeowners Choose Us</h2><p class="section-subtitle">We're not just another lawn company. We're your neighbors — and we take pride in every yard we touch.</p></div>
-        <div class="why-grid">
-            <div class="why-item reveal"><div class="why-icon" aria-hidden="true"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><div><h4>Family-Owned &amp; Operated</h4><p>Brothers working together means accountability, pride, and a personal touch on every job. Your lawn is our reputation — and our name is on every stripe.</p></div></div>
-            <div class="why-item reveal"><div class="why-icon" aria-hidden="true"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div><h4>Locally Rooted</h4><p>We live and work right here in the 734. We know Michigan soil, climate, and what it takes to keep a lawn thriving through four demanding seasons.</p></div></div>
-            <div class="why-item reveal"><div class="why-icon" aria-hidden="true"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div><div><h4>Clear Communication</h4><p>No runaround. You'll always know what we're doing, when we're coming, and what it costs — before we start. Text, call, or email — we respond fast.</p></div></div>
-            <div class="why-item reveal"><div class="why-icon" aria-hidden="true"><svg class="icon-svg" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg></div><div><h4>Guaranteed Results</h4><p>If you're not 100% satisfied with our work, we'll come back and make it right. No questions, no hassle. That's the Lee Bros guarantee.</p></div></div>
-        </div>
-    </div>
-</section>
+            document.getElementById(`screen-${screenName}`).scrollTop = 0;
+        }
 
-<section class="testimonials" id="testimonials" aria-labelledby="test-title">
-    <div class="reveal"><div class="section-label">What People Say</div><h2 class="section-title" id="test-title">Trusted by Our Neighbors</h2><p class="section-subtitle">Don't just take our word for it — hear from homeowners across SE Michigan.</p></div>
-    <div class="testimonials-grid">
-        <div class="testimonial-card reveal"><div class="testimonial-stars" aria-label="5 stars">★★★★★</div><blockquote>"The Lee brothers completely transformed our front yard. They're reliable, fair-priced, and the quality of work is unmatched. Wouldn't trust anyone else with our property."</blockquote><div class="testimonial-author"><div class="author-avatar" aria-hidden="true">MJ</div><div><div class="author-name">M. Johnson</div><div class="author-location">Ann Arbor, MI</div></div></div></div>
-        <div class="testimonial-card reveal"><div class="testimonial-stars" aria-label="5 stars">★★★★★</div><blockquote>"We've used three different lawn companies before finding Lee Bros Xscapes. Night and day difference. They actually care about how it looks and always go the extra mile."</blockquote><div class="testimonial-author"><div class="author-avatar" aria-hidden="true">SR</div><div><div class="author-name">S. Rodriguez</div><div class="author-location">Canton, MI</div></div></div></div>
-        <div class="testimonial-card reveal"><div class="testimonial-stars" aria-label="5 stars">★★★★★</div><blockquote>"Honest, hardworking, and professional. They show up on time every single week and my lawn has never looked better. The snow removal in winter is a huge bonus!"</blockquote><div class="testimonial-author"><div class="author-avatar" aria-hidden="true">DT</div><div><div class="author-name">D. Thompson</div><div class="author-location">Ypsilanti, MI</div></div></div></div>
-    </div>
-    <p class="testimonials-note">* Sample testimonials — replace with real customer reviews.</p>
-</section>
+        function toggleService(card) {
+            card.classList.toggle('active');
+        }
 
-<section class="service-area" id="service-area" aria-labelledby="area-title">
-    <div class="service-area-inner">
-        <div class="reveal"><div class="section-label" style="justify-content:center">Where We Work</div><h2 class="section-title" id="area-title">Proudly Serving Southeast Michigan</h2><p class="section-subtitle" style="max-width:600px;margin:0 auto 1rem">Lawn care and landscaping throughout Washtenaw and Wayne counties and surrounding areas.</p></div>
-        <div class="area-cities reveal">
-            <div class="area-city">Ann Arbor</div><div class="area-city">Canton</div><div class="area-city">Ypsilanti</div><div class="area-city">Plymouth</div><div class="area-city">Saline</div><div class="area-city">Belleville</div><div class="area-city">Dexter</div><div class="area-city">Chelsea</div><div class="area-city">Milan</div><div class="area-city">Whitmore Lake</div><div class="area-city">South Lyon</div><div class="area-city">Northville</div>
-        </div>
-        <p class="area-note reveal">Don't see your city? Give us a call — we may still be able to help!</p>
-    </div>
-</section>
+        function toggleWhy(card) {
+            card.classList.toggle('active');
+        }
 
-<section class="gallery-band" id="gallery" aria-labelledby="gal-title">
-    <div class="gallery-band-inner">
-        <div class="reveal"><div class="section-label" style="justify-content:center">Our Work</div><h2 class="section-title" id="gal-title">Transformations That Speak for Themselves</h2></div>
-        <div class="gallery-grid">
-            <div class="gallery-item g1 reveal" data-label="Lawn Restoration" role="img" aria-label="Lawn restoration project"><div class="gallery-item-bg"></div></div>
-            <div class="gallery-item g2 reveal" data-label="Garden Design" role="img" aria-label="Custom garden bed design"><div class="gallery-item-bg"></div></div>
-            <div class="gallery-item g3 reveal" data-label="Spring Cleanup" role="img" aria-label="Spring cleanup transformation"><div class="gallery-item-bg"></div></div>
-            <div class="gallery-item g4 reveal" data-label="Hedge Shaping" role="img" aria-label="Professional hedge shaping"><div class="gallery-item-bg"></div></div>
-        </div>
-        <p class="gallery-note">Placeholder images — swap in real project photos for maximum impact.</p>
-    </div>
-</section>
+        function toggleFaq(question) {
+            const item = question.closest('.faq-item');
+            item.classList.toggle('active');
+        }
 
-<section class="cta-section" aria-labelledby="cta-title">
-    <div class="cta-card reveal">
-        <div class="cta-layout" style="grid-template-columns:1fr;text-align:center;max-width:650px;margin:0 auto">
-            <div class="cta-left">
-                <h2 id="cta-title">Ready for the Best Lawn on Your Block?</h2>
-                <p>Get a free, no-obligation estimate today. Call, email, or <a href="#contact" style="color:var(--lime-accent);text-decoration:underline">scroll up to fill out our form</a> — we'll get back to you within 24 hours.</p>
-                <a href="tel:7344506417" class="cta-phone" aria-label="Call 734-450-6417">
-                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#a8e063" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                    (734) 450-6417
-                </a>
-                <a href="mailto:info@leebrosxscapes.com" class="cta-email">✉ info@leebrosxscapes.com</a>
-                <div style="margin-top:2rem"><a href="#contact" class="btn-primary" style="background:linear-gradient(135deg,var(--spring),var(--lime-accent))">Get Your Free Estimate <span class="arrow" aria-hidden="true">→</span></a></div>
-            </div>
-        </div>
-    </div>
-</section>
-</main>
+        function submitForm(e) {
+            e.preventDefault();
+            const form = document.getElementById('contact-form');
+            const success = document.getElementById('form-success');
 
-<footer class="footer" role="contentinfo">
-    <div class="footer-inner">
-        <div class="footer-brand">
-            <a href="#" class="nav-logo" aria-label="Lee Bros Xscapes - Home">
-                <div class="nav-logo-icon"><svg viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" width="44" height="44"><rect width="44" height="44" rx="12" fill="url(#lg2)"/><path d="M12 30V14h3v13h7v3H12z" fill="#1a2e14"/><path d="M24 30V14h5c3.5 0 5.5 1.8 5.5 4.5 0 2-1 3.4-2.8 4l3.3 7.5h-3.5l-2.8-6.8H27V30h-3zm3-9.5h2c1.5 0 2.5-.8 2.5-2.2s-1-2-2.5-2H27v4.2z" fill="#1a2e14"/><path d="M34 11c-2 0-4 2-4 4 2 0 4-2 4-4z" fill="#a8e063" opacity=".8"/><defs><linearGradient id="lg2" x1="0" y1="0" x2="44" y2="44"><stop stop-color="#6db54a"/><stop offset="1" stop-color="#a8e063"/></linearGradient></defs></svg></div>
-                <div class="nav-logo-text">Lee Bros <span>Xscapes</span></div>
-            </a>
-            <p>Family-owned lawn and landscape services proudly serving Southeast Michigan. Licensed &amp; insured.</p>
-        </div>
-        <div><h5>Services</h5><ul><li><a href="#services">Lawn Maintenance</a></li><li><a href="#services">Landscape Design</a></li><li><a href="#services">Fertilization</a></li><li><a href="#services">Seasonal Cleanups</a></li><li><a href="#services">Snow Removal</a></li></ul></div>
-        <div><h5>Quick Links</h5><ul><li><a href="#">Home</a></li><li><a href="#our-story">Our Story</a></li><li><a href="#why-us">Why Us</a></li><li><a href="#testimonials">Reviews</a></li><li><a href="#contact">Free Estimate</a></li><li><a href="#service-area">Service Area</a></li></ul></div>
-        <div><h5>Contact Us</h5>
-            <div class="footer-contact-item"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg><a href="tel:7344506417">(734) 450-6417</a></div>
-            <div class="footer-contact-item"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg><a href="mailto:info@leebrosxscapes.com">info@leebrosxscapes.com</a></div>
-            <div class="footer-contact-item"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg><span>Southeast Michigan</span></div>
-            <div class="footer-contact-item"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><span>Mon–Sat: 7AM–7PM</span></div>
-        </div>
-    </div>
-    <div class="footer-bottom">
-        <p>© 2026 Lee Bros Xscapes. All rights reserved.</p>
-        <div class="footer-socials">
-            <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
-            <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
-            <a href="#" aria-label="Google Business"><svg viewBox="0 0 24 24"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg></a>
-        </div>
-    </div>
-</footer>
+            form.style.display = 'none';
+            success.classList.add('show');
 
-<script>
-const nav=document.getElementById('navbar');
-window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>50)},{passive:true});
+            setTimeout(() => {
+                form.reset();
+                form.style.display = 'block';
+                success.classList.remove('show');
+                document.getElementById('char-count').textContent = '0';
+            }, 3000);
+        }
 
-const mt=document.getElementById('mobile-toggle'),nm=document.getElementById('nav-menu');
-mt.addEventListener('click',()=>{const o=mt.getAttribute('aria-expanded')==='true';mt.setAttribute('aria-expanded',!o);mt.setAttribute('aria-label',o?'Open navigation menu':'Close navigation menu');nm.classList.toggle('show');document.body.style.overflow=o?'':'hidden'});
-nm.querySelectorAll('a').forEach(l=>l.addEventListener('click',()=>{nm.classList.remove('show');mt.setAttribute('aria-expanded','false');mt.setAttribute('aria-label','Open navigation menu');document.body.style.overflow=''}));
-document.addEventListener('keydown',e=>{if(e.key==='Escape'&&nm.classList.contains('show')){nm.classList.remove('show');mt.setAttribute('aria-expanded','false');document.body.style.overflow='';mt.focus()}});
+        document.getElementById('form-message').addEventListener('input', function() {
+            document.getElementById('char-count').textContent = this.value.length;
+        });
 
-const reveals=document.querySelectorAll('.reveal');
-const obs=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){const sibs=entry.target.parentElement.querySelectorAll('.reveal');const idx=Array.from(sibs).indexOf(entry.target);setTimeout(()=>entry.target.classList.add('visible'),Math.min(idx,5)*80);obs.unobserve(entry.target)}})},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
-reveals.forEach(el=>obs.observe(el));
-
-if(window.matchMedia('(min-width:769px)').matches&&!window.matchMedia('(prefers-reduced-motion:reduce)').matches){const pc=document.getElementById('particles');for(let i=0;i<15;i++){const p=document.createElement('div');p.className='particle';p.style.left=Math.random()*100+'%';p.style.animationDelay=Math.random()*8+'s';p.style.animationDuration=(6+Math.random()*6)+'s';const s=(2+Math.random()*4)+'px';p.style.width=s;p.style.height=s;p.setAttribute('aria-hidden','true');pc.appendChild(p)}}
-
-document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',function(e){const h=this.getAttribute('href');if(h==='#')return;const t=document.querySelector(h);if(t){e.preventDefault();window.scrollTo({top:t.getBoundingClientRect().top+window.pageYOffset-80,behavior:'smooth'})}})});
-
-const form=document.getElementById('contact-form'),fs=document.getElementById('form-success');
-form.addEventListener('submit',e=>{e.preventDefault();form.style.display='none';fs.style.display='block'});
-</script>
+        document.querySelectorAll('.nav-tab').forEach((tab, index) => {
+            tab.addEventListener('keydown', function(e) {
+                if (e.key === 'ArrowLeft' && index > 0) {
+                    e.preventDefault();
+                    document.querySelectorAll('.nav-tab')[index - 1].click();
+                } else if (e.key === 'ArrowRight' && index < document.querySelectorAll('.nav-tab').length - 1) {
+                    e.preventDefault();
+                    document.querySelectorAll('.nav-tab')[index + 1].click();
+                }
+            });
+        });
+    </script>
 </body>
 </html>
